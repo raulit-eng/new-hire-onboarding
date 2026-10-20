@@ -106,6 +106,58 @@
   .empty { color: var(--muted); padding: 10px; }
   .grid2 { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
 
+  /* tabbed details */
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--grid); margin: -4px -4px 14px; padding: 0 4px; }
+  .tab { background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 12px; cursor: pointer; color: var(--ink-2); font-weight: 600; font-size: 13.5px; margin-bottom: -1px; }
+  .tab:hover { color: var(--ink); }
+  .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tab .n { display: inline-block; min-width: 20px; margin-left: 6px; padding: 0 6px; border-radius: 999px; background: var(--wash); color: var(--ink-2); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+  .panel[hidden] { display: none; }
+  .typechips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .typechips button { border: 1px solid var(--ring); background: var(--page); border-radius: 999px; padding: 4px 10px; font-size: 12.5px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+  .typechips button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+  .typechips i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+  .ttype { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .ttype i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; flex: none; }
+  .prio { font-size: 11px; font-weight: 650; border: 1.5px solid; border-radius: 4px; padding: 0 5px; white-space: nowrap; }
+  .p-Urgent { color: var(--critical); } .p-High { color: var(--warning-ink); } .p-Normal { color: var(--ink-2); } .p-Low { color: var(--muted); }
+  tr.trow { cursor: pointer; } tr.trow:hover td { background: var(--wash); }
+  tr.tdetail td { background: var(--page); padding: 10px 14px 14px; }
+  tr.tdetail ol { margin: 6px 0 0; padding-left: 20px; color: var(--ink-2); }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; }
+  .scroll-x { overflow-x: auto; max-width: 100%; }
+  .scroll-x table td, .scroll-x table th { white-space: nowrap; }
+  html, body { overflow-x: hidden; }
+  .repl { border: 1px solid var(--ring); border-radius: 10px; padding: 14px; margin-bottom: 10px; background: var(--page); }
+  .repl .head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+  .repl .head b { font-size: 15px; }
+  .repl .arrow { color: var(--muted); }
+  .repl .when { color: var(--muted); font-size: 12.5px; }
+  .repl .overlap { color: var(--warning-ink); font-size: 12.5px; }
+  .repl h5 { margin: 12px 0 6px; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .repl table td, .repl table th { padding: 6px 8px; }
+  .gap { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .gap span { font-size: 12px; border: 1px dashed var(--warning); border-radius: 999px; padding: 2px 9px; }
+  .newpos { color: var(--ink-2); font-size: 13px; }
+  .cl { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px; }
+  .cl-list { display: flex; flex-direction: column; gap: 4px; }
+  .cl-list button { text-align: left; border: 1px solid transparent; background: none; border-radius: 8px; padding: 8px 10px; cursor: pointer; }
+  .cl-list button:hover { background: var(--wash); }
+  .cl-list button[aria-selected="true"] { border-color: var(--accent); background: var(--accent-soft); }
+  .cl-list small { display: block; color: var(--muted); font-size: 12px; }
+  .cl-doc { border: 1px solid var(--ring); border-radius: 10px; padding: 16px 18px; background: var(--page); min-width: 0; }
+  .cl-doc h3 { margin: 0 0 10px; font-size: 16px; }
+  .cl-doc h4 { margin: 16px 0 6px; font-size: 13px; display: flex; justify-content: space-between; }
+  .cl-doc h4 span { color: var(--muted); font-weight: 500; font-size: 12px; }
+  .cl-doc ul { list-style: none; margin: 0; padding: 0; }
+  .cl-doc li { display: grid; grid-template-columns: 20px 1fr; gap: 6px; padding: 4px 0; font-size: 13px; color: var(--ink-2); }
+  .cl-doc li.done { color: var(--ink); }
+  .box { width: 15px; height: 15px; border: 1.5px solid var(--muted); border-radius: 4px; margin-top: 2px; display: grid; place-items: center; font-size: 11px; line-height: 1; }
+  li.done .box { background: var(--good); border-color: var(--good); color: #fff; }
+  .progress { height: 6px; border-radius: 3px; background: var(--grid); overflow: hidden; margin: 2px 0 6px; }
+  .progress b { display: block; height: 100%; background: var(--good); }
+  .linkbtn { background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; font: inherit; }
+  @media (max-width: 760px) { .cl { grid-template-columns: 1fr; } .cl-list { flex-direction: row; overflow-x: auto; } .cl-list button { white-space: nowrap; } }
   .scrim { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: none; justify-content: flex-end; z-index: 20; }
   .scrim.open { display: flex; }
   .drawer { width: min(460px, 100%); height: 100%; overflow-y: auto; background: var(--surface); padding: 22px; border-left: 1px solid var(--ring); }
@@ -117,6 +169,7 @@
   .chips span { font-size: 12px; border: 1px solid var(--ring); border-radius: 999px; padding: 2px 9px; background: var(--page); }
   .x { float: right; background: none; border: 0; font-size: 22px; color: var(--muted); cursor: pointer; }
   .issue { background: var(--page); border: 1px solid var(--ring); border-left: 3px solid var(--warning); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; font-size: 13px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   footer { color: var(--muted); font-size: 12.5px; margin-top: 20px; }
 
   @media (max-width: 1050px) { .main, .grid2 { grid-template-columns: 1fr; } .kpis { grid-template-columns: repeat(3, 1fr); } .log { height: 360px; } }
@@ -161,14 +214,26 @@
     </div>
   </section>
 
-  <section class="grid2">
-    <div class="card">
-      <h2>Sent back to HR</h2>
+  <section class="card" aria-label="Run details">
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="panel" id="p-tickets" role="tabpanel">
+      <p class="desc">Tickets the script opened so IT can get equipment ready: re-image the previous person's device, recover equipment that hasn't come back, set up a spare, or order new. Click a ticket for its steps.</p>
+      <div class="typechips" id="typechips"></div>
+      <div class="scroll-x" id="ticketTable"></div>
+    </div>
+    <div class="panel" id="p-replacements" role="tabpanel" hidden>
+      <p class="desc">Who each new hire is replacing, what happens to that person's equipment, and access they had that the new hire won't get automatically. The manager approves those.</p>
+      <div id="replList"></div>
+    </div>
+    <div class="panel" id="p-checklists" role="tabpanel" hidden>
+      <p class="desc">What's on each person's IT checklist. Items marked done were completed by the script; the rest are for IT, the manager and the new hire.</p>
+      <div class="cl"><div class="cl-list" id="clList" role="tablist" aria-label="People"></div><div class="cl-doc" id="clDoc"></div></div>
+    </div>
+    <div class="panel" id="p-hr" role="tabpanel" hidden>
       <p class="desc">Rows the script would not guess at. Fix them in the HR file and run it again.</p>
       <div id="hrIssues"></div>
     </div>
-    <div class="card">
-      <h2>Skipped</h2>
+    <div class="panel" id="p-skipped" role="tabpanel" hidden>
       <p class="desc">Safe to ignore: duplicates and people who already have an account.</p>
       <div id="skipped"></div>
     </div>
@@ -183,7 +248,7 @@
 const RUN = /*__DATA__*/null;
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
-const STAGES = ["Read HR file", "Validate", "Create account", "Add to groups", "Assign license", "Request device", "Write checklist"];
+const STAGES = ["Read HR file", "Validate", "Create account", "Add to groups", "Assign license", "Create tickets", "Write checklist"];
 const STEP_STAGES = STAGES.slice(1);            // the per-person steps shown as bars on each card
 const STATUS_LABEL = {onboarded: "Onboarded", needs_hr: "Held for HR", skipped: "Skipped", error: "Error", working: "Working"};
 const fmtDate = d => new Date(d + "T12:00:00").toLocaleDateString("en-US", {month: "short", day: "numeric"});
@@ -199,7 +264,7 @@ RUN.hires.forEach(h => (finalByRow[h.employee_id] = finalByRow[h.employee_id] ||
 $("pipeline").innerHTML = STAGES.map((s, i) =>
   `<div class="stage" id="st${i}"><div class="node">${i + 1}</div><div class="label">${esc(s)}</div><div class="count" id="stc${i}">–</div></div>`).join("");
 const KPIS = [["rows", "Rows read", null], ["onboarded", "Onboarded", "var(--good)"], ["needs_hr", "Held for HR", "var(--warning)"],
-              ["skipped", "Skipped", "var(--skip)"], ["groups", "Group memberships", null], ["requests", "Device requests", null]];
+              ["skipped", "Skipped", "var(--skip)"], ["groups", "Group memberships", null], ["tickets", "IT tickets", null]];
 $("kpis").innerHTML = KPIS.map(([k, label, c]) =>
   `<div class="card kpi"><div class="label">${c ? `<span class="dot" style="background:${c}"></span>` : ""}${label}</div><div class="value" id="k_${k}">0</div></div>`).join("");
 
@@ -207,7 +272,8 @@ $("kpis").innerHTML = KPIS.map(([k, label, c]) =>
 let i = 0, speed = 1, timer = null, state;
 function freshState() {
   return {stageCounts: STAGES.map(() => 0), active: 0, maxStage: 0, cards: [], cardFor: {}, current: null,
-          kpi: {rows: 0, onboarded: 0, needs_hr: 0, skipped: 0, groups: 0, requests: 0}};
+          kpi: {rows: 0, onboarded: 0, needs_hr: 0, skipped: 0, groups: 0, tickets: 0},
+          ticketIds: new Set(), replSeen: new Set(), newPos: new Set(), checklists: []};
 }
 
 function cardFor(evt) {
@@ -230,12 +296,14 @@ function apply(evt) {
     const card = cardFor(evt);
     if (!card) return;
     state.current = card;
-    if (evt.status === "ok" && STEP_STAGES.includes(evt.stage)) card.steps.add(evt.stage);
+    if ((evt.status === "ok" || (evt.status === "warn" && evt.stage !== "Validate")) && STEP_STAGES.includes(evt.stage)) card.steps.add(evt.stage);
     if (evt.stage === "Validate" && evt.status === "warn") { card.status = "needs_hr"; card.note = evt.message.replace(/^Held for HR: /, ""); state.kpi.needs_hr += card._counted ? 0 : 1; card._counted = true; }
     if (evt.stage === "Validate" && evt.status === "skip") { card.status = "skipped"; card.note = evt.message.replace(/^Skipped: /, ""); state.kpi.skipped++; }
     if (evt.stage === "Add to groups" && evt.status === "ok") { const m = evt.message.match(/to (\d+) groups/); if (m) state.kpi.groups += +m[1]; }
-    if (evt.stage === "Request device" && evt.status === "ok") { const m = evt.message.match(/Opened (\d+)/); if (m) state.kpi.requests += +m[1]; }
-    if (evt.stage === "Write checklist" && evt.status === "ok") { card.status = "onboarded"; state.kpi.onboarded++; }
+    if (evt.stage === "Create tickets") { const m = evt.message.match(/^(\S+)/); if (m && TICKETS[m[1]]) { state.ticketIds.add(m[1]); state.kpi.tickets++; lastTicket = m[1]; } }
+    if (evt.stage === "Validate" && /^Replacing /.test(evt.message)) { state.replSeen.add(card.final.employee_id); lastRepl = card.final.employee_id; }
+    if (evt.stage === "Validate" && /^New position/.test(evt.message)) state.newPos.add(card.final.employee_id);
+    if (evt.stage === "Write checklist" && evt.status === "ok") { card.status = "onboarded"; state.kpi.onboarded++; state.checklists.push(card.final.employee_id); if (!clPinned) clSelected = card.final.employee_id; }
     if (evt.status === "error") card.status = "error";
   }
 }
@@ -286,17 +354,106 @@ function render() {
   renderTables();
 }
 
+// ---------- tabbed details
+const TICKETS = Object.fromEntries((RUN.tickets || []).map(t => [t.id, t]));
+const TYPE_ORDER = ["Re-image and re-issue", "Image from stock", "Issue from stock", "Order new device", "Recover equipment", "Retire device"];
+const TYPE_COLOR = {"Re-image and re-issue": "var(--good)", "Image from stock": "var(--accent)", "Issue from stock": "var(--accent)",
+                    "Order new device": "var(--critical)", "Recover equipment": "var(--warning)", "Retire device": "var(--muted)"};
+const HIRE_BY_ID = Object.fromEntries(RUN.hires.filter(h => h.status === "onboarded").map(h => [h.employee_id, h]));
+const TABS = [["tickets", "IT tickets"], ["replacements", "Replacements"], ["checklists", "Checklists"], ["hr", "Sent back to HR"], ["skipped", "Skipped"]];
+let activeTab = "tickets", typeFilter = null, openTicket = null, lastTicket = null, lastRepl = null, clSelected = null, clPinned = false;
+const fmtLong = d => new Date(d + "T12:00:00").toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"});
+const daysBetween = (a, b) => Math.round((new Date(b + "T12:00:00") - new Date(a + "T12:00:00")) / 864e5);
+
+$("tabs").innerHTML = TABS.map(([k, label]) =>
+  `<button class="tab" role="tab" type="button" id="t-${k}" aria-controls="p-${k}" aria-selected="${k === activeTab}">${label}<span class="n" id="n-${k}">0</span></button>`).join("");
+TABS.forEach(([k]) => $("t-" + k).addEventListener("click", () => selectTab(k)));
+function selectTab(k) {
+  activeTab = k;
+  TABS.forEach(([x]) => { $("t-" + x).setAttribute("aria-selected", x === k); $("p-" + x).hidden = x !== k; });
+}
+
+function renderTickets() {
+  const shown = [...state.ticketIds].map(id => TICKETS[id]);
+  const counts = {}; shown.forEach(t => counts[t.type] = (counts[t.type] || 0) + 1);
+  $("typechips").innerHTML = TYPE_ORDER.filter(t => counts[t]).map(t =>
+    `<button type="button" data-type="${esc(t)}" aria-pressed="${typeFilter === t}"><i style="background:${TYPE_COLOR[t]}"></i>${esc(t)} <b>${counts[t]}</b></button>`).join("") +
+    (typeFilter ? `<button type="button" data-type="">Show all</button>` : "");
+  $("typechips").querySelectorAll("button").forEach(b => b.onclick = () => { typeFilter = b.dataset.type || null; renderTickets(); });
+  const rows = shown.filter(t => !typeFilter || t.type === typeFilter);
+  if (!rows.length) { $("ticketTable").innerHTML = `<div class="empty">${timer ? "No tickets yet. They appear as the script creates them." : "No tickets."}</div>`; return; }
+  $("ticketTable").innerHTML = `<table><thead><tr><th>Ticket</th><th>Type</th><th>For</th><th>Device</th><th>Asset</th><th>Comes from</th><th>Due</th><th>Priority</th></tr></thead><tbody>` +
+    rows.map(t => `<tr class="trow" data-id="${t.id}" tabindex="0" aria-expanded="${openTicket === t.id}">
+        <td class="mono">${t.id}</td><td><span class="ttype"><i style="background:${TYPE_COLOR[t.type]}"></i>${esc(t.type)}</span></td>
+        <td>${esc(t.for)}</td><td>${esc(t.device)}</td><td class="mono">${esc(t.asset_tag || "–")}</td>
+        <td>${t.source === "Stock" ? "Spare in stock" : t.source === "Purchase" ? "New purchase" : esc(t.source)}</td>
+        <td>${fmtDate(t.due)}</td><td><span class="prio p-${t.priority}">${t.priority}</span></td></tr>` +
+      (openTicket === t.id ? `<tr class="tdetail"><td colspan="8"><div>${esc(t.summary)}</div>
+        <div class="desc" style="margin:6px 0 0">Assigned to ${esc(t.team)}${t.model ? " · " + esc(t.model) : ""}${t.replacing ? " · replacing " + esc(t.replacing) : ""}</div>
+        <ol>${t.steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol></td></tr>` : "")).join("") + "</tbody></table>";
+  $("ticketTable").querySelectorAll("tr.trow").forEach(r => {
+    const toggle = () => { openTicket = openTicket === r.dataset.id ? null : r.dataset.id; renderTickets(); };
+    r.onclick = toggle; r.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } };
+  });
+}
+
+function renderReplacements() {
+  const ids = [...state.replSeen];
+  const people = ids.map(id => HIRE_BY_ID[id] || RUN.hires.find(h => h.employee_id === id)).filter(h => h && h.replacing);
+  const newPos = [...state.newPos].map(id => RUN.hires.find(h => h.employee_id === id)).filter(Boolean);
+  if (!people.length && !newPos.length) { $("replList").innerHTML = `<div class="empty">${timer ? "Nothing yet." : "No replacements in this run."}</div>`; return; }
+  $("replList").innerHTML = people.map(h => {
+    const r = h.replacing;
+    const when = r.still_working ? `still working until ${fmtLong(r.end_date)}` : `left ${fmtLong(r.end_date)}`;
+    const overlap = r.still_working && h.start_date <= r.end_date ? `<span class="overlap">Overlaps ${daysBetween(h.start_date, r.end_date) + 1} days with the new hire, so their equipment can't be re-used in time</span>` : "";
+    return `<div class="repl">
+      <div class="head"><b>${esc(h.display_name || h.name)}</b><span class="arrow">replaces</span><b>${esc(r.name)}</b>
+        <span class="when">${esc(r.title)} · ${esc(r.site || h.site)} · ${when}</span>${overlap}</div>
+      <h5>${esc(r.name)}'s equipment</h5>
+      ${r.equipment.length ? `<div class="scroll-x"><table><thead><tr><th>Asset</th><th>Device</th><th>Purchased</th><th>Status</th><th>What happens</th></tr></thead><tbody>` +
+        r.equipment.map(e => `<tr><td class="mono">${esc(e.asset_tag)}</td><td>${esc(e.type)}, ${esc(e.model)}</td><td>${fmtLong(e.purchased)}</td><td>${esc(e.status)}</td>
+          <td>${TYPE_COLOR[e.outcome] ? `<span class="ttype"><i style="background:${TYPE_COLOR[e.outcome]}"></i>${esc(e.outcome)}</span>` : esc(e.outcome)}${e.ticket ? ` <span class="mono">(${e.ticket})</span>` : ""}</td></tr>`).join("") + "</tbody></table></div>"
+      : `<div class="empty">No equipment on record.</div>`}
+      <h5>Access ${esc(r.name)} had that ${esc((h.display_name || h.name).split(" ")[0])} won't get automatically</h5>
+      ${r.access_gap.length ? `<div class="gap">${r.access_gap.map(g => `<span>${esc(g)}</span>`).join("")}<small class="desc" style="margin:0">On the checklist for ${esc(h.manager)} to approve</small></div>`
+        : `<div class="newpos">None. The department profile covers everything they had.</div>`}
+    </div>`;
+  }).join("") + (newPos.length ? `<div class="repl"><div class="head"><b>New positions</b><span class="when">Not replacing anyone</span></div>
+      <div class="newpos" style="margin-top:6px">${newPos.map(h => esc(h.display_name || h.name)).join(" · ")}</div></div>` : "");
+}
+
+function renderChecklists() {
+  const ids = state.checklists;
+  if (!ids.length) { $("clList").innerHTML = ""; $("clDoc").innerHTML = `<div class="empty">${timer ? "Checklists appear as each person finishes." : "No checklists."}</div>`; return; }
+  if (!ids.includes(clSelected)) clSelected = ids[ids.length - 1];
+  $("clList").innerHTML = ids.map(id => { const h = HIRE_BY_ID[id];
+    return `<button type="button" role="tab" data-id="${id}" aria-selected="${id === clSelected}">${esc(h.display_name || h.name)}<small>${esc(h.title)}</small></button>`; }).join("");
+  $("clList").querySelectorAll("button").forEach(b => b.onclick = () => { clSelected = b.dataset.id; clPinned = true; renderChecklists(); });
+  const h = HIRE_BY_ID[clSelected], c = h.checklist_data;
+  const all = c.sections.flatMap(x => x.items), done = all.filter(x => x.done).length;
+  $("clDoc").innerHTML = `<h3>${esc(c.title)}</h3>
+    <div class="progress" aria-hidden="true"><b style="width:${done / all.length * 100}%"></b></div>
+    <div class="desc">${done} of ${all.length} items done · saved to <code>output/${esc(h.checklist)}</code></div>
+    <div class="facts">${Object.entries(c.details).map(([k, v]) => `<span>${esc(k)}</span><span>${esc(v)}</span>`).join("")}</div>
+    ${c.sections.map(sec => `<h4>${esc(sec.title)}<span>${sec.items.filter(x => x.done).length}/${sec.items.length}</span></h4>
+      <ul>${sec.items.map(x => `<li class="${x.done ? "done" : ""}"><span class="box" aria-hidden="true">${x.done ? "✓" : ""}</span><span>${x.done ? '<span class="sr-only">Done: </span>' : ""}${linkTickets(esc(x.text))}</span></li>`).join("")}</ul>`).join("")}`;
+}
+const linkTickets = html => html.replace(/\b(IT-\d+)\b/g, '<span class="mono">$1</span>');
+
 function renderTables() {
-  // only show rows the replay has reached, so the tables fill in as the run goes
+  // only show rows the replay has reached, so the tabs fill in as the run goes
   const reached = state.cards.filter(c => c.status === c.final.status);
   const held = reached.filter(c => c.status === "needs_hr").map(c => c.final);
-  $("hrIssues").innerHTML = held.length ? `<table><thead><tr><th>Row</th><th>Name</th><th>What HR needs to fix</th></tr></thead><tbody>` +
-    held.map(h => `<tr><td>${h.row}</td><td>${esc(h.name)}</td><td>${h.issues.map(esc).join("<br>")}</td></tr>`).join("") + "</tbody></table>"
+  $("hrIssues").innerHTML = held.length ? `<div class="scroll-x"><table><thead><tr><th>Row</th><th>Name</th><th>What HR needs to fix</th></tr></thead><tbody>` +
+    held.map(h => `<tr><td>${h.row}</td><td>${esc(h.name)}</td><td>${h.issues.map(esc).join("<br>")}</td></tr>`).join("") + "</tbody></table></div>"
     : `<div class="empty">${timer ? "Nothing held so far." : "Nothing held. Every row was ready."}</div>`;
   const skipped = reached.filter(c => c.status === "skipped").map(c => c.final);
   $("skipped").innerHTML = skipped.length ? `<table><thead><tr><th>Name</th><th>Why</th></tr></thead><tbody>` +
     skipped.map(h => `<tr><td>${esc(h.name)}</td><td>${h.issues.map(esc).join("<br>")}</td></tr>`).join("") + "</tbody></table>"
     : `<div class="empty">${timer ? "Nothing skipped so far." : "Nothing skipped."}</div>`;
+  $("n-tickets").textContent = state.ticketIds.size; $("n-replacements").textContent = state.replSeen.size;
+  $("n-checklists").textContent = state.checklists.length; $("n-hr").textContent = held.length; $("n-skipped").textContent = skipped.length;
+  renderTickets(); renderReplacements(); renderChecklists();
 }
 
 function openDrawer(h) {
@@ -311,9 +468,18 @@ function openDrawer(h) {
     ${h.issues && h.issues.length ? `<h4>${h.status === "skipped" ? "Why it was skipped" : "Needs attention"}</h4>${h.issues.map(x => `<div class="issue">${esc(x)}</div>`).join("")}` : ""}
     ${h.groups && h.groups.length ? `<h4>Groups</h4><div class="chips">${h.groups.map(g => `<span>${esc(g)}</span>`).join("")}</div>` : ""}
     ${h.license ? `<h4>License</h4><div class="chips"><span>${esc(h.license)}</span></div>` : ""}
-    ${h.devices && h.devices.length ? `<h4>Device requests</h4><div class="facts">${h.devices.map((d, n) => `<span>${esc(h.requests[n])}</span><span>${esc(d)}</span>`).join("")}</div>` : ""}
-    ${h.checklist ? `<h4>IT checklist</h4><div>Saved to <code>output/${esc(h.checklist)}</code></div>` : ""}`;
+    ${h.replacing ? `<h4>Replacing</h4><div>${esc(h.replacing.name)}, ${esc(h.replacing.title)} (${h.replacing.still_working ? "leaving " : "left "}${fmtLong(h.replacing.end_date)})</div>
+      ${h.replacing.access_gap.length ? `<div class="desc" style="margin:6px 0 0">Manager to approve: ${h.replacing.access_gap.map(esc).join(", ")}</div>` : ""}`
+      : h.status === "onboarded" ? `<h4>Position</h4><div>New position</div>` : ""}
+    ${h.tickets && h.tickets.length ? `<h4>IT tickets</h4><div class="facts">${h.tickets.map(id => { const t = TICKETS[id];
+        return `<span class="mono">${id}</span><span><span class="ttype"><i style="background:${TYPE_COLOR[t.type]}"></i>${esc(t.type)}</span>: ${esc(t.device)}${t.asset_tag ? " " + esc(t.asset_tag) : ""}, due ${fmtDate(t.due)}</span>`; }).join("")}</div>` : ""}
+    ${h.checklist ? `<h4>IT checklist</h4><div><button class="linkbtn" type="button" id="toCl">View checklist</button> · <code>output/${esc(h.checklist)}</code></div>` : ""}`;
   $("scrim").classList.add("open"); $("closeD").focus(); $("closeD").onclick = closeDrawer;
+  if ($("toCl")) $("toCl").onclick = () => {
+    closeDrawer(); selectTab("checklists"); clSelected = h.employee_id; clPinned = true;
+    if (!state.checklists.includes(h.employee_id)) skipToEnd(); else renderChecklists();
+    $("p-checklists").scrollIntoView({behavior: "smooth", block: "start"});
+  };
 }
 function closeDrawer() { $("scrim").classList.remove("open"); }
 $("scrim").addEventListener("click", e => { if (e.target.id === "scrim") closeDrawer(); });
@@ -337,7 +503,7 @@ function finish() {
   render();
 }
 function start() {
-  clearTimeout(timer); timer = null; i = 0; state = freshState();
+  clearTimeout(timer); timer = null; i = 0; state = freshState(); clPinned = false; openTicket = null;
   $("log").innerHTML = ""; $("hires").innerHTML = "";
   $("status").className = "status running"; $("statusText").textContent = RUN.what_if ? "Previewing" : "Running";
   timer = setTimeout(step, 250);

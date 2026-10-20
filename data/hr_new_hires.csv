@@ -1,18 +1,18 @@
-EmployeeID,FirstName,LastName,PreferredName,Department,JobTitle,Site,Manager,StartDate,EmploymentType
-E10421,Maria,Gonzalez,,Sales,Account Executive,Los Angeles HQ,omar.ali@summitlogistics.example,2026-10-26,Full-time
-E10422,James,Okafor,Jim,Finance,Staff Accountant,Long Beach,linh.tran@summitlogistics.example,2026-10-26,Full-time
-E10423,Ana,Smith,,Customer Service,Customer Service Representative,Torrance,grace.walker@summitlogistics.example,2026-10-26,Full-time
-E10424,Daniel,Nguyen,,Warehouse,Warehouse Associate,Ontario,marcus.hall@summitlogistics.example,2026-10-26,Full-time
-E10425,Priya,Patel,,IT,Help Desk Technician,Los Angeles HQ,andre.wilson@summitlogistics.example,2026-10-27,Full-time
-E10426,Luis,Hernández,,Operations,Operations Coordinator,Santa Clarita,elena.reyes@summitlogistics.example,2026-10-27,Full-time
-E10427,Sofia,O'Brien,,Marketing,Marketing Specialist,Pasadena,chloe.young@summitlogistics.example,2026-10-27,Full-time
-E10428,Kevin,Tran,,Marketing,Content Designer,Pasadena,chloe.young@summitlogistics.example,2026-10-28,Contractor
- E10429 ,grace,KIM,,Customer Service,Customer Service Representative,Irvine,grace.walker@summitlogistics.example,2026-10-28,Full-time
-E10430,Omari,Bennett,,Executive,VP of Finance,Los Angeles HQ,omar.ali@summitlogistics.example,2026-11-02,Full-time
-E10431,Rosa,Delgado-Villanueva,,HR,HR Generalist,Burbank,nora.flores@summitlogistics.example,2026-11-02,Full-time
-E10421,Maria,Gonzalez,,Sales,Account Executive,Los Angeles HQ,omar.ali@summitlogistics.example,2026-10-26,Full-time
-E10432,Tyler,Brooks,,Legal,Contracts Manager,Los Angeles HQ,omar.ali@summitlogistics.example,2026-10-26,Full-time
-E10433,Hannah,Lee,,Sales,Sales Development Rep,Burbank,,2026-10-28,Full-time
-E10434,Ethan,Ramirez,,Warehouse,Forklift Operator,Ontario,marcus.hall@summitlogistics.example,2026-10-12,Full-time
-E10435,Jasmine,Wright,,Finance,Payroll Specialist,Long Beach,linh.tran@summitlogistics.example,2026-10-27,Full-time
-E10436,Marcus,Chen,,Sales,Account Executive,Irvine,d.miller@summitlogistics.example,2026-10-29,Full-time
+EmployeeID,FirstName,LastName,PreferredName,Department,JobTitle,Site,Manager,StartDate,EmploymentType,ReplacingEmployeeID
+E10421,Maria,Gonzalez,,Sales,Account Executive,Los Angeles HQ,omar.ali@summitlogistics.example,2026-10-26,Full-time,E10090
+E10422,James,Okafor,Jim,Finance,Staff Accountant,Long Beach,linh.tran@summitlogistics.example,2026-10-26,Full-time,E10095
+E10423,Ana,Smith,,Customer Service,Customer Service Representative,Torrance,grace.walker@summitlogistics.example,2026-10-26,Full-time,E10102
+E10424,Daniel,Nguyen,,Warehouse,Warehouse Associate,Ontario,marcus.hall@summitlogistics.example,2026-10-26,Full-time,
+E10425,Priya,Patel,,IT,Help Desk Technician,Los Angeles HQ,andre.wilson@summitlogistics.example,2026-10-27,Full-time,E10110
+E10426,Luis,Hernández,,Operations,Operations Coordinator,Santa Clarita,elena.reyes@summitlogistics.example,2026-10-27,Full-time,
+E10427,Sofia,O'Brien,,Marketing,Marketing Specialist,Pasadena,chloe.young@summitlogistics.example,2026-10-27,Full-time,
+E10428,Kevin,Tran,,Marketing,Content Designer,Pasadena,chloe.young@summitlogistics.example,2026-10-28,Contractor,
+ E10429 ,grace,KIM,,Customer Service,Customer Service Representative,Irvine,grace.walker@summitlogistics.example,2026-10-28,Full-time,
+E10430,Omari,Bennett,,Executive,VP of Finance,Los Angeles HQ,omar.ali@summitlogistics.example,2026-11-02,Full-time,E10012
+E10431,Rosa,Delgado-Villanueva,,HR,HR Generalist,Burbank,nora.flores@summitlogistics.example,2026-11-02,Full-time,
+E10421,Maria,Gonzalez,,Sales,Account Executive,Los Angeles HQ,omar.ali@summitlogistics.example,2026-10-26,Full-time,E10090
+E10432,Tyler,Brooks,,Legal,Contracts Manager,Los Angeles HQ,omar.ali@summitlogistics.example,2026-10-26,Full-time,
+E10433,Hannah,Lee,,Sales,Sales Development Rep,Burbank,,2026-10-28,Full-time,
+E10434,Ethan,Ramirez,,Warehouse,Forklift Operator,Ontario,marcus.hall@summitlogistics.example,2026-10-12,Full-time,
+E10435,Jasmine,Wright,,Finance,Payroll Specialist,Long Beach,linh.tran@summitlogistics.example,2026-10-27,Full-time,
+E10436,Marcus,Chen,,Sales,Account Executive,Irvine,d.miller@summitlogistics.example,2026-10-29,Full-time,E10125

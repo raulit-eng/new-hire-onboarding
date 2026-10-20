@@ -28,7 +28,8 @@ param(
     [datetime]$AsOf = (Get-Date),
     [string]$OutputPath = (Join-Path $PSScriptRoot 'output'),
     [string]$ConfigPath = (Join-Path $PSScriptRoot 'config/onboarding.json'),
-    [switch]$Reset,          # start the practice directory over from data/directory_seed.json
+    [string]$InventoryFile,  # equipment list; defaults to the practice copy of data/equipment_inventory.csv
+    [switch]$Reset,          # start the practice directory, equipment list and ticket numbers over
     [switch]$NoDashboard,
     [switch]$Quiet
 )
@@ -62,14 +63,28 @@ if ($Mode -eq 'ActiveDirectory') {
         -SeedPath (Join-Path $PSScriptRoot 'data/directory_seed.json') -Reset:($Reset -and -not $WhatIfPreference)
     Write-Step 'Read HR file' info "Opened practice directory: $($directory.users.Count) existing accounts"
 }
+# Equipment: returned devices, devices still with someone, and spares in stock
+$seedInventory = Join-Path $PSScriptRoot 'data/equipment_inventory.csv'
+if (-not $InventoryFile) {
+    $InventoryFile = Join-Path $OutputPath 'practice_inventory.csv'
+    if (($Reset -and -not $WhatIfPreference) -or -not (Test-Path $InventoryFile)) {
+        New-Item -ItemType Directory -Force -Path $OutputPath -WhatIf:$false | Out-Null
+        Copy-Item $seedInventory $InventoryFile -Force -WhatIf:$false
+    }
+}
+$inventory = Import-EquipmentInventory -Path $InventoryFile
+$spares = @($inventory | Where-Object Status -eq 'In Stock').Count
+Write-Step 'Read HR file' info "Loaded equipment list: $($inventory.Count) devices, $spares spares in stock"
+
+$counterFile = Join-Path $OutputPath 'ticket_counter.txt'
+$nextTicket = if (-not $Reset -and (Test-Path $counterFile)) { [int](Get-Content $counterFile -Raw) } else { [int]$config.equipment.firstTicketNumber }
 if ($WhatIfPreference) { Write-Step 'Read HR file' warn 'Preview mode (-WhatIf): no accounts or groups will be changed; reports are still written' }
 
 # ---------- 2. check every row, then onboard the good ones
 $hires = [System.Collections.Generic.List[object]]::new()
 $seen = @{}
 $plannedNames = [System.Collections.Generic.List[string]]::new()
-$requests = [System.Collections.Generic.List[object]]::new()
-$requestNumber = 0
+$allTickets = [System.Collections.Generic.List[object]]::new()
 
 foreach ($r in $records) {
     $who = @{ EmployeeID = $r.EmployeeID; Name = "$($r.FirstName) $($r.LastName)".Trim() }
@@ -77,7 +92,8 @@ foreach ($r in $records) {
         employee_id = $r.EmployeeID; name = $who.Name; department = $r.Department; title = $r.JobTitle; site = $r.Site
         manager = $r.Manager; start_date = $r.StartDate; employment_type = $r.EmploymentType; row = $r.RowNumber
         status = 'pending'; issues = @(); display_name = $null; sam = $null; username = $null; email = $null; groups = @(); license = $null
-        devices = @(); requests = @(); checklist = $null; account_expires = $null
+        devices = @(); requests = @(); tickets = @(); checklist = $null; checklist_data = $null; account_expires = $null
+        replacing = $null
     }
     Write-Step 'Validate' info "Checking row $($r.RowNumber): $($r.JobTitle), $($r.Department)" @who
 
@@ -107,6 +123,13 @@ foreach ($r in $records) {
         $hires.Add([pscustomobject]$hire); continue
     }
     Write-Step 'Validate' ok 'All checks passed' @who
+    $predecessor = Get-Predecessor -Record $r -Directory $directory -Inventory $inventory -AsOf $AsOf
+    if ($predecessor) {
+        $left = if ($predecessor.StillWorking) { "still working until $($predecessor.EndDate)" } else { "left $($predecessor.EndDate)" }
+        Write-Step 'Validate' info "Replacing $($predecessor.Name), $($predecessor.Title) ($left); $($predecessor.Equipment.Count) device(s) on record" @who
+    } else {
+        Write-Step 'Validate' info 'New position (not replacing anyone)' @who
+    }
 
     try {
         $taken = @($directory.users | ForEach-Object { $_.Username; if ($_.PSObject.Properties['SamAccountName']) { $_.SamAccountName } }) + $plannedNames
@@ -116,27 +139,42 @@ foreach ($r in $records) {
         $plannedNames.Add($username)
 
         $plan = Get-OnboardingPlan -Record $r -Config $config -Username $username
-        Invoke-ProvisionAccount -Plan $plan -Directory $directory -Mode $Mode -Config $config
+        $gap = @(Get-AccessGap -Predecessor $predecessor -Plan $plan)
+        Invoke-ProvisionAccount -Plan $plan -Directory $directory -Mode $Mode -Config $config -AccessGap $gap -PredecessorName $(if ($predecessor) { $predecessor.Name })
 
-        $ids = @(foreach ($device in $plan.Devices) {
-            $requestNumber++
-            $id = 'REQ-{0}-{1:D3}' -f $AsOf.ToString('yyMMdd'), $requestNumber
-            $requests.Add([pscustomobject]@{ RequestID = $id; EmployeeID = $plan.EmployeeID; Name = $plan.DisplayName; Device = $device
-                    Site = $plan.Site; NeededBy = $plan.StartDate; Status = 'Open' })
-            $id
-        })
-        $listed = for ($k = 0; $k -lt $ids.Count; $k++) { "$($plan.Devices[$k]) ($($ids[$k]))" }
-        $noun = if ($ids.Count -eq 1) { 'request' } else { 'requests' }
-        Write-Step 'Request device' ok "Opened $($ids.Count) device ${noun}: $($listed -join ', '), needed by $($plan.StartDate)" @who
-
-        $checklist = New-ITChecklist -Plan $plan -RequestIds $ids -Folder (Join-Path $OutputPath 'checklists')
-        Write-Step 'Write checklist' ok "Wrote IT checklist: checklists/$(Split-Path $checklist -Leaf)" @who
+        $counter = [ref]$nextTicket
+        $tickets = New-DeviceTickets -Plan $plan -Predecessor $predecessor -Inventory $inventory -Config $config -AsOf $AsOf -NextNumber $counter
+        $nextTicket = $counter.Value
+        foreach ($t in $tickets) {
+            $asset = if ($t.asset_tag) { " $($t.asset_tag)" } else { '' }
+            $status = if ($t.priority -in 'Urgent') { 'warn' } else { 'ok' }
+            Write-Step 'Create tickets' $status "$($t.id) $($t.type): $($t.device)$asset, due $([datetime]::Parse($t.due).ToString('MMM d')), $($t.priority) priority" @who
+            $allTickets.Add($t)
+        }
+        $checklistData = Get-ChecklistData -Plan $plan -Tickets $tickets -Predecessor $predecessor -AccessGap $gap
+        $checklist = New-ITChecklist -Checklist $checklistData -Username $plan.Username -Folder (Join-Path $OutputPath 'checklists')
+        $todo = @($checklistData.sections | ForEach-Object { $_.items } | Where-Object { -not $_.done }).Count
+        Write-Step 'Write checklist' ok "Wrote IT checklist: checklists/$(Split-Path $checklist -Leaf) ($todo items to do)" @who
 
         $hire.status = 'onboarded'; $hire.display_name = $plan.DisplayName; $hire.sam = $plan.SamAccountName; $hire.username = $plan.Username; $hire.email = $plan.Email
-        $hire.groups = $plan.Groups; $hire.license = $plan.License; $hire.devices = $plan.Devices; $hire.requests = @($ids)
-        $hire.checklist = "checklists/$(Split-Path $checklist -Leaf)"; $hire.account_expires = $plan.AccountExpires
+        $hire.groups = $plan.Groups; $hire.license = $plan.License; $hire.devices = $plan.Devices
+        $hire.tickets = @($tickets | ForEach-Object id); $hire.checklist = "checklists/$(Split-Path $checklist -Leaf)"
+        $hire.checklist_data = $checklistData; $hire.account_expires = $plan.AccountExpires
+        if ($predecessor) {
+            $hire.replacing = [ordered]@{
+                employee_id = $predecessor.EmployeeID; name = $predecessor.Name; title = $predecessor.Title; site = $predecessor.Site
+                end_date = $predecessor.EndDate; still_working = $predecessor.StillWorking; access_gap = @($gap)
+                equipment = @($predecessor.Equipment | ForEach-Object {
+                        $use = $tickets | Where-Object asset_tag -eq $_.AssetTag | Select-Object -First 1
+                        [ordered]@{ asset_tag = $_.AssetTag; type = $_.Type; model = $_.Model; purchased = $_.PurchaseDate; status = $_.Status
+                            outcome = if ($use) { $use.type } elseif ($_.Type -in @($config.equipment.personalItems)) { 'Not re-issued (personal item)' } else { 'Not needed' }
+                            ticket = if ($use) { $use.id } else { $null } }
+                    })
+            }
+        }
     } catch {
         $hire.status = 'error'; $hire.issues = @("$_")
+        Write-Verbose $_.ScriptStackTrace
         Write-Step 'Create account' error "Failed: $_" @who
     }
     $hires.Add([pscustomobject]$hire)
@@ -148,27 +186,45 @@ $PSDefaultParameterValues['Export-Csv:WhatIf'] = $false
 $PSDefaultParameterValues['Set-Content:WhatIf'] = $false
 New-Item -ItemType Directory -Force -Path $OutputPath -WhatIf:$false | Out-Null
 if ($Mode -eq 'Simulated' -and -not $WhatIfPreference) { Save-SimulatedDirectory -Directory $directory }
+if (-not $WhatIfPreference) {
+    # Record which devices are now spoken for, so the next run doesn't hand out the same spare
+    foreach ($t in $allTickets | Where-Object { $_.asset_tag -and $_.type -in 'Re-image and re-issue', 'Image from stock', 'Issue from stock' }) {
+        $d = $inventory | Where-Object AssetTag -eq $t.asset_tag
+        $d.Status = 'Reserved'; $d.AssignedTo = $t.employee_id; $d.Notes = "Reserved for $($t.for) ($($t.id))"
+    }
+    foreach ($t in $allTickets | Where-Object type -eq 'Retire device') {
+        $d = $inventory | Where-Object AssetTag -eq $t.asset_tag
+        $d.Status = 'Pending retirement'; $d.Notes = "Retire ($($t.id))"
+    }
+    $inventory | Select-Object AssetTag, Type, Model, PurchaseDate, Status, AssignedTo, Site, Notes |
+        Export-Csv $InventoryFile -NoTypeInformation -Encoding utf8
+    Set-Content $counterFile $nextTicket
+}
 
 $hires | Select-Object employee_id, name, status, username, email, department, title, site, start_date, license,
-@{ n = 'groups'; e = { $_.groups -join '; ' } }, @{ n = 'requests'; e = { $_.requests -join '; ' } }, account_expires |
+@{ n = 'groups'; e = { $_.groups -join '; ' } }, @{ n = 'tickets'; e = { $_.tickets -join '; ' } },
+@{ n = 'replacing'; e = { if ($_.replacing) { $_.replacing.name } else { '' } } }, account_expires |
     Export-Csv (Join-Path $OutputPath 'onboarding_summary.csv') -NoTypeInformation -Encoding utf8
 $hires | Where-Object status -eq 'needs_hr' | Select-Object employee_id, name, row, @{ n = 'issue'; e = { $_.issues -join '; ' } } |
     Export-Csv (Join-Path $OutputPath 'hr_issues.csv') -NoTypeInformation -Encoding utf8
-$requests | Export-Csv (Join-Path $OutputPath 'device_requests.csv') -NoTypeInformation -Encoding utf8
+$allTickets | Select-Object id, type, priority, due, employee_id, for, device, asset_tag, model, source, site, team, status, summary,
+@{ n = 'steps'; e = { $_.steps -join ' | ' } } | Export-Csv (Join-Path $OutputPath 'tickets.csv') -NoTypeInformation -Encoding utf8
+ConvertTo-Json @($allTickets) -Depth 5 | Set-Content (Join-Path $OutputPath 'tickets.json') -Encoding utf8
 
 $counts = [ordered]@{}
 foreach ($s in 'onboarded', 'needs_hr', 'skipped', 'error') { $counts[$s] = @($hires | Where-Object status -eq $s).Count }
 Write-Step 'Summary' ok ("Done: {0} onboarded, {1} held for HR, {2} skipped, {3} errors" -f $counts.onboarded, $counts.needs_hr, $counts.skipped, $counts.error)
+Write-Step 'Summary' info ("Opened {0} IT tickets: {1}" -f $allTickets.Count, (($allTickets | Group-Object type | ForEach-Object { "$($_.Count) $($_.Name.ToLower())" }) -join ', '))
 if ($counts.needs_hr) { Write-Step 'Summary' warn "Sent $($counts.needs_hr) row(s) back to HR: output/hr_issues.csv" }
 
 $run = [ordered]@{
     company = 'Summit Logistics (sample data)'; hr_file = (Split-Path $HRFile -Leaf); mode = $Mode
     what_if = [bool]$WhatIfPreference; as_of = $AsOf.ToString('yyyy-MM-dd'); started = $runStarted.ToString('o')
-    finished = (Get-Date).ToString('o'); counts = $counts; device_requests = $requests.Count
-    hires = $hires; events = (Get-RunLog)
+    finished = (Get-Date).ToString('o'); counts = $counts
+    hires = $hires; tickets = @($allTickets); events = (Get-RunLog)
 }
 $runLogPath = Join-Path $OutputPath 'run_log.json'
-$run | ConvertTo-Json -Depth 6 | Set-Content $runLogPath -Encoding utf8
+$run | ConvertTo-Json -Depth 10 | Set-Content $runLogPath -Encoding utf8
 
 if (-not $NoDashboard) {
     & (Join-Path $PSScriptRoot 'Build-Dashboard.ps1') -RunLog $runLogPath | Out-Null

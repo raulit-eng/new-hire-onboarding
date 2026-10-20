@@ -9,16 +9,17 @@
 | Start date | 2026-10-28 |
 | Sign-in | grace.kim@summitlogistics.example |
 | Windows logon | grace.kim |
+| Position | New position |
 
 ## Done by the script
 - [x] Account created with a temporary password (must change at first sign-in)
 - [x] Added to groups: All-Staff, MFA-Required, CS-Team, Ticketing-Agents, Site-IRV
 - [x] License assigned: LIC-M365-E3
-- [x] Device requests opened: REQ-261020-013, REQ-261020-014
+- [x] IT tickets opened: IT-4116 (image from stock, Desktop); IT-4117 (issue from stock, Headset)
 
 ## Before day one (IT)
-System.Object[]
-- [ ] Desktop enrolled in Intune, BitLocker encryption confirmed
+- [ ] Desktop AT-002330 imaged from stock and ready - IT-4116, due 2026-10-26
+- [ ] New Headset AT-002331 ready - IT-4117, due 2026-10-26
 - [ ] Give the temporary password to grace.walker@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: Zendesk, Microsoft 365
 

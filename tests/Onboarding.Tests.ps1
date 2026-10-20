@@ -142,7 +142,9 @@ Describe 'Full run on the sample HR file' {
         $preview = Join-Path ([IO.Path]::GetTempPath()) "onboarding-preview-$([guid]::NewGuid())"
         & $script -AsOf $asOf -OutputPath $preview -WhatIf -NoDashboard -Quiet | Out-Null
         $dir = Get-Content (Join-Path $preview 'practice_directory.json') -Raw | ConvertFrom-Json
-        @($dir.users).Count | Should -Be 10
+        $seed = Get-Content (Join-Path $root 'data/directory_seed.json') -Raw | ConvertFrom-Json
+        @($dir.users).Count | Should -Be @($seed.users).Count
+        Test-Path (Join-Path $preview 'ticket_counter.txt') | Should -BeFalse
         Remove-Item $preview -Recurse -Force
     }
 }
@@ -176,5 +178,68 @@ Describe 'Active Directory mode (with the AD cmdlets mocked)' {
         Invoke-ProvisionAccount -Plan $plan -Directory ([pscustomobject]@{}) -Mode ActiveDirectory -Config $config -WhatIf
         Should -Invoke -ModuleName Onboarding New-ADUser -Times 0 -Exactly
         Should -Invoke -ModuleName Onboarding Add-ADGroupMember -Times 0 -Exactly
+    }
+}
+
+Describe 'Replacements and IT tickets' {
+    BeforeAll {
+        $out = Join-Path ([IO.Path]::GetTempPath()) "onboarding-tickets-$([guid]::NewGuid())"
+        & (Join-Path $root 'Start-Onboarding.ps1') -AsOf $asOf -OutputPath $out -Reset -NoDashboard -Quiet | Out-Null
+        $log = Get-Content (Join-Path $out 'run_log.json') -Raw | ConvertFrom-Json
+        $tickets = @($log.tickets)
+        function TicketsFor($id) { @($tickets | Where-Object employee_id -eq $id) }
+    }
+    AfterAll { Remove-Item $out -Recurse -Force -ErrorAction SilentlyContinue }
+
+    It "re-issues the previous person's returned equipment when it's still young enough" {
+        $t = TicketsFor 'E10421'
+        ($t | Where-Object type -eq 'Re-image and re-issue').asset_tag | Should -Be @('AT-002101', 'AT-002102')
+    }
+    It 'retires equipment past its lifecycle and sets up a spare instead' {
+        $t = TicketsFor 'E10422'
+        ($t | Where-Object type -eq 'Retire device').asset_tag | Should -Be 'AT-001877'
+        $spare = $t | Where-Object type -eq 'Image from stock'
+        $spare.asset_tag | Should -Be 'AT-002301'
+        $spare.steps -join ' ' | Should -BeLike '*Ship from Los Angeles HQ to Long Beach*'
+    }
+    It 'recovers equipment from someone still working, after their last day' {
+        $recover = TicketsFor 'E10423' | Where-Object type -eq 'Recover equipment'
+        $recover.asset_tag | Should -Be 'AT-002233'
+        $recover.due | Should -Be '2026-11-02'    # first business day after Oct 30
+        (TicketsFor 'E10423' | Where-Object type -eq 'Image from stock').asset_tag | Should -Be 'AT-002320'
+    }
+    It 'flags unreturned equipment from someone who already left as high priority' {
+        $recover = TicketsFor 'E10425' | Where-Object type -eq 'Recover equipment'
+        $recover.priority | Should -Be 'High'
+        $recover.due | Should -Be '2026-10-20'
+    }
+    It 'never re-issues personal items like headsets' {
+        ($tickets | Where-Object { $_.device -eq 'Headset' }).type | Sort-Object -Unique | Should -Be 'Issue from stock'
+    }
+    It 'orders a new device when nothing is available' {
+        (TicketsFor 'E10428').type | Should -Be 'Order new device'
+    }
+    It 'never gives the same device to two people' {
+        $given = $tickets | Where-Object { $_.type -in 'Re-image and re-issue', 'Image from stock', 'Issue from stock' } | ForEach-Object asset_tag
+        ($given | Sort-Object -Unique).Count | Should -Be $given.Count
+    }
+    It 'lists access the previous person had that the new hire does not get' {
+        ($log.hires | Where-Object employee_id -eq 'E10422').replacing.access_gap | Should -Be @('AP-Approvers', 'NetSuite-Admins')
+    }
+    It 'sends a replacement that does not exist back to HR' {
+        ($log.hires | Where-Object employee_id -eq 'E10436').issues -join ' ' | Should -BeLike "*Replacing employee 'E10125' was not found*"
+    }
+    It 'puts every ticket on the checklist' {
+        $h = $log.hires | Where-Object employee_id -eq 'E10430'
+        $text = ($h.checklist_data.sections.items.text) -join ' '
+        foreach ($id in $h.tickets) { $text | Should -BeLike "*$id*" }
+    }
+    It 'reserves devices so the next run cannot hand them out again' {
+        $inv = Import-Csv (Join-Path $out 'practice_inventory.csv')
+        ($inv | Where-Object AssetTag -eq 'AT-002301').Status | Should -Be 'Reserved'
+        ($inv | Where-Object AssetTag -eq 'AT-001877').Status | Should -Be 'Pending retirement'
+    }
+    It 'counts business days, skipping weekends' {
+        Get-BusinessDaysBefore -Date '2026-10-26' -Days 2 -NotBefore '2026-10-01' | Should -Be ([datetime]'2026-10-22')
     }
 }

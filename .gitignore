@@ -1,2 +1,4 @@
-# The practice directory changes every run; start fresh with -Reset
+# Practice state changes every run; start fresh with -Reset
 output/practice_directory.json
+output/practice_inventory.csv
+output/ticket_counter.txt

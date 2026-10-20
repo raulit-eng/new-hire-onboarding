@@ -9,16 +9,17 @@
 | Start date | 2026-10-27 |
 | Sign-in | luis.hernandez@summitlogistics.example |
 | Windows logon | luis.hernandez |
+| Position | New position |
 
 ## Done by the script
 - [x] Account created with a temporary password (must change at first sign-in)
 - [x] Added to groups: All-Staff, MFA-Required, Ops-Team, VPN-Users, Site-SCV
 - [x] License assigned: LIC-M365-E3
-- [x] Device requests opened: REQ-261020-009, REQ-261020-010
+- [x] IT tickets opened: IT-4112 (image from stock, Laptop); IT-4113 (image from stock, iPhone)
 
 ## Before day one (IT)
-System.Object[]
-System.Object[]
+- [ ] Laptop AT-002350 imaged from stock and ready - IT-4112, due 2026-10-23
+- [ ] iPhone AT-002305 imaged from stock and ready - IT-4113, due 2026-10-23
 - [ ] Give the temporary password to elena.reyes@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: WMS, Microsoft 365
 

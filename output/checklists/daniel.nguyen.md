@@ -9,16 +9,16 @@
 | Start date | 2026-10-26 |
 | Sign-in | daniel.nguyen@summitlogistics.example |
 | Windows logon | daniel.nguyen |
+| Position | New position |
 
 ## Done by the script
 - [x] Account created with a temporary password (must change at first sign-in)
 - [x] Added to groups: All-Staff, MFA-Required, Warehouse-Team, Scanner-Users, Site-ONT
 - [x] License assigned: LIC-M365-F3
-- [x] Device requests opened: REQ-261020-006
+- [x] IT tickets opened: IT-4108 (image from stock, iPad)
 
 ## Before day one (IT)
-- [ ] iPad prepared and labeled (request REQ-261020-006)
-- [ ] iPad enrolled in Jamf through Apple Business Manager
+- [ ] iPad AT-002340 imaged from stock and ready - IT-4108, due 2026-10-22
 - [ ] Give the temporary password to marcus.hall@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: WMS Mobile, Microsoft Teams
 

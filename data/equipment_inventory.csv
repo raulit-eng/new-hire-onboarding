@@ -1,0 +1,21 @@
+AssetTag,Type,Model,PurchaseDate,Status,AssignedTo,Site,Notes
+AT-002101,Laptop,Dell Latitude 5450,2025-03-14,Returned,E10090,Los Angeles HQ,Returned 2026-10-09 in good condition
+AT-002102,iPhone,iPhone 15,2024-08-02,Returned,E10090,Los Angeles HQ,Returned 2026-10-09
+AT-001877,Laptop,Lenovo ThinkPad T14,2021-06-21,Returned,E10095,Long Beach,Returned 2026-10-02; battery worn
+AT-002233,Desktop,Dell OptiPlex 7020,2024-02-12,Assigned,E10102,Torrance,In use until last day 2026-10-30
+AT-002234,Headset,Jabra Evolve2 50,2024-02-12,Assigned,E10102,Torrance,In use until last day 2026-10-30
+AT-002210,Laptop,Dell Latitude 5450,2025-01-08,Assigned,E10110,Los Angeles HQ,Not returned after last day 2026-09-25
+AT-002211,iPhone,iPhone 15,2024-11-20,Returned,E10110,Los Angeles HQ,Returned 2026-09-25
+AT-002050,Laptop,MacBook Pro 14,2024-04-03,Returned,E10012,Los Angeles HQ,Returned 2026-10-16
+AT-001720,iPhone,iPhone 13,2022-09-30,Returned,E10012,Los Angeles HQ,Returned 2026-10-16
+AT-002051,iPad,iPad Air,2024-04-03,Returned,E10012,Los Angeles HQ,Returned 2026-10-16
+AT-002301,Laptop,Dell Latitude 5450,2026-08-15,In Stock,,Los Angeles HQ,Spare
+AT-002302,Laptop,Dell Latitude 5450,2026-08-15,In Stock,,Los Angeles HQ,Spare
+AT-002305,iPhone,iPhone 16,2026-08-15,In Stock,,Los Angeles HQ,Spare
+AT-002310,Laptop,Lenovo ThinkPad T14,2026-07-22,In Stock,,Pasadena,Spare
+AT-002320,Desktop,Dell OptiPlex 7020,2026-06-30,In Stock,,Torrance,Spare
+AT-002321,Headset,Jabra Evolve2 50,2026-06-30,In Stock,,Torrance,Spare
+AT-002330,Desktop,HP EliteDesk 800,2026-06-30,In Stock,,Irvine,Spare
+AT-002331,Headset,Jabra Evolve2 50,2026-06-30,In Stock,,Irvine,Spare
+AT-002340,iPad,iPad 10th Gen,2026-05-18,In Stock,,Ontario,Spare
+AT-002350,Laptop,Dell Latitude 5450,2026-09-02,In Stock,,Santa Clarita,Spare

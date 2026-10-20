@@ -10,16 +10,16 @@
 | Sign-in | kevin.tran@summitlogistics.example |
 | Windows logon | kevin.tran |
 | Account expires | 2027-01-26 (contractor) |
+| Position | New position |
 
 ## Done by the script
 - [x] Account created with a temporary password (must change at first sign-in)
 - [x] Added to groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS, Contractors
 - [x] License assigned: LIC-M365-F3
-- [x] Device requests opened: REQ-261020-012
+- [x] IT tickets opened: IT-4115 (order new device, Laptop)
 
 ## Before day one (IT)
-- [ ] Laptop prepared and labeled (request REQ-261020-012)
-- [ ] Laptop enrolled in Intune, BitLocker encryption confirmed
+- [ ] New Laptop ordered, received and set up (arrange a loaner if it will be late) - IT-4115, due 2026-10-26
 - [ ] Give the temporary password to chloe.young@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: Adobe Creative Cloud, HubSpot, Microsoft 365
 

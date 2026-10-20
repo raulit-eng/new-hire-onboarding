@@ -4,15 +4,14 @@
   "mode": "Simulated",
   "what_if": false,
   "as_of": "2026-10-20",
-  "started": "2026-10-20T16:02:36.0616135-07:00",
-  "finished": "2026-10-20T16:02:36.6954140-07:00",
+  "started": "2026-10-20T16:35:18.9250529-07:00",
+  "finished": "2026-10-20T16:35:19.8823253-07:00",
   "counts": {
     "onboarded": 11,
     "needs_hr": 5,
     "skipped": 1,
     "error": 0
   },
-  "device_requests": 18,
   "hires": [
     {
       "employee_id": "E10421",
@@ -43,12 +42,143 @@
         "Laptop",
         "iPhone"
       ],
-      "requests": [
-        "REQ-261020-001",
-        "REQ-261020-002"
+      "requests": [],
+      "tickets": [
+        "IT-4101",
+        "IT-4102"
       ],
       "checklist": "checklists/maria.gonzalez.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Maria Gonzalez",
+        "details": {
+          "Employee ID": "E10421",
+          "Title": "Account Executive, Sales",
+          "Site": "Los Angeles HQ",
+          "Manager": "omar.ali@summitlogistics.example",
+          "Start date": "2026-10-26",
+          "Sign-in": "maria.gonzalez@summitlogistics.example",
+          "Windows logon": "maria.gonzalez",
+          "Position": "Replacing Carlos Mendoza (Account Executive)"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, Sales-Team, CRM-Users, VPN-Users, Site-LAX",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-E3",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4101 (re-image and re-issue, Laptop); IT-4102 (re-image and re-issue, iPhone)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "Laptop AT-002101 re-imaged and ready (previously Carlos Mendoza's) - IT-4101, due 2026-10-22",
+                "done": false
+              },
+              {
+                "text": "iPhone AT-002102 re-imaged and ready (previously Carlos Mendoza's) - IT-4102, due 2026-10-22",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to omar.ali@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: Salesforce, Microsoft 365, Zoom",
+                "done": false
+              },
+              {
+                "text": "Ask omar.ali@summitlogistics.example whether Maria Gonzalez also needs access Carlos Mendoza had: Sales-Forecast-RW",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": {
+        "employee_id": "E10090",
+        "name": "Carlos Mendoza",
+        "title": "Account Executive",
+        "site": "Los Angeles HQ",
+        "end_date": "2026-10-09",
+        "still_working": false,
+        "access_gap": [
+          "Sales-Forecast-RW"
+        ],
+        "equipment": [
+          {
+            "asset_tag": "AT-002101",
+            "type": "Laptop",
+            "model": "Dell Latitude 5450",
+            "purchased": "2025-03-14",
+            "status": "Returned",
+            "outcome": "Re-image and re-issue",
+            "ticket": "IT-4101"
+          },
+          {
+            "asset_tag": "AT-002102",
+            "type": "iPhone",
+            "model": "iPhone 15",
+            "purchased": "2024-08-02",
+            "status": "Returned",
+            "outcome": "Re-image and re-issue",
+            "ticket": "IT-4102"
+          }
+        ]
+      }
     },
     {
       "employee_id": "E10422",
@@ -78,11 +208,131 @@
       "devices": [
         "Laptop"
       ],
-      "requests": [
-        "REQ-261020-003"
+      "requests": [],
+      "tickets": [
+        "IT-4103",
+        "IT-4104"
       ],
       "checklist": "checklists/james.okafor.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Jim Okafor",
+        "details": {
+          "Employee ID": "E10422",
+          "Title": "Staff Accountant, Finance",
+          "Site": "Long Beach",
+          "Manager": "linh.tran@summitlogistics.example",
+          "Start date": "2026-10-26",
+          "Sign-in": "james.okafor@summitlogistics.example",
+          "Windows logon": "james.okafor",
+          "Position": "Replacing Dana Brooks (Staff Accountant)"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, Finance-Team, Finance-Share-RW, VPN-Users, Site-LGB",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-E3",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4103 (retire device, Laptop); IT-4104 (image from stock, Laptop)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "Laptop AT-002301 imaged from stock and ready - IT-4104, due 2026-10-22",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to linh.tran@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: NetSuite, Microsoft 365, Expensify",
+                "done": false
+              },
+              {
+                "text": "Ask linh.tran@summitlogistics.example whether Jim Okafor also needs access Dana Brooks had: AP-Approvers, NetSuite-Admins",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": {
+        "employee_id": "E10095",
+        "name": "Dana Brooks",
+        "title": "Staff Accountant",
+        "site": "Long Beach",
+        "end_date": "2026-10-02",
+        "still_working": false,
+        "access_gap": [
+          "AP-Approvers",
+          "NetSuite-Admins"
+        ],
+        "equipment": [
+          {
+            "asset_tag": "AT-001877",
+            "type": "Laptop",
+            "model": "Lenovo ThinkPad T14",
+            "purchased": "2021-06-21",
+            "status": "Returned",
+            "outcome": "Retire device",
+            "ticket": "IT-4103"
+          }
+        ]
+      }
     },
     {
       "employee_id": "E10423",
@@ -112,12 +362,153 @@
         "Desktop",
         "Headset"
       ],
-      "requests": [
-        "REQ-261020-004",
-        "REQ-261020-005"
+      "requests": [],
+      "tickets": [
+        "IT-4105",
+        "IT-4106",
+        "IT-4107"
       ],
       "checklist": "checklists/ana.smith2.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Ana Smith",
+        "details": {
+          "Employee ID": "E10423",
+          "Title": "Customer Service Representative, Customer Service",
+          "Site": "Torrance",
+          "Manager": "grace.walker@summitlogistics.example",
+          "Start date": "2026-10-26",
+          "Sign-in": "ana.smith2@summitlogistics.example",
+          "Windows logon": "ana.smith2",
+          "Position": "Replacing Nina Petrov (Customer Service Representative)"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, CS-Team, Ticketing-Agents, Site-TOR",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-E3",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4105 (recover equipment, Desktop); IT-4106 (image from stock, Desktop); IT-4107 (issue from stock, Headset)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "Desktop AT-002320 imaged from stock and ready - IT-4106, due 2026-10-22",
+                "done": false
+              },
+              {
+                "text": "New Headset AT-002321 ready - IT-4107, due 2026-10-22",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to grace.walker@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: Zendesk, Microsoft 365",
+                "done": false
+              },
+              {
+                "text": "Ask grace.walker@summitlogistics.example whether Ana Smith also needs access Nina Petrov had: CS-Escalations",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Equipment to recover from Nina Petrov",
+            "items": [
+              {
+                "text": "Recover Nina Petrov's Desktop AT-002233 by 2026-11-02 and return it to stock - IT-4105",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": {
+        "employee_id": "E10102",
+        "name": "Nina Petrov",
+        "title": "Customer Service Representative",
+        "site": "Torrance",
+        "end_date": "2026-10-30",
+        "still_working": true,
+        "access_gap": [
+          "CS-Escalations"
+        ],
+        "equipment": [
+          {
+            "asset_tag": "AT-002233",
+            "type": "Desktop",
+            "model": "Dell OptiPlex 7020",
+            "purchased": "2024-02-12",
+            "status": "Assigned",
+            "outcome": "Recover equipment",
+            "ticket": "IT-4105"
+          },
+          {
+            "asset_tag": "AT-002234",
+            "type": "Headset",
+            "model": "Jabra Evolve2 50",
+            "purchased": "2024-02-12",
+            "status": "Assigned",
+            "outcome": "Not re-issued (personal item)",
+            "ticket": null
+          }
+        ]
+      }
     },
     {
       "employee_id": "E10424",
@@ -146,11 +537,104 @@
       "devices": [
         "iPad"
       ],
-      "requests": [
-        "REQ-261020-006"
+      "requests": [],
+      "tickets": [
+        "IT-4108"
       ],
       "checklist": "checklists/daniel.nguyen.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Daniel Nguyen",
+        "details": {
+          "Employee ID": "E10424",
+          "Title": "Warehouse Associate, Warehouse",
+          "Site": "Ontario",
+          "Manager": "marcus.hall@summitlogistics.example",
+          "Start date": "2026-10-26",
+          "Sign-in": "daniel.nguyen@summitlogistics.example",
+          "Windows logon": "daniel.nguyen",
+          "Position": "New position"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, Warehouse-Team, Scanner-Users, Site-ONT",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-F3",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4108 (image from stock, iPad)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "iPad AT-002340 imaged from stock and ready - IT-4108, due 2026-10-22",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to marcus.hall@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: WMS Mobile, Microsoft Teams",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10425",
@@ -181,12 +665,147 @@
         "Laptop",
         "iPhone"
       ],
-      "requests": [
-        "REQ-261020-007",
-        "REQ-261020-008"
+      "requests": [],
+      "tickets": [
+        "IT-4109",
+        "IT-4110",
+        "IT-4111"
       ],
       "checklist": "checklists/priya.patel.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Priya Patel",
+        "details": {
+          "Employee ID": "E10425",
+          "Title": "Help Desk Technician, IT",
+          "Site": "Los Angeles HQ",
+          "Manager": "andre.wilson@summitlogistics.example",
+          "Start date": "2026-10-27",
+          "Sign-in": "priya.patel@summitlogistics.example",
+          "Windows logon": "priya.patel",
+          "Position": "Replacing Sam Rivera (Help Desk Technician)"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, IT-Team, IT-Helpdesk-Tier1, VPN-Users, Site-LAX",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-E5",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4109 (recover equipment, Laptop); IT-4110 (image from stock, Laptop); IT-4111 (re-image and re-issue, iPhone)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "Laptop AT-002302 imaged from stock and ready - IT-4110, due 2026-10-23",
+                "done": false
+              },
+              {
+                "text": "iPhone AT-002211 re-imaged and ready (previously Sam Rivera's) - IT-4111, due 2026-10-23",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to andre.wilson@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: Intune, Jamf, Zendesk, Microsoft 365",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Equipment to recover from Sam Rivera",
+            "items": [
+              {
+                "text": "Recover Sam Rivera's Laptop AT-002210 by 2026-10-20 and return it to stock - IT-4109",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": {
+        "employee_id": "E10110",
+        "name": "Sam Rivera",
+        "title": "Help Desk Technician",
+        "site": "Los Angeles HQ",
+        "end_date": "2026-09-25",
+        "still_working": false,
+        "access_gap": [],
+        "equipment": [
+          {
+            "asset_tag": "AT-002210",
+            "type": "Laptop",
+            "model": "Dell Latitude 5450",
+            "purchased": "2025-01-08",
+            "status": "Assigned",
+            "outcome": "Recover equipment",
+            "ticket": "IT-4109"
+          },
+          {
+            "asset_tag": "AT-002211",
+            "type": "iPhone",
+            "model": "iPhone 15",
+            "purchased": "2024-11-20",
+            "status": "Returned",
+            "outcome": "Re-image and re-issue",
+            "ticket": "IT-4111"
+          }
+        ]
+      }
     },
     {
       "employee_id": "E10426",
@@ -216,12 +835,109 @@
         "Laptop",
         "iPhone"
       ],
-      "requests": [
-        "REQ-261020-009",
-        "REQ-261020-010"
+      "requests": [],
+      "tickets": [
+        "IT-4112",
+        "IT-4113"
       ],
       "checklist": "checklists/luis.hernandez.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Luis Hernández",
+        "details": {
+          "Employee ID": "E10426",
+          "Title": "Operations Coordinator, Operations",
+          "Site": "Santa Clarita",
+          "Manager": "elena.reyes@summitlogistics.example",
+          "Start date": "2026-10-27",
+          "Sign-in": "luis.hernandez@summitlogistics.example",
+          "Windows logon": "luis.hernandez",
+          "Position": "New position"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, Ops-Team, VPN-Users, Site-SCV",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-E3",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4112 (image from stock, Laptop); IT-4113 (image from stock, iPhone)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "Laptop AT-002350 imaged from stock and ready - IT-4112, due 2026-10-23",
+                "done": false
+              },
+              {
+                "text": "iPhone AT-002305 imaged from stock and ready - IT-4113, due 2026-10-23",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to elena.reyes@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: WMS, Microsoft 365",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10427",
@@ -250,11 +966,104 @@
       "devices": [
         "Laptop"
       ],
-      "requests": [
-        "REQ-261020-011"
+      "requests": [],
+      "tickets": [
+        "IT-4114"
       ],
       "checklist": "checklists/sofia.obrien.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Sofia O'Brien",
+        "details": {
+          "Employee ID": "E10427",
+          "Title": "Marketing Specialist, Marketing",
+          "Site": "Pasadena",
+          "Manager": "chloe.young@summitlogistics.example",
+          "Start date": "2026-10-27",
+          "Sign-in": "sofia.obrien@summitlogistics.example",
+          "Windows logon": "sofia.obrien",
+          "Position": "New position"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-E3",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4114 (image from stock, Laptop)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "Laptop AT-002310 imaged from stock and ready - IT-4114, due 2026-10-23",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to chloe.young@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: Adobe Creative Cloud, HubSpot, Microsoft 365",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10428",
@@ -284,11 +1093,105 @@
       "devices": [
         "Laptop"
       ],
-      "requests": [
-        "REQ-261020-012"
+      "requests": [],
+      "tickets": [
+        "IT-4115"
       ],
       "checklist": "checklists/kevin.tran.md",
-      "account_expires": "2027-01-26"
+      "checklist_data": {
+        "title": "IT onboarding checklist: Kevin Tran",
+        "details": {
+          "Employee ID": "E10428",
+          "Title": "Content Designer, Marketing",
+          "Site": "Pasadena",
+          "Manager": "chloe.young@summitlogistics.example",
+          "Start date": "2026-10-28",
+          "Sign-in": "kevin.tran@summitlogistics.example",
+          "Windows logon": "kevin.tran",
+          "Account expires": "2027-01-26 (contractor)",
+          "Position": "New position"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS, Contractors",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-F3",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4115 (order new device, Laptop)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "New Laptop ordered, received and set up (arrange a loaner if it will be late) - IT-4115, due 2026-10-26",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to chloe.young@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: Adobe Creative Cloud, HubSpot, Microsoft 365",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": "2027-01-26",
+      "replacing": null
     },
     {
       "employee_id": "E10429",
@@ -318,12 +1221,109 @@
         "Desktop",
         "Headset"
       ],
-      "requests": [
-        "REQ-261020-013",
-        "REQ-261020-014"
+      "requests": [],
+      "tickets": [
+        "IT-4116",
+        "IT-4117"
       ],
       "checklist": "checklists/grace.kim.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Grace Kim",
+        "details": {
+          "Employee ID": "E10429",
+          "Title": "Customer Service Representative, Customer Service",
+          "Site": "Irvine",
+          "Manager": "grace.walker@summitlogistics.example",
+          "Start date": "2026-10-28",
+          "Sign-in": "grace.kim@summitlogistics.example",
+          "Windows logon": "grace.kim",
+          "Position": "New position"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, CS-Team, Ticketing-Agents, Site-IRV",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-E3",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4116 (image from stock, Desktop); IT-4117 (issue from stock, Headset)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "Desktop AT-002330 imaged from stock and ready - IT-4116, due 2026-10-26",
+                "done": false
+              },
+              {
+                "text": "New Headset AT-002331 ready - IT-4117, due 2026-10-26",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to grace.walker@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: Zendesk, Microsoft 365",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10430",
@@ -355,13 +1355,159 @@
         "iPhone",
         "iPad"
       ],
-      "requests": [
-        "REQ-261020-015",
-        "REQ-261020-016",
-        "REQ-261020-017"
+      "requests": [],
+      "tickets": [
+        "IT-4118",
+        "IT-4119",
+        "IT-4120",
+        "IT-4121"
       ],
       "checklist": "checklists/omari.bennett.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Omari Bennett",
+        "details": {
+          "Employee ID": "E10430",
+          "Title": "VP of Finance, Executive",
+          "Site": "Los Angeles HQ",
+          "Manager": "omar.ali@summitlogistics.example",
+          "Start date": "2026-11-02",
+          "Sign-in": "omari.bennett@summitlogistics.example",
+          "Windows logon": "omari.bennett",
+          "Position": "Replacing Victor Hale (VP of Finance)"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, Exec-Team, VPN-Users, Board-Docs-R, Site-LAX",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-E5",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4118 (re-image and re-issue, Laptop); IT-4119 (retire device, iPhone); IT-4120 (order new device, iPhone); IT-4121 (re-image and re-issue, iPad)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "Laptop AT-002050 re-imaged and ready (previously Victor Hale's) - IT-4118, due 2026-10-29",
+                "done": false
+              },
+              {
+                "text": "New iPhone ordered, received and set up (arrange a loaner if it will be late) - IT-4120, due 2026-10-29",
+                "done": false
+              },
+              {
+                "text": "iPad AT-002051 re-imaged and ready (previously Victor Hale's) - IT-4121, due 2026-10-29",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to omar.ali@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: Microsoft 365, Zoom, DocuSign",
+                "done": false
+              },
+              {
+                "text": "Ask omar.ali@summitlogistics.example whether Omari Bennett also needs access Victor Hale had: Finance-Share-RW, Bank-Portal-Approvers",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": {
+        "employee_id": "E10012",
+        "name": "Victor Hale",
+        "title": "VP of Finance",
+        "site": "Los Angeles HQ",
+        "end_date": "2026-10-16",
+        "still_working": false,
+        "access_gap": [
+          "Finance-Share-RW",
+          "Bank-Portal-Approvers"
+        ],
+        "equipment": [
+          {
+            "asset_tag": "AT-002050",
+            "type": "Laptop",
+            "model": "MacBook Pro 14",
+            "purchased": "2024-04-03",
+            "status": "Returned",
+            "outcome": "Re-image and re-issue",
+            "ticket": "IT-4118"
+          },
+          {
+            "asset_tag": "AT-001720",
+            "type": "iPhone",
+            "model": "iPhone 13",
+            "purchased": "2022-09-30",
+            "status": "Returned",
+            "outcome": "Retire device",
+            "ticket": "IT-4119"
+          },
+          {
+            "asset_tag": "AT-002051",
+            "type": "iPad",
+            "model": "iPad Air",
+            "purchased": "2024-04-03",
+            "status": "Returned",
+            "outcome": "Re-image and re-issue",
+            "ticket": "IT-4121"
+          }
+        ]
+      }
     },
     {
       "employee_id": "E10431",
@@ -391,11 +1537,104 @@
       "devices": [
         "Laptop"
       ],
-      "requests": [
-        "REQ-261020-018"
+      "requests": [],
+      "tickets": [
+        "IT-4122"
       ],
       "checklist": "checklists/rosa.delgado-villanueva.md",
-      "account_expires": null
+      "checklist_data": {
+        "title": "IT onboarding checklist: Rosa Delgado-Villanueva",
+        "details": {
+          "Employee ID": "E10431",
+          "Title": "HR Generalist, HR",
+          "Site": "Burbank",
+          "Manager": "nora.flores@summitlogistics.example",
+          "Start date": "2026-11-02",
+          "Sign-in": "rosa.delgado-villanueva@summitlogistics.example",
+          "Windows logon": "rosa.delgado-villanu",
+          "Position": "New position"
+        },
+        "sections": [
+          {
+            "title": "Done by the script",
+            "items": [
+              {
+                "text": "Account created with a temporary password (must change at first sign-in)",
+                "done": true
+              },
+              {
+                "text": "Added to groups: All-Staff, MFA-Required, HR-Team, HR-Confidential-RW, VPN-Users, Site-BUR",
+                "done": true
+              },
+              {
+                "text": "License assigned: LIC-M365-E3",
+                "done": true
+              },
+              {
+                "text": "IT tickets opened: IT-4122 (order new device, Laptop)",
+                "done": true
+              }
+            ]
+          },
+          {
+            "title": "Before day one (IT)",
+            "items": [
+              {
+                "text": "New Laptop ordered, received and set up (arrange a loaner if it will be late) - IT-4122, due 2026-10-29",
+                "done": false
+              },
+              {
+                "text": "Give the temporary password to nora.flores@summitlogistics.example through the approved password-delivery process",
+                "done": false
+              },
+              {
+                "text": "Confirm app access: Workday, Microsoft 365",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "Day one (with the new hire)",
+            "items": [
+              {
+                "text": "Hand off devices and have the new hire sign the equipment form",
+                "done": false
+              },
+              {
+                "text": "Sign in and change the temporary password",
+                "done": false
+              },
+              {
+                "text": "Enroll in multi-factor authentication (Duo)",
+                "done": false
+              },
+              {
+                "text": "Check Outlook, Teams and the nearest printer",
+                "done": false
+              },
+              {
+                "text": "Walk through how to open an IT ticket",
+                "done": false
+              }
+            ]
+          },
+          {
+            "title": "First week",
+            "items": [
+              {
+                "text": "Security awareness training assigned and completed",
+                "done": false
+              },
+              {
+                "text": "Manager confirms all access is correct",
+                "done": false
+              }
+            ]
+          }
+        ]
+      },
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10421",
@@ -419,8 +1658,11 @@
       "license": null,
       "devices": [],
       "requests": [],
+      "tickets": [],
       "checklist": null,
-      "account_expires": null
+      "checklist_data": null,
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10432",
@@ -444,8 +1686,11 @@
       "license": null,
       "devices": [],
       "requests": [],
+      "tickets": [],
       "checklist": null,
-      "account_expires": null
+      "checklist_data": null,
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10433",
@@ -469,8 +1714,11 @@
       "license": null,
       "devices": [],
       "requests": [],
+      "tickets": [],
       "checklist": null,
-      "account_expires": null
+      "checklist_data": null,
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10434",
@@ -494,8 +1742,11 @@
       "license": null,
       "devices": [],
       "requests": [],
+      "tickets": [],
       "checklist": null,
-      "account_expires": null
+      "checklist_data": null,
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10435",
@@ -519,8 +1770,11 @@
       "license": null,
       "devices": [],
       "requests": [],
+      "tickets": [],
       "checklist": null,
-      "account_expires": null
+      "checklist_data": null,
+      "account_expires": null,
+      "replacing": null
     },
     {
       "employee_id": "E10436",
@@ -534,7 +1788,8 @@
       "row": 18,
       "status": "needs_hr",
       "issues": [
-        "Manager 'd.miller@summitlogistics.example' was not found in the directory"
+        "Manager 'd.miller@summitlogistics.example' was not found in the directory",
+        "Replacing employee 'E10125' was not found in the directory"
       ],
       "display_name": null,
       "sam": null,
@@ -544,14 +1799,534 @@
       "license": null,
       "devices": [],
       "requests": [],
+      "tickets": [],
       "checklist": null,
-      "account_expires": null
+      "checklist_data": null,
+      "account_expires": null,
+      "replacing": null
+    }
+  ],
+  "tickets": [
+    {
+      "id": "IT-4101",
+      "type": "Re-image and re-issue",
+      "employee_id": "E10421",
+      "for": "Maria Gonzalez",
+      "device": "Laptop",
+      "asset_tag": "AT-002101",
+      "model": "Dell Latitude 5450",
+      "source": "Carlos Mendoza",
+      "site": "Los Angeles HQ",
+      "team": "Desktop Support - LAX",
+      "due": "2026-10-22",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Re-issue Carlos Mendoza's Laptop (AT-002101, Dell Latitude 5450, 1.6 years old) to Maria Gonzalez.",
+      "steps": [
+        "Pull AT-002101 from the returned-equipment shelf at Los Angeles HQ",
+        "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
+        "Install role apps: Salesforce, Microsoft 365, Zoom",
+        "Update the asset record: assigned to Maria Gonzalez (E10421)",
+        "Deliver to Los Angeles HQ by Oct 22"
+      ],
+      "replacing": "Carlos Mendoza"
+    },
+    {
+      "id": "IT-4102",
+      "type": "Re-image and re-issue",
+      "employee_id": "E10421",
+      "for": "Maria Gonzalez",
+      "device": "iPhone",
+      "asset_tag": "AT-002102",
+      "model": "iPhone 15",
+      "source": "Carlos Mendoza",
+      "site": "Los Angeles HQ",
+      "team": "Desktop Support - LAX",
+      "due": "2026-10-22",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Re-issue Carlos Mendoza's iPhone (AT-002102, iPhone 15, 2.2 years old) to Maria Gonzalez.",
+      "steps": [
+        "Pull AT-002102 from the returned-equipment shelf at Los Angeles HQ",
+        "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
+        "Install role apps: Salesforce, Microsoft 365, Zoom",
+        "Update the asset record: assigned to Maria Gonzalez (E10421)",
+        "Deliver to Los Angeles HQ by Oct 22"
+      ],
+      "replacing": "Carlos Mendoza"
+    },
+    {
+      "id": "IT-4103",
+      "type": "Retire device",
+      "employee_id": "E10422",
+      "for": "Jim Okafor",
+      "device": "Laptop",
+      "asset_tag": "AT-001877",
+      "model": "Lenovo ThinkPad T14",
+      "source": "Dana Brooks",
+      "site": "Long Beach",
+      "team": "Desktop Support - LGB",
+      "due": "2026-11-19",
+      "priority": "Low",
+      "status": "Open",
+      "summary": "AT-001877 (Lenovo ThinkPad T14, 5.3 years old) is past its 4-year lifecycle. Retire it instead of re-issuing.",
+      "steps": [
+        "Wipe AT-001877 and remove it from Intune/Jamf and Apple Business Manager",
+        "Mark retired in the asset inventory",
+        "Send to e-waste recycling and keep the certificate of destruction"
+      ],
+      "replacing": "Dana Brooks"
+    },
+    {
+      "id": "IT-4104",
+      "type": "Image from stock",
+      "employee_id": "E10422",
+      "for": "Jim Okafor",
+      "device": "Laptop",
+      "asset_tag": "AT-002301",
+      "model": "Dell Latitude 5450",
+      "source": "Stock",
+      "site": "Long Beach",
+      "team": "Desktop Support - LGB",
+      "due": "2026-10-22",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Set up spare Laptop AT-002301 (transfer from Los Angeles HQ) for Jim Okafor.",
+      "steps": [
+        "Pull spare AT-002301 (Dell Latitude 5450) at Los Angeles HQ",
+        "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
+        "Install role apps: NetSuite, Microsoft 365, Expensify",
+        "Update the asset record: assigned to Jim Okafor (E10422)",
+        "Ship from Los Angeles HQ to Long Beach",
+        "Deliver to Long Beach by Oct 22"
+      ],
+      "replacing": "Dana Brooks"
+    },
+    {
+      "id": "IT-4105",
+      "type": "Recover equipment",
+      "employee_id": "E10423",
+      "for": "Ana Smith",
+      "device": "Desktop",
+      "asset_tag": "AT-002233",
+      "model": "Dell OptiPlex 7020",
+      "source": "Nina Petrov",
+      "site": "Torrance",
+      "team": "Desktop Support - TOR",
+      "due": "2026-11-02",
+      "priority": "Normal",
+      "status": "Open",
+      "summary": "Collect Nina Petrov's Desktop (AT-002233) after their last day, 2026-10-30.",
+      "steps": [
+        "Contact Nina Petrov's manager to arrange the return",
+        "If it is not returned within 5 business days, lock and wipe it remotely through Intune/Jamf",
+        "Check it in, wipe it, and mark it In Stock for the next hire"
+      ],
+      "replacing": "Nina Petrov"
+    },
+    {
+      "id": "IT-4106",
+      "type": "Image from stock",
+      "employee_id": "E10423",
+      "for": "Ana Smith",
+      "device": "Desktop",
+      "asset_tag": "AT-002320",
+      "model": "Dell OptiPlex 7020",
+      "source": "Stock",
+      "site": "Torrance",
+      "team": "Desktop Support - TOR",
+      "due": "2026-10-22",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Set up spare Desktop AT-002320 for Ana Smith.",
+      "steps": [
+        "Pull spare AT-002320 (Dell OptiPlex 7020) at Torrance",
+        "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
+        "Install role apps: Zendesk, Microsoft 365",
+        "Update the asset record: assigned to Ana Smith (E10423)",
+        "Deliver to Torrance by Oct 22"
+      ],
+      "replacing": "Nina Petrov"
+    },
+    {
+      "id": "IT-4107",
+      "type": "Issue from stock",
+      "employee_id": "E10423",
+      "for": "Ana Smith",
+      "device": "Headset",
+      "asset_tag": "AT-002321",
+      "model": "Jabra Evolve2 50",
+      "source": "Stock",
+      "site": "Torrance",
+      "team": "Desktop Support - TOR",
+      "due": "2026-10-22",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Issue new Headset AT-002321 to Ana Smith.",
+      "steps": [
+        "Pull new Headset AT-002321 (Jabra Evolve2 50) at Torrance",
+        "Update the asset record: assigned to Ana Smith (E10423)",
+        "Deliver to Torrance by Oct 22"
+      ],
+      "replacing": "Nina Petrov"
+    },
+    {
+      "id": "IT-4108",
+      "type": "Image from stock",
+      "employee_id": "E10424",
+      "for": "Daniel Nguyen",
+      "device": "iPad",
+      "asset_tag": "AT-002340",
+      "model": "iPad 10th Gen",
+      "source": "Stock",
+      "site": "Ontario",
+      "team": "Desktop Support - ONT",
+      "due": "2026-10-22",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Set up spare iPad AT-002340 for Daniel Nguyen.",
+      "steps": [
+        "Pull spare AT-002340 (iPad 10th Gen) at Ontario",
+        "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
+        "Install role apps: WMS Mobile, Microsoft Teams",
+        "Update the asset record: assigned to Daniel Nguyen (E10424)",
+        "Deliver to Ontario by Oct 22"
+      ],
+      "replacing": null
+    },
+    {
+      "id": "IT-4109",
+      "type": "Recover equipment",
+      "employee_id": "E10425",
+      "for": "Priya Patel",
+      "device": "Laptop",
+      "asset_tag": "AT-002210",
+      "model": "Dell Latitude 5450",
+      "source": "Sam Rivera",
+      "site": "Los Angeles HQ",
+      "team": "Desktop Support - LAX",
+      "due": "2026-10-20",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Collect Sam Rivera's Laptop (AT-002210) now; it was due back 2026-09-25.",
+      "steps": [
+        "Contact Sam Rivera's manager to arrange the return",
+        "If it is not returned within 5 business days, lock and wipe it remotely through Intune/Jamf",
+        "Check it in, wipe it, and mark it In Stock for the next hire"
+      ],
+      "replacing": "Sam Rivera"
+    },
+    {
+      "id": "IT-4110",
+      "type": "Image from stock",
+      "employee_id": "E10425",
+      "for": "Priya Patel",
+      "device": "Laptop",
+      "asset_tag": "AT-002302",
+      "model": "Dell Latitude 5450",
+      "source": "Stock",
+      "site": "Los Angeles HQ",
+      "team": "Desktop Support - LAX",
+      "due": "2026-10-23",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Set up spare Laptop AT-002302 for Priya Patel.",
+      "steps": [
+        "Pull spare AT-002302 (Dell Latitude 5450) at Los Angeles HQ",
+        "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
+        "Install role apps: Intune, Jamf, Zendesk, Microsoft 365",
+        "Update the asset record: assigned to Priya Patel (E10425)",
+        "Deliver to Los Angeles HQ by Oct 23"
+      ],
+      "replacing": "Sam Rivera"
+    },
+    {
+      "id": "IT-4111",
+      "type": "Re-image and re-issue",
+      "employee_id": "E10425",
+      "for": "Priya Patel",
+      "device": "iPhone",
+      "asset_tag": "AT-002211",
+      "model": "iPhone 15",
+      "source": "Sam Rivera",
+      "site": "Los Angeles HQ",
+      "team": "Desktop Support - LAX",
+      "due": "2026-10-23",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Re-issue Sam Rivera's iPhone (AT-002211, iPhone 15, 1.9 years old) to Priya Patel.",
+      "steps": [
+        "Pull AT-002211 from the returned-equipment shelf at Los Angeles HQ",
+        "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
+        "Install role apps: Intune, Jamf, Zendesk, Microsoft 365",
+        "Update the asset record: assigned to Priya Patel (E10425)",
+        "Deliver to Los Angeles HQ by Oct 23"
+      ],
+      "replacing": "Sam Rivera"
+    },
+    {
+      "id": "IT-4112",
+      "type": "Image from stock",
+      "employee_id": "E10426",
+      "for": "Luis Hernández",
+      "device": "Laptop",
+      "asset_tag": "AT-002350",
+      "model": "Dell Latitude 5450",
+      "source": "Stock",
+      "site": "Santa Clarita",
+      "team": "Desktop Support - SCV",
+      "due": "2026-10-23",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Set up spare Laptop AT-002350 for Luis Hernández.",
+      "steps": [
+        "Pull spare AT-002350 (Dell Latitude 5450) at Santa Clarita",
+        "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
+        "Install role apps: WMS, Microsoft 365",
+        "Update the asset record: assigned to Luis Hernández (E10426)",
+        "Deliver to Santa Clarita by Oct 23"
+      ],
+      "replacing": null
+    },
+    {
+      "id": "IT-4113",
+      "type": "Image from stock",
+      "employee_id": "E10426",
+      "for": "Luis Hernández",
+      "device": "iPhone",
+      "asset_tag": "AT-002305",
+      "model": "iPhone 16",
+      "source": "Stock",
+      "site": "Santa Clarita",
+      "team": "Desktop Support - SCV",
+      "due": "2026-10-23",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Set up spare iPhone AT-002305 (transfer from Los Angeles HQ) for Luis Hernández.",
+      "steps": [
+        "Pull spare AT-002305 (iPhone 16) at Los Angeles HQ",
+        "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
+        "Install role apps: WMS, Microsoft 365",
+        "Update the asset record: assigned to Luis Hernández (E10426)",
+        "Ship from Los Angeles HQ to Santa Clarita",
+        "Deliver to Santa Clarita by Oct 23"
+      ],
+      "replacing": null
+    },
+    {
+      "id": "IT-4114",
+      "type": "Image from stock",
+      "employee_id": "E10427",
+      "for": "Sofia O'Brien",
+      "device": "Laptop",
+      "asset_tag": "AT-002310",
+      "model": "Lenovo ThinkPad T14",
+      "source": "Stock",
+      "site": "Pasadena",
+      "team": "Desktop Support - PAS",
+      "due": "2026-10-23",
+      "priority": "High",
+      "status": "Open",
+      "summary": "Set up spare Laptop AT-002310 for Sofia O'Brien.",
+      "steps": [
+        "Pull spare AT-002310 (Lenovo ThinkPad T14) at Pasadena",
+        "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
+        "Install role apps: Adobe Creative Cloud, HubSpot, Microsoft 365",
+        "Update the asset record: assigned to Sofia O'Brien (E10427)",
+        "Deliver to Pasadena by Oct 23"
+      ],
+      "replacing": null
+    },
+    {
+      "id": "IT-4115",
+      "type": "Order new device",
+      "employee_id": "E10428",
+      "for": "Kevin Tran",
+      "device": "Laptop",
+      "asset_tag": null,
+      "model": null,
+      "source": "Purchase",
+      "site": "Pasadena",
+      "team": "Desktop Support - PAS",
+      "due": "2026-10-26",
+      "priority": "High",
+      "status": "Open",
+      "summary": "No Laptop available for Kevin Tran. Order one now; it's needed by Oct 28.",
+      "steps": [
+        "Request a quote for a standard Laptop and get manager approval",
+        "Place the order with expedited shipping",
+        "On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf",
+        "Deliver to Pasadena; if it will be late, arrange a loaner for day one"
+      ],
+      "replacing": null
+    },
+    {
+      "id": "IT-4116",
+      "type": "Image from stock",
+      "employee_id": "E10429",
+      "for": "Grace Kim",
+      "device": "Desktop",
+      "asset_tag": "AT-002330",
+      "model": "HP EliteDesk 800",
+      "source": "Stock",
+      "site": "Irvine",
+      "team": "Desktop Support - IRV",
+      "due": "2026-10-26",
+      "priority": "Normal",
+      "status": "Open",
+      "summary": "Set up spare Desktop AT-002330 for Grace Kim.",
+      "steps": [
+        "Pull spare AT-002330 (HP EliteDesk 800) at Irvine",
+        "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
+        "Install role apps: Zendesk, Microsoft 365",
+        "Update the asset record: assigned to Grace Kim (E10429)",
+        "Deliver to Irvine by Oct 26"
+      ],
+      "replacing": null
+    },
+    {
+      "id": "IT-4117",
+      "type": "Issue from stock",
+      "employee_id": "E10429",
+      "for": "Grace Kim",
+      "device": "Headset",
+      "asset_tag": "AT-002331",
+      "model": "Jabra Evolve2 50",
+      "source": "Stock",
+      "site": "Irvine",
+      "team": "Desktop Support - IRV",
+      "due": "2026-10-26",
+      "priority": "Normal",
+      "status": "Open",
+      "summary": "Issue new Headset AT-002331 to Grace Kim.",
+      "steps": [
+        "Pull new Headset AT-002331 (Jabra Evolve2 50) at Irvine",
+        "Update the asset record: assigned to Grace Kim (E10429)",
+        "Deliver to Irvine by Oct 26"
+      ],
+      "replacing": null
+    },
+    {
+      "id": "IT-4118",
+      "type": "Re-image and re-issue",
+      "employee_id": "E10430",
+      "for": "Omari Bennett",
+      "device": "Laptop",
+      "asset_tag": "AT-002050",
+      "model": "MacBook Pro 14",
+      "source": "Victor Hale",
+      "site": "Los Angeles HQ",
+      "team": "Desktop Support - LAX",
+      "due": "2026-10-29",
+      "priority": "Normal",
+      "status": "Open",
+      "summary": "Re-issue Victor Hale's Laptop (AT-002050, MacBook Pro 14, 2.5 years old) to Omari Bennett.",
+      "steps": [
+        "Pull AT-002050 from the returned-equipment shelf at Los Angeles HQ",
+        "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
+        "Install role apps: Microsoft 365, Zoom, DocuSign",
+        "Update the asset record: assigned to Omari Bennett (E10430)",
+        "Deliver to Los Angeles HQ by Oct 29"
+      ],
+      "replacing": "Victor Hale"
+    },
+    {
+      "id": "IT-4119",
+      "type": "Retire device",
+      "employee_id": "E10430",
+      "for": "Omari Bennett",
+      "device": "iPhone",
+      "asset_tag": "AT-001720",
+      "model": "iPhone 13",
+      "source": "Victor Hale",
+      "site": "Los Angeles HQ",
+      "team": "Desktop Support - LAX",
+      "due": "2026-11-19",
+      "priority": "Low",
+      "status": "Open",
+      "summary": "AT-001720 (iPhone 13, 4.1 years old) is past its 3-year lifecycle. Retire it instead of re-issuing.",
+      "steps": [
+        "Wipe AT-001720 and remove it from Intune/Jamf and Apple Business Manager",
+        "Mark retired in the asset inventory",
+        "Send to e-waste recycling and keep the certificate of destruction"
+      ],
+      "replacing": "Victor Hale"
+    },
+    {
+      "id": "IT-4120",
+      "type": "Order new device",
+      "employee_id": "E10430",
+      "for": "Omari Bennett",
+      "device": "iPhone",
+      "asset_tag": null,
+      "model": null,
+      "source": "Purchase",
+      "site": "Los Angeles HQ",
+      "team": "Desktop Support - LAX",
+      "due": "2026-10-29",
+      "priority": "High",
+      "status": "Open",
+      "summary": "No iPhone available for Omari Bennett. Order one now; it's needed by Nov 2.",
+      "steps": [
+        "Request a quote for a standard iPhone and get manager approval",
+        "Place the order with expedited shipping",
+        "On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf",
+        "Deliver to Los Angeles HQ; if it will be late, arrange a loaner for day one"
+      ],
+      "replacing": "Victor Hale"
+    },
+    {
+      "id": "IT-4121",
+      "type": "Re-image and re-issue",
+      "employee_id": "E10430",
+      "for": "Omari Bennett",
+      "device": "iPad",
+      "asset_tag": "AT-002051",
+      "model": "iPad Air",
+      "source": "Victor Hale",
+      "site": "Los Angeles HQ",
+      "team": "Desktop Support - LAX",
+      "due": "2026-10-29",
+      "priority": "Normal",
+      "status": "Open",
+      "summary": "Re-issue Victor Hale's iPad (AT-002051, iPad Air, 2.5 years old) to Omari Bennett.",
+      "steps": [
+        "Pull AT-002051 from the returned-equipment shelf at Los Angeles HQ",
+        "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
+        "Install role apps: Microsoft 365, Zoom, DocuSign",
+        "Update the asset record: assigned to Omari Bennett (E10430)",
+        "Deliver to Los Angeles HQ by Oct 29"
+      ],
+      "replacing": "Victor Hale"
+    },
+    {
+      "id": "IT-4122",
+      "type": "Order new device",
+      "employee_id": "E10431",
+      "for": "Rosa Delgado-Villanueva",
+      "device": "Laptop",
+      "asset_tag": null,
+      "model": null,
+      "source": "Purchase",
+      "site": "Burbank",
+      "team": "Desktop Support - BUR",
+      "due": "2026-10-29",
+      "priority": "High",
+      "status": "Open",
+      "summary": "No Laptop available for Rosa Delgado-Villanueva. Order one now; it's needed by Nov 2.",
+      "steps": [
+        "Request a quote for a standard Laptop and get manager approval",
+        "Place the order with expedited shipping",
+        "On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf",
+        "Deliver to Burbank; if it will be late, arrange a loaner for day one"
+      ],
+      "replacing": null
     }
   ],
   "events": [
     {
       "seq": 1,
-      "time": "2026-10-20T16:02:36.0735882-07:00",
+      "time": "2026-10-20T16:35:18.9395381-07:00",
       "stage": "Read HR file",
       "status": "info",
       "employee_id": "",
@@ -560,7 +2335,7 @@
     },
     {
       "seq": 2,
-      "time": "2026-10-20T16:02:36.1672363-07:00",
+      "time": "2026-10-20T16:35:19.0329109-07:00",
       "stage": "Read HR file",
       "status": "ok",
       "employee_id": "",
@@ -569,7 +2344,7 @@
     },
     {
       "seq": 3,
-      "time": "2026-10-20T16:02:36.1976163-07:00",
+      "time": "2026-10-20T16:35:19.0461685-07:00",
       "stage": "Read HR file",
       "status": "info",
       "employee_id": "",
@@ -578,16 +2353,25 @@
     },
     {
       "seq": 4,
-      "time": "2026-10-20T16:02:36.2406070-07:00",
+      "time": "2026-10-20T16:35:19.0778827-07:00",
       "stage": "Read HR file",
       "status": "info",
       "employee_id": "",
       "name": "",
-      "message": "Opened practice directory: 10 existing accounts"
+      "message": "Opened practice directory: 15 existing accounts"
     },
     {
       "seq": 5,
-      "time": "2026-10-20T16:02:36.2538057-07:00",
+      "time": "2026-10-20T16:35:19.0978985-07:00",
+      "stage": "Read HR file",
+      "status": "info",
+      "employee_id": "",
+      "name": "",
+      "message": "Loaded equipment list: 20 devices, 10 spares in stock"
+    },
+    {
+      "seq": 6,
+      "time": "2026-10-20T16:35:19.1129834-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10421",
@@ -595,8 +2379,8 @@
       "message": "Checking row 2: Account Executive, Sales"
     },
     {
-      "seq": 6,
-      "time": "2026-10-20T16:02:36.3144790-07:00",
+      "seq": 7,
+      "time": "2026-10-20T16:35:19.1965704-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10421",
@@ -604,8 +2388,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 7,
-      "time": "2026-10-20T16:02:36.4251837-07:00",
+      "seq": 8,
+      "time": "2026-10-20T16:35:19.2201748-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Replacing Carlos Mendoza, Account Executive (left 2026-10-09); 2 device(s) on record"
+    },
+    {
+      "seq": 9,
+      "time": "2026-10-20T16:35:19.3104251-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10421",
@@ -613,8 +2406,8 @@
       "message": "Created maria.gonzalez@summitlogistics.example for Maria Gonzalez; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 8,
-      "time": "2026-10-20T16:02:36.4304980-07:00",
+      "seq": 10,
+      "time": "2026-10-20T16:35:19.3157593-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10421",
@@ -622,8 +2415,17 @@
       "message": "Added to 6 groups: All-Staff, MFA-Required, Sales-Team, CRM-Users, VPN-Users, Site-LAX"
     },
     {
-      "seq": 9,
-      "time": "2026-10-20T16:02:36.4341789-07:00",
+      "seq": 11,
+      "time": "2026-10-20T16:35:19.3173088-07:00",
+      "stage": "Add to groups",
+      "status": "warn",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Not added automatically: Sales-Forecast-RW (Carlos Mendoza had it). Added to the checklist for the manager to approve"
+    },
+    {
+      "seq": 12,
+      "time": "2026-10-20T16:35:19.3205257-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10421",
@@ -631,26 +2433,35 @@
       "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
     },
     {
-      "seq": 10,
-      "time": "2026-10-20T16:02:36.4396686-07:00",
-      "stage": "Request device",
+      "seq": 13,
+      "time": "2026-10-20T16:35:19.3979121-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10421",
       "name": "Maria Gonzalez",
-      "message": "Opened 2 device requests: Laptop (REQ-261020-001), iPhone (REQ-261020-002), needed by 2026-10-26"
+      "message": "IT-4101 Re-image and re-issue: Laptop AT-002101, due Oct 22, High priority"
     },
     {
-      "seq": 11,
-      "time": "2026-10-20T16:02:36.4573743-07:00",
+      "seq": 14,
+      "time": "2026-10-20T16:35:19.3995664-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "IT-4102 Re-image and re-issue: iPhone AT-002102, due Oct 22, High priority"
+    },
+    {
+      "seq": 15,
+      "time": "2026-10-20T16:35:19.4424275-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10421",
       "name": "Maria Gonzalez",
-      "message": "Wrote IT checklist: checklists/maria.gonzalez.md"
+      "message": "Wrote IT checklist: checklists/maria.gonzalez.md (12 items to do)"
     },
     {
-      "seq": 12,
-      "time": "2026-10-20T16:02:36.4669182-07:00",
+      "seq": 16,
+      "time": "2026-10-20T16:35:19.4557770-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10422",
@@ -658,8 +2469,8 @@
       "message": "Checking row 3: Staff Accountant, Finance"
     },
     {
-      "seq": 13,
-      "time": "2026-10-20T16:02:36.4690194-07:00",
+      "seq": 17,
+      "time": "2026-10-20T16:35:19.4580363-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10422",
@@ -667,8 +2478,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 14,
-      "time": "2026-10-20T16:02:36.4791125-07:00",
+      "seq": 18,
+      "time": "2026-10-20T16:35:19.4604666-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "Replacing Dana Brooks, Staff Accountant (left 2026-10-02); 1 device(s) on record"
+    },
+    {
+      "seq": 19,
+      "time": "2026-10-20T16:35:19.4680973-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10422",
@@ -676,8 +2496,8 @@
       "message": "Created james.okafor@summitlogistics.example for Jim Okafor; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 15,
-      "time": "2026-10-20T16:02:36.4797025-07:00",
+      "seq": 20,
+      "time": "2026-10-20T16:35:19.4684651-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10422",
@@ -685,8 +2505,17 @@
       "message": "Added to 6 groups: All-Staff, MFA-Required, Finance-Team, Finance-Share-RW, VPN-Users, Site-LGB"
     },
     {
-      "seq": 16,
-      "time": "2026-10-20T16:02:36.4802379-07:00",
+      "seq": 21,
+      "time": "2026-10-20T16:35:19.4687675-07:00",
+      "stage": "Add to groups",
+      "status": "warn",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "Not added automatically: AP-Approvers, NetSuite-Admins (Dana Brooks had it). Added to the checklist for the manager to approve"
+    },
+    {
+      "seq": 22,
+      "time": "2026-10-20T16:35:19.4690868-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10422",
@@ -694,26 +2523,35 @@
       "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
     },
     {
-      "seq": 17,
-      "time": "2026-10-20T16:02:36.4807757-07:00",
-      "stage": "Request device",
+      "seq": 23,
+      "time": "2026-10-20T16:35:19.4812578-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10422",
       "name": "James Okafor",
-      "message": "Opened 1 device request: Laptop (REQ-261020-003), needed by 2026-10-26"
+      "message": "IT-4103 Retire device: Laptop AT-001877, due Nov 19, Low priority"
     },
     {
-      "seq": 18,
-      "time": "2026-10-20T16:02:36.4846087-07:00",
+      "seq": 24,
+      "time": "2026-10-20T16:35:19.4818178-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "IT-4104 Image from stock: Laptop AT-002301, due Oct 22, High priority"
+    },
+    {
+      "seq": 25,
+      "time": "2026-10-20T16:35:19.4885936-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10422",
       "name": "James Okafor",
-      "message": "Wrote IT checklist: checklists/james.okafor.md"
+      "message": "Wrote IT checklist: checklists/james.okafor.md (11 items to do)"
     },
     {
-      "seq": 19,
-      "time": "2026-10-20T16:02:36.4881361-07:00",
+      "seq": 26,
+      "time": "2026-10-20T16:35:19.4904040-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10423",
@@ -721,8 +2559,8 @@
       "message": "Checking row 4: Customer Service Representative, Customer Service"
     },
     {
-      "seq": 20,
-      "time": "2026-10-20T16:02:36.4894969-07:00",
+      "seq": 27,
+      "time": "2026-10-20T16:35:19.4927946-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10423",
@@ -730,8 +2568,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 21,
-      "time": "2026-10-20T16:02:36.4916840-07:00",
+      "seq": 28,
+      "time": "2026-10-20T16:35:19.4953485-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "Replacing Nina Petrov, Customer Service Representative (still working until 2026-10-30); 2 device(s) on record"
+    },
+    {
+      "seq": 29,
+      "time": "2026-10-20T16:35:19.4983392-07:00",
       "stage": "Create account",
       "status": "info",
       "employee_id": "E10423",
@@ -739,8 +2586,8 @@
       "message": "Username ana.smith is already taken; using ana.smith2"
     },
     {
-      "seq": 22,
-      "time": "2026-10-20T16:02:36.4978763-07:00",
+      "seq": 30,
+      "time": "2026-10-20T16:35:19.5044672-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10423",
@@ -748,8 +2595,8 @@
       "message": "Created ana.smith2@summitlogistics.example for Ana Smith; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 23,
-      "time": "2026-10-20T16:02:36.4983345-07:00",
+      "seq": 31,
+      "time": "2026-10-20T16:35:19.5048236-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10423",
@@ -757,8 +2604,17 @@
       "message": "Added to 5 groups: All-Staff, MFA-Required, CS-Team, Ticketing-Agents, Site-TOR"
     },
     {
-      "seq": 24,
-      "time": "2026-10-20T16:02:36.4987406-07:00",
+      "seq": 32,
+      "time": "2026-10-20T16:35:19.5051043-07:00",
+      "stage": "Add to groups",
+      "status": "warn",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "Not added automatically: CS-Escalations (Nina Petrov had it). Added to the checklist for the manager to approve"
+    },
+    {
+      "seq": 33,
+      "time": "2026-10-20T16:35:19.5053632-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10423",
@@ -766,26 +2622,44 @@
       "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
     },
     {
-      "seq": 25,
-      "time": "2026-10-20T16:02:36.4993819-07:00",
-      "stage": "Request device",
+      "seq": 34,
+      "time": "2026-10-20T16:35:19.5345459-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10423",
       "name": "Ana Smith",
-      "message": "Opened 2 device requests: Desktop (REQ-261020-004), Headset (REQ-261020-005), needed by 2026-10-26"
+      "message": "IT-4105 Recover equipment: Desktop AT-002233, due Nov 2, Normal priority"
     },
     {
-      "seq": 26,
-      "time": "2026-10-20T16:02:36.5026128-07:00",
+      "seq": 35,
+      "time": "2026-10-20T16:35:19.5350513-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "IT-4106 Image from stock: Desktop AT-002320, due Oct 22, High priority"
+    },
+    {
+      "seq": 36,
+      "time": "2026-10-20T16:35:19.5352964-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "IT-4107 Issue from stock: Headset AT-002321, due Oct 22, High priority"
+    },
+    {
+      "seq": 37,
+      "time": "2026-10-20T16:35:19.5421520-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10423",
       "name": "Ana Smith",
-      "message": "Wrote IT checklist: checklists/ana.smith2.md"
+      "message": "Wrote IT checklist: checklists/ana.smith2.md (13 items to do)"
     },
     {
-      "seq": 27,
-      "time": "2026-10-20T16:02:36.5034982-07:00",
+      "seq": 38,
+      "time": "2026-10-20T16:35:19.5439363-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10424",
@@ -793,8 +2667,8 @@
       "message": "Checking row 5: Warehouse Associate, Warehouse"
     },
     {
-      "seq": 28,
-      "time": "2026-10-20T16:02:36.5046842-07:00",
+      "seq": 39,
+      "time": "2026-10-20T16:35:19.5454767-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10424",
@@ -802,8 +2676,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 29,
-      "time": "2026-10-20T16:02:36.5119897-07:00",
+      "seq": 40,
+      "time": "2026-10-20T16:35:19.5468971-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10424",
+      "name": "Daniel Nguyen",
+      "message": "New position (not replacing anyone)"
+    },
+    {
+      "seq": 41,
+      "time": "2026-10-20T16:35:19.5541876-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10424",
@@ -811,8 +2694,8 @@
       "message": "Created daniel.nguyen@summitlogistics.example for Daniel Nguyen; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 30,
-      "time": "2026-10-20T16:02:36.5123296-07:00",
+      "seq": 42,
+      "time": "2026-10-20T16:35:19.5544518-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10424",
@@ -820,8 +2703,8 @@
       "message": "Added to 5 groups: All-Staff, MFA-Required, Warehouse-Team, Scanner-Users, Site-ONT"
     },
     {
-      "seq": 31,
-      "time": "2026-10-20T16:02:36.5125679-07:00",
+      "seq": 43,
+      "time": "2026-10-20T16:35:19.5547871-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10424",
@@ -829,26 +2712,26 @@
       "message": "Assigned M365 F3 license (via LIC-M365-F3 group)"
     },
     {
-      "seq": 32,
-      "time": "2026-10-20T16:02:36.5129030-07:00",
-      "stage": "Request device",
+      "seq": 44,
+      "time": "2026-10-20T16:35:19.5585600-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10424",
       "name": "Daniel Nguyen",
-      "message": "Opened 1 device request: iPad (REQ-261020-006), needed by 2026-10-26"
+      "message": "IT-4108 Image from stock: iPad AT-002340, due Oct 22, High priority"
     },
     {
-      "seq": 33,
-      "time": "2026-10-20T16:02:36.5161738-07:00",
+      "seq": 45,
+      "time": "2026-10-20T16:35:19.5636337-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10424",
       "name": "Daniel Nguyen",
-      "message": "Wrote IT checklist: checklists/daniel.nguyen.md"
+      "message": "Wrote IT checklist: checklists/daniel.nguyen.md (10 items to do)"
     },
     {
-      "seq": 34,
-      "time": "2026-10-20T16:02:36.5168575-07:00",
+      "seq": 46,
+      "time": "2026-10-20T16:35:19.5644861-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10425",
@@ -856,8 +2739,8 @@
       "message": "Checking row 6: Help Desk Technician, IT"
     },
     {
-      "seq": 35,
-      "time": "2026-10-20T16:02:36.5181660-07:00",
+      "seq": 47,
+      "time": "2026-10-20T16:35:19.5665537-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10425",
@@ -865,8 +2748,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 36,
-      "time": "2026-10-20T16:02:36.5233241-07:00",
+      "seq": 48,
+      "time": "2026-10-20T16:35:19.5686051-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "Replacing Sam Rivera, Help Desk Technician (left 2026-09-25); 2 device(s) on record"
+    },
+    {
+      "seq": 49,
+      "time": "2026-10-20T16:35:19.5744480-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10425",
@@ -874,8 +2766,8 @@
       "message": "Created priya.patel@summitlogistics.example for Priya Patel; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 37,
-      "time": "2026-10-20T16:02:36.5235989-07:00",
+      "seq": 50,
+      "time": "2026-10-20T16:35:19.5747955-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10425",
@@ -883,8 +2775,8 @@
       "message": "Added to 6 groups: All-Staff, MFA-Required, IT-Team, IT-Helpdesk-Tier1, VPN-Users, Site-LAX"
     },
     {
-      "seq": 38,
-      "time": "2026-10-20T16:02:36.5238790-07:00",
+      "seq": 51,
+      "time": "2026-10-20T16:35:19.5750723-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10425",
@@ -892,26 +2784,44 @@
       "message": "Assigned M365 E5 license (via LIC-M365-E5 group)"
     },
     {
-      "seq": 39,
-      "time": "2026-10-20T16:02:36.5243007-07:00",
-      "stage": "Request device",
+      "seq": 52,
+      "time": "2026-10-20T16:35:19.5785752-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10425",
       "name": "Priya Patel",
-      "message": "Opened 2 device requests: Laptop (REQ-261020-007), iPhone (REQ-261020-008), needed by 2026-10-27"
+      "message": "IT-4109 Recover equipment: Laptop AT-002210, due Oct 20, High priority"
     },
     {
-      "seq": 40,
-      "time": "2026-10-20T16:02:36.5277418-07:00",
+      "seq": 53,
+      "time": "2026-10-20T16:35:19.5789736-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "IT-4110 Image from stock: Laptop AT-002302, due Oct 23, High priority"
+    },
+    {
+      "seq": 54,
+      "time": "2026-10-20T16:35:19.5791844-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "IT-4111 Re-image and re-issue: iPhone AT-002211, due Oct 23, High priority"
+    },
+    {
+      "seq": 55,
+      "time": "2026-10-20T16:35:19.5842016-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10425",
       "name": "Priya Patel",
-      "message": "Wrote IT checklist: checklists/priya.patel.md"
+      "message": "Wrote IT checklist: checklists/priya.patel.md (12 items to do)"
     },
     {
-      "seq": 41,
-      "time": "2026-10-20T16:02:36.5283871-07:00",
+      "seq": 56,
+      "time": "2026-10-20T16:35:19.5857896-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10426",
@@ -919,8 +2829,8 @@
       "message": "Checking row 7: Operations Coordinator, Operations"
     },
     {
-      "seq": 42,
-      "time": "2026-10-20T16:02:36.5295841-07:00",
+      "seq": 57,
+      "time": "2026-10-20T16:35:19.5872932-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10426",
@@ -928,8 +2838,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 43,
-      "time": "2026-10-20T16:02:36.5368275-07:00",
+      "seq": 58,
+      "time": "2026-10-20T16:35:19.5876210-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "message": "New position (not replacing anyone)"
+    },
+    {
+      "seq": 59,
+      "time": "2026-10-20T16:35:19.5945382-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10426",
@@ -937,8 +2856,8 @@
       "message": "Created luis.hernandez@summitlogistics.example for Luis Hernández; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 44,
-      "time": "2026-10-20T16:02:36.5371154-07:00",
+      "seq": 60,
+      "time": "2026-10-20T16:35:19.5950591-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10426",
@@ -946,8 +2865,8 @@
       "message": "Added to 5 groups: All-Staff, MFA-Required, Ops-Team, VPN-Users, Site-SCV"
     },
     {
-      "seq": 45,
-      "time": "2026-10-20T16:02:36.5373616-07:00",
+      "seq": 61,
+      "time": "2026-10-20T16:35:19.5953214-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10426",
@@ -955,26 +2874,35 @@
       "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
     },
     {
-      "seq": 46,
-      "time": "2026-10-20T16:02:36.5376603-07:00",
-      "stage": "Request device",
+      "seq": 62,
+      "time": "2026-10-20T16:35:19.5987301-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10426",
       "name": "Luis Hernández",
-      "message": "Opened 2 device requests: Laptop (REQ-261020-009), iPhone (REQ-261020-010), needed by 2026-10-27"
+      "message": "IT-4112 Image from stock: Laptop AT-002350, due Oct 23, High priority"
     },
     {
-      "seq": 47,
-      "time": "2026-10-20T16:02:36.5406011-07:00",
+      "seq": 63,
+      "time": "2026-10-20T16:35:19.5991348-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "message": "IT-4113 Image from stock: iPhone AT-002305, due Oct 23, High priority"
+    },
+    {
+      "seq": 64,
+      "time": "2026-10-20T16:35:19.6041962-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10426",
       "name": "Luis Hernández",
-      "message": "Wrote IT checklist: checklists/luis.hernandez.md"
+      "message": "Wrote IT checklist: checklists/luis.hernandez.md (11 items to do)"
     },
     {
-      "seq": 48,
-      "time": "2026-10-20T16:02:36.5411781-07:00",
+      "seq": 65,
+      "time": "2026-10-20T16:35:19.6050630-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10427",
@@ -982,8 +2910,8 @@
       "message": "Checking row 8: Marketing Specialist, Marketing"
     },
     {
-      "seq": 49,
-      "time": "2026-10-20T16:02:36.5424121-07:00",
+      "seq": 66,
+      "time": "2026-10-20T16:35:19.6067445-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10427",
@@ -991,8 +2919,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 50,
-      "time": "2026-10-20T16:02:36.5490120-07:00",
+      "seq": 67,
+      "time": "2026-10-20T16:35:19.6071709-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10427",
+      "name": "Sofia O'Brien",
+      "message": "New position (not replacing anyone)"
+    },
+    {
+      "seq": 68,
+      "time": "2026-10-20T16:35:19.6141293-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10427",
@@ -1000,8 +2937,8 @@
       "message": "Created sofia.obrien@summitlogistics.example for Sofia O'Brien; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 51,
-      "time": "2026-10-20T16:02:36.5493150-07:00",
+      "seq": 69,
+      "time": "2026-10-20T16:35:19.6143785-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10427",
@@ -1009,8 +2946,8 @@
       "message": "Added to 5 groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS"
     },
     {
-      "seq": 52,
-      "time": "2026-10-20T16:02:36.5495093-07:00",
+      "seq": 70,
+      "time": "2026-10-20T16:35:19.6145914-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10427",
@@ -1018,26 +2955,26 @@
       "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
     },
     {
-      "seq": 53,
-      "time": "2026-10-20T16:02:36.5498965-07:00",
-      "stage": "Request device",
+      "seq": 71,
+      "time": "2026-10-20T16:35:19.6166556-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10427",
       "name": "Sofia O'Brien",
-      "message": "Opened 1 device request: Laptop (REQ-261020-011), needed by 2026-10-27"
+      "message": "IT-4114 Image from stock: Laptop AT-002310, due Oct 23, High priority"
     },
     {
-      "seq": 54,
-      "time": "2026-10-20T16:02:36.5531472-07:00",
+      "seq": 72,
+      "time": "2026-10-20T16:35:19.6221185-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10427",
       "name": "Sofia O'Brien",
-      "message": "Wrote IT checklist: checklists/sofia.obrien.md"
+      "message": "Wrote IT checklist: checklists/sofia.obrien.md (10 items to do)"
     },
     {
-      "seq": 55,
-      "time": "2026-10-20T16:02:36.5536334-07:00",
+      "seq": 73,
+      "time": "2026-10-20T16:35:19.6230698-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10428",
@@ -1045,8 +2982,8 @@
       "message": "Checking row 9: Content Designer, Marketing"
     },
     {
-      "seq": 56,
-      "time": "2026-10-20T16:02:36.5550364-07:00",
+      "seq": 74,
+      "time": "2026-10-20T16:35:19.6250909-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10428",
@@ -1054,8 +2991,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 57,
-      "time": "2026-10-20T16:02:36.5697252-07:00",
+      "seq": 75,
+      "time": "2026-10-20T16:35:19.6254268-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "message": "New position (not replacing anyone)"
+    },
+    {
+      "seq": 76,
+      "time": "2026-10-20T16:35:19.6403656-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10428",
@@ -1063,8 +3009,8 @@
       "message": "Created kevin.tran@summitlogistics.example for Kevin Tran; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 58,
-      "time": "2026-10-20T16:02:36.5700198-07:00",
+      "seq": 77,
+      "time": "2026-10-20T16:35:19.6406046-07:00",
       "stage": "Create account",
       "status": "info",
       "employee_id": "E10428",
@@ -1072,8 +3018,8 @@
       "message": "Contractor account set to expire 2027-01-26"
     },
     {
-      "seq": 59,
-      "time": "2026-10-20T16:02:36.5703684-07:00",
+      "seq": 78,
+      "time": "2026-10-20T16:35:19.6410354-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10428",
@@ -1081,8 +3027,8 @@
       "message": "Added to 6 groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS, Contractors"
     },
     {
-      "seq": 60,
-      "time": "2026-10-20T16:02:36.5706675-07:00",
+      "seq": 79,
+      "time": "2026-10-20T16:35:19.6412701-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10428",
@@ -1090,26 +3036,26 @@
       "message": "Assigned M365 F3 license (via LIC-M365-F3 group)"
     },
     {
-      "seq": 61,
-      "time": "2026-10-20T16:02:36.5711622-07:00",
-      "stage": "Request device",
+      "seq": 80,
+      "time": "2026-10-20T16:35:19.6458081-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10428",
       "name": "Kevin Tran",
-      "message": "Opened 1 device request: Laptop (REQ-261020-012), needed by 2026-10-28"
+      "message": "IT-4115 Order new device: Laptop, due Oct 26, High priority"
     },
     {
-      "seq": 62,
-      "time": "2026-10-20T16:02:36.5740967-07:00",
+      "seq": 81,
+      "time": "2026-10-20T16:35:19.6521830-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10428",
       "name": "Kevin Tran",
-      "message": "Wrote IT checklist: checklists/kevin.tran.md"
+      "message": "Wrote IT checklist: checklists/kevin.tran.md (10 items to do)"
     },
     {
-      "seq": 63,
-      "time": "2026-10-20T16:02:36.5753915-07:00",
+      "seq": 82,
+      "time": "2026-10-20T16:35:19.6536483-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10429",
@@ -1117,8 +3063,8 @@
       "message": "Checking row 10: Customer Service Representative, Customer Service"
     },
     {
-      "seq": 64,
-      "time": "2026-10-20T16:02:36.5771981-07:00",
+      "seq": 83,
+      "time": "2026-10-20T16:35:19.6554359-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10429",
@@ -1126,8 +3072,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 65,
-      "time": "2026-10-20T16:02:36.5830060-07:00",
+      "seq": 84,
+      "time": "2026-10-20T16:35:19.6559508-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "message": "New position (not replacing anyone)"
+    },
+    {
+      "seq": 85,
+      "time": "2026-10-20T16:35:19.6613276-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10429",
@@ -1135,8 +3090,8 @@
       "message": "Created grace.kim@summitlogistics.example for Grace Kim; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 66,
-      "time": "2026-10-20T16:02:36.5833420-07:00",
+      "seq": 86,
+      "time": "2026-10-20T16:35:19.6615560-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10429",
@@ -1144,8 +3099,8 @@
       "message": "Added to 5 groups: All-Staff, MFA-Required, CS-Team, Ticketing-Agents, Site-IRV"
     },
     {
-      "seq": 67,
-      "time": "2026-10-20T16:02:36.5835437-07:00",
+      "seq": 87,
+      "time": "2026-10-20T16:35:19.6618447-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10429",
@@ -1153,26 +3108,35 @@
       "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
     },
     {
-      "seq": 68,
-      "time": "2026-10-20T16:02:36.5839101-07:00",
-      "stage": "Request device",
+      "seq": 88,
+      "time": "2026-10-20T16:35:19.6654666-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10429",
       "name": "Grace Kim",
-      "message": "Opened 2 device requests: Desktop (REQ-261020-013), Headset (REQ-261020-014), needed by 2026-10-28"
+      "message": "IT-4116 Image from stock: Desktop AT-002330, due Oct 26, Normal priority"
     },
     {
-      "seq": 69,
-      "time": "2026-10-20T16:02:36.5868131-07:00",
+      "seq": 89,
+      "time": "2026-10-20T16:35:19.6656439-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "message": "IT-4117 Issue from stock: Headset AT-002331, due Oct 26, Normal priority"
+    },
+    {
+      "seq": 90,
+      "time": "2026-10-20T16:35:19.6710881-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10429",
       "name": "Grace Kim",
-      "message": "Wrote IT checklist: checklists/grace.kim.md"
+      "message": "Wrote IT checklist: checklists/grace.kim.md (11 items to do)"
     },
     {
-      "seq": 70,
-      "time": "2026-10-20T16:02:36.5875044-07:00",
+      "seq": 91,
+      "time": "2026-10-20T16:35:19.6719128-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10430",
@@ -1180,8 +3144,8 @@
       "message": "Checking row 11: VP of Finance, Executive"
     },
     {
-      "seq": 71,
-      "time": "2026-10-20T16:02:36.5889374-07:00",
+      "seq": 92,
+      "time": "2026-10-20T16:35:19.6741781-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10430",
@@ -1189,8 +3153,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 72,
-      "time": "2026-10-20T16:02:36.5946837-07:00",
+      "seq": 93,
+      "time": "2026-10-20T16:35:19.6762666-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "Replacing Victor Hale, VP of Finance (left 2026-10-16); 3 device(s) on record"
+    },
+    {
+      "seq": 94,
+      "time": "2026-10-20T16:35:19.6822980-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10430",
@@ -1198,8 +3171,8 @@
       "message": "Created omari.bennett@summitlogistics.example for Omari Bennett; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 73,
-      "time": "2026-10-20T16:02:36.5951512-07:00",
+      "seq": 95,
+      "time": "2026-10-20T16:35:19.6825191-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10430",
@@ -1207,8 +3180,17 @@
       "message": "Added to 6 groups: All-Staff, MFA-Required, Exec-Team, VPN-Users, Board-Docs-R, Site-LAX"
     },
     {
-      "seq": 74,
-      "time": "2026-10-20T16:02:36.5953912-07:00",
+      "seq": 96,
+      "time": "2026-10-20T16:35:19.6828323-07:00",
+      "stage": "Add to groups",
+      "status": "warn",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "Not added automatically: Finance-Share-RW, Bank-Portal-Approvers (Victor Hale had it). Added to the checklist for the manager to approve"
+    },
+    {
+      "seq": 97,
+      "time": "2026-10-20T16:35:19.6830917-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10430",
@@ -1216,26 +3198,53 @@
       "message": "Assigned M365 E5 license (via LIC-M365-E5 group)"
     },
     {
-      "seq": 75,
-      "time": "2026-10-20T16:02:36.5958291-07:00",
-      "stage": "Request device",
+      "seq": 98,
+      "time": "2026-10-20T16:35:19.6867667-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10430",
       "name": "Omari Bennett",
-      "message": "Opened 3 device requests: Laptop (REQ-261020-015), iPhone (REQ-261020-016), iPad (REQ-261020-017), needed by 2026-11-02"
+      "message": "IT-4118 Re-image and re-issue: Laptop AT-002050, due Oct 29, Normal priority"
     },
     {
-      "seq": 76,
-      "time": "2026-10-20T16:02:36.5992927-07:00",
+      "seq": 99,
+      "time": "2026-10-20T16:35:19.6870364-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "IT-4119 Retire device: iPhone AT-001720, due Nov 19, Low priority"
+    },
+    {
+      "seq": 100,
+      "time": "2026-10-20T16:35:19.6872016-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "IT-4120 Order new device: iPhone, due Oct 29, High priority"
+    },
+    {
+      "seq": 101,
+      "time": "2026-10-20T16:35:19.6873570-07:00",
+      "stage": "Create tickets",
+      "status": "ok",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "IT-4121 Re-image and re-issue: iPad AT-002051, due Oct 29, Normal priority"
+    },
+    {
+      "seq": 102,
+      "time": "2026-10-20T16:35:19.6924236-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10430",
       "name": "Omari Bennett",
-      "message": "Wrote IT checklist: checklists/omari.bennett.md"
+      "message": "Wrote IT checklist: checklists/omari.bennett.md (13 items to do)"
     },
     {
-      "seq": 77,
-      "time": "2026-10-20T16:02:36.5997707-07:00",
+      "seq": 103,
+      "time": "2026-10-20T16:35:19.6955244-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10431",
@@ -1243,8 +3252,8 @@
       "message": "Checking row 12: HR Generalist, HR"
     },
     {
-      "seq": 78,
-      "time": "2026-10-20T16:02:36.6011723-07:00",
+      "seq": 104,
+      "time": "2026-10-20T16:35:19.6973629-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10431",
@@ -1252,8 +3261,17 @@
       "message": "All checks passed"
     },
     {
-      "seq": 79,
-      "time": "2026-10-20T16:02:36.6151192-07:00",
+      "seq": 105,
+      "time": "2026-10-20T16:35:19.6979541-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "message": "New position (not replacing anyone)"
+    },
+    {
+      "seq": 106,
+      "time": "2026-10-20T16:35:19.7140392-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10431",
@@ -1261,8 +3279,8 @@
       "message": "Created rosa.delgado-villanueva@summitlogistics.example for Rosa Delgado-Villanueva; temporary password set, must change at first sign-in"
     },
     {
-      "seq": 80,
-      "time": "2026-10-20T16:02:36.6153432-07:00",
+      "seq": 107,
+      "time": "2026-10-20T16:35:19.7142419-07:00",
       "stage": "Create account",
       "status": "info",
       "employee_id": "E10431",
@@ -1270,8 +3288,8 @@
       "message": "Windows logon name shortened to the 20-character limit: rosa.delgado-villanu"
     },
     {
-      "seq": 81,
-      "time": "2026-10-20T16:02:36.6155687-07:00",
+      "seq": 108,
+      "time": "2026-10-20T16:35:19.7144795-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10431",
@@ -1279,8 +3297,8 @@
       "message": "Added to 6 groups: All-Staff, MFA-Required, HR-Team, HR-Confidential-RW, VPN-Users, Site-BUR"
     },
     {
-      "seq": 82,
-      "time": "2026-10-20T16:02:36.6158013-07:00",
+      "seq": 109,
+      "time": "2026-10-20T16:35:19.7148935-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10431",
@@ -1288,26 +3306,26 @@
       "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
     },
     {
-      "seq": 83,
-      "time": "2026-10-20T16:02:36.6161271-07:00",
-      "stage": "Request device",
+      "seq": 110,
+      "time": "2026-10-20T16:35:19.7164470-07:00",
+      "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10431",
       "name": "Rosa Delgado-Villanueva",
-      "message": "Opened 1 device request: Laptop (REQ-261020-018), needed by 2026-11-02"
+      "message": "IT-4122 Order new device: Laptop, due Oct 29, High priority"
     },
     {
-      "seq": 84,
-      "time": "2026-10-20T16:02:36.6191377-07:00",
+      "seq": 111,
+      "time": "2026-10-20T16:35:19.7214601-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10431",
       "name": "Rosa Delgado-Villanueva",
-      "message": "Wrote IT checklist: checklists/rosa.delgado-villanueva.md"
+      "message": "Wrote IT checklist: checklists/rosa.delgado-villanueva.md (10 items to do)"
     },
     {
-      "seq": 85,
-      "time": "2026-10-20T16:02:36.6196143-07:00",
+      "seq": 112,
+      "time": "2026-10-20T16:35:19.7222671-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10421",
@@ -1315,8 +3333,8 @@
       "message": "Checking row 13: Account Executive, Sales"
     },
     {
-      "seq": 86,
-      "time": "2026-10-20T16:02:36.6212937-07:00",
+      "seq": 113,
+      "time": "2026-10-20T16:35:19.7242764-07:00",
       "stage": "Validate",
       "status": "skip",
       "employee_id": "E10421",
@@ -1324,8 +3342,8 @@
       "message": "Skipped: duplicate of row 2"
     },
     {
-      "seq": 87,
-      "time": "2026-10-20T16:02:36.6228467-07:00",
+      "seq": 114,
+      "time": "2026-10-20T16:35:19.7260317-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10432",
@@ -1333,8 +3351,8 @@
       "message": "Checking row 14: Contracts Manager, Legal"
     },
     {
-      "seq": 88,
-      "time": "2026-10-20T16:02:36.6271949-07:00",
+      "seq": 115,
+      "time": "2026-10-20T16:35:19.7301531-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10432",
@@ -1342,8 +3360,8 @@
       "message": "Held for HR: Department 'Legal' has no access profile in config/onboarding.json"
     },
     {
-      "seq": 89,
-      "time": "2026-10-20T16:02:36.6286593-07:00",
+      "seq": 116,
+      "time": "2026-10-20T16:35:19.7319259-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10433",
@@ -1351,8 +3369,8 @@
       "message": "Checking row 15: Sales Development Rep, Sales"
     },
     {
-      "seq": 90,
-      "time": "2026-10-20T16:02:36.6309010-07:00",
+      "seq": 117,
+      "time": "2026-10-20T16:35:19.7343014-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10433",
@@ -1360,8 +3378,8 @@
       "message": "Held for HR: Missing Manager"
     },
     {
-      "seq": 91,
-      "time": "2026-10-20T16:02:36.6313986-07:00",
+      "seq": 118,
+      "time": "2026-10-20T16:35:19.7345972-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10434",
@@ -1369,8 +3387,8 @@
       "message": "Checking row 16: Forklift Operator, Warehouse"
     },
     {
-      "seq": 92,
-      "time": "2026-10-20T16:02:36.6338518-07:00",
+      "seq": 119,
+      "time": "2026-10-20T16:35:19.7418557-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10434",
@@ -1378,8 +3396,8 @@
       "message": "Held for HR: Start date 2026-10-12 has already passed"
     },
     {
-      "seq": 93,
-      "time": "2026-10-20T16:02:36.6342632-07:00",
+      "seq": 120,
+      "time": "2026-10-20T16:35:19.7422206-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10435",
@@ -1387,8 +3405,8 @@
       "message": "Checking row 17: Payroll Specialist, Finance"
     },
     {
-      "seq": 94,
-      "time": "2026-10-20T16:02:36.6373465-07:00",
+      "seq": 121,
+      "time": "2026-10-20T16:35:19.7472059-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10435",
@@ -1396,8 +3414,8 @@
       "message": "Held for HR: matches disabled account jasmine.wright (possible rehire)"
     },
     {
-      "seq": 95,
-      "time": "2026-10-20T16:02:36.6389123-07:00",
+      "seq": 122,
+      "time": "2026-10-20T16:35:19.7490166-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10436",
@@ -1405,8 +3423,8 @@
       "message": "Checking row 18: Account Executive, Sales"
     },
     {
-      "seq": 96,
-      "time": "2026-10-20T16:02:36.6423500-07:00",
+      "seq": 123,
+      "time": "2026-10-20T16:35:19.7628567-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10436",
@@ -1414,8 +3432,17 @@
       "message": "Held for HR: Manager 'd.miller@summitlogistics.example' was not found in the directory"
     },
     {
-      "seq": 97,
-      "time": "2026-10-20T16:02:36.6922880-07:00",
+      "seq": 124,
+      "time": "2026-10-20T16:35:19.7631766-07:00",
+      "stage": "Validate",
+      "status": "warn",
+      "employee_id": "E10436",
+      "name": "Marcus Chen",
+      "message": "Held for HR: Replacing employee 'E10125' was not found in the directory"
+    },
+    {
+      "seq": 125,
+      "time": "2026-10-20T16:35:19.8719138-07:00",
       "stage": "Summary",
       "status": "ok",
       "employee_id": "",
@@ -1423,8 +3450,17 @@
       "message": "Done: 11 onboarded, 5 held for HR, 1 skipped, 0 errors"
     },
     {
-      "seq": 98,
-      "time": "2026-10-20T16:02:36.6925722-07:00",
+      "seq": 126,
+      "time": "2026-10-20T16:35:19.8793065-07:00",
+      "stage": "Summary",
+      "status": "info",
+      "employee_id": "",
+      "name": "",
+      "message": "Opened 22 IT tickets: 8 image from stock, 2 issue from stock, 3 order new device, 5 re-image and re-issue, 2 recover equipment, 2 retire device"
+    },
+    {
+      "seq": 127,
+      "time": "2026-10-20T16:35:19.8795368-07:00",
       "stage": "Summary",
       "status": "warn",
       "employee_id": "",

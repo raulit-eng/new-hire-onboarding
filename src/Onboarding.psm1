@@ -116,7 +116,35 @@ function Test-NewHireRecord {
     if ($Record.EmploymentType -and $Record.EmploymentType -notin 'Full-time', 'Part-time', 'Contractor') {
         $issues.Add("Unknown employment type '$($Record.EmploymentType)'")
     }
+    $replacing = Get-ReplacingID $Record
+    if ($replacing -and -not ($Directory.users | Where-Object { $_.EmployeeID -eq $replacing })) {
+        $issues.Add("Replacing employee '$replacing' was not found in the directory")
+    }
     , $issues.ToArray()
+}
+
+function Get-ReplacingID($Record) {
+    <# The ReplacingEmployeeID column is optional; blank means a new position. #>
+    $p = $Record.PSObject.Properties['ReplacingEmployeeID']
+    if ($p -and $p.Value) { "$($p.Value)".Trim() } else { $null }
+}
+
+function Get-Predecessor {
+    <# The person a new hire is replacing, with their access and the equipment they had. #>
+    param([Parameter(Mandatory)]$Record, [Parameter(Mandatory)]$Directory, $Inventory = @(), [Parameter(Mandatory)][datetime]$AsOf)
+    $id = Get-ReplacingID $Record
+    if (-not $id) { return $null }
+    $u = $Directory.users | Where-Object { $_.EmployeeID -eq $id } | Select-Object -First 1
+    if (-not $u) { return $null }
+    $prop = { param($o, $n) if ($o.PSObject.Properties[$n]) { $o.$n } else { $null } }
+    $end = & $prop $u 'EndDate'
+    [pscustomobject][ordered]@{
+        EmployeeID = $u.EmployeeID; Name = $u.DisplayName; Username = $u.Username; Title = & $prop $u 'JobTitle'
+        Site = & $prop $u 'Site'; EndDate = $end
+        StillWorking = [bool]($end -and [datetime]$end -ge $AsOf.Date)
+        Groups = @(& $prop $u 'Groups' | Where-Object { $_ })
+        Equipment = @($Inventory | Where-Object { $_.AssignedTo -eq $u.EmployeeID })
+    }
 }
 
 # ---------------------------------------------------------------- planning
@@ -209,6 +237,157 @@ function Get-OnboardingPlan {
     }
 }
 
+# ---------------------------------------------------------------- equipment and IT tickets
+function Import-EquipmentInventory {
+    <# Reads the equipment list: returned devices, devices still with someone, and spares in stock. #>
+    param([Parameter(Mandatory)][string]$Path)
+    if (-not (Test-Path $Path)) { return [System.Collections.Generic.List[object]]::new() }
+    [System.Collections.Generic.List[object]]@(Import-Csv $Path -Encoding utf8 | ForEach-Object {
+            $_ | Add-Member -NotePropertyName Reserved -NotePropertyValue $false -PassThru
+        })
+}
+
+function Get-BusinessDaysBefore {
+    <# The date N working days (Mon-Fri) before $Date, but never before $NotBefore. #>
+    param([datetime]$Date, [int]$Days, [datetime]$NotBefore)
+    $d = $Date.Date
+    while ($Days -gt 0) { $d = $d.AddDays(-1); if ($d.DayOfWeek -notin 'Saturday', 'Sunday') { $Days-- } }
+    if ($d -lt $NotBefore.Date) { $NotBefore.Date } else { $d }
+}
+
+function Get-BusinessDaysAfter {
+    <# The date N working days (Mon-Fri) after $Date. #>
+    param([datetime]$Date, [int]$Days)
+    $d = $Date.Date
+    while ($Days -gt 0) { $d = $d.AddDays(1); if ($d.DayOfWeek -notin 'Saturday', 'Sunday') { $Days-- } }
+    $d
+}
+
+function Get-DeviceAge([string]$PurchaseDate, [datetime]$AsOf) {
+    [Math]::Round(($AsOf - [datetime]$PurchaseDate).TotalDays / 365.25, 1)
+}
+
+function New-DeviceTickets {
+    <#
+    .SYNOPSIS
+        Decides how each device the new hire needs will be covered, and returns IT tickets for it.
+
+        For a replacement hire, the previous person's equipment is reused when it has been
+        returned and is still within its lifecycle (re-image and re-issue). Equipment past its
+        lifecycle gets a retire ticket. Equipment that hasn't come back gets a recover ticket.
+        Anything not covered that way comes from a spare in stock (same site first, then
+        another site), or a new device is ordered. Spares are reserved so two hires never
+        get the same one.
+    #>
+    param(
+        [Parameter(Mandatory)]$Plan,
+        $Predecessor,
+        [Parameter(Mandatory)][AllowEmptyCollection()]$Inventory,
+        [Parameter(Mandatory)]$Config,
+        [Parameter(Mandatory)][datetime]$AsOf,
+        [Parameter(Mandatory)][ref]$NextNumber
+    )
+    $eq = $Config.equipment
+    $start = [datetime]::ParseExact($Plan.StartDate, 'yyyy-MM-dd', $null)
+    $due = Get-BusinessDaysBefore -Date $start -Days $eq.readyBusinessDaysBeforeStart -NotBefore $AsOf
+    $daysToStart = ($start - $AsOf.Date).Days
+    $tickets = [System.Collections.Generic.List[object]]::new()
+    $team = "$($eq.supportTeam) - $($Plan.SiteCode)"
+
+    $new = {
+        param($Type, $Device, $Asset, $Model, $Summary, $Steps, $DueDate, $Priority, $From)
+        $id = '{0}{1}' -f $eq.ticketPrefix, $NextNumber.Value
+        $NextNumber.Value++
+        [pscustomobject][ordered]@{
+            id = $id; type = $Type; employee_id = $Plan.EmployeeID; for = $Plan.DisplayName; device = $Device
+            asset_tag = $Asset; model = $Model; source = $From; site = $Plan.Site; team = $team
+            due = $DueDate.ToString('yyyy-MM-dd'); priority = $Priority; status = 'Open'; summary = $Summary; steps = @($Steps)
+            replacing = if ($Predecessor) { $Predecessor.Name } else { $null }
+        }
+    }
+    $priority = if ($daysToStart -le 7) { 'High' } else { 'Normal' }
+    $mdmStep = {
+        param($device, $model)
+        if ($device -in 'iPhone', 'iPad' -or $model -like 'MacBook*') { 'Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps' }
+        else { 'Reset with Windows Autopilot and confirm Intune enrollment and BitLocker' }
+    }
+
+    foreach ($device in $Plan.Devices) {
+        $covered = $false
+        $life = [double]($eq.lifecycleYears.$device ?? 4)
+
+        $personal = $device -in @($eq.personalItems)   # e.g. headsets: always a fresh one, never re-issued
+        # 1. The previous person's equipment of this type
+        $old = if ($Predecessor -and -not $personal) { $Predecessor.Equipment | Where-Object { $_.Type -eq $device -and -not $_.Reserved } | Select-Object -First 1 }
+        if ($old) {
+            $old.Reserved = $true
+            $age = Get-DeviceAge $old.PurchaseDate $AsOf
+            $tooOld = $age -ge $life
+            if ($old.Status -ne 'Returned') {
+                # Still with the previous person (or never returned): get it back first
+                $when = if ($Predecessor.StillWorking) { "after their last day, $($Predecessor.EndDate)" } else { "now; it was due back $($Predecessor.EndDate)" }
+                $recoverDue = if ($Predecessor.StillWorking) { Get-BusinessDaysAfter -Date ([datetime]$Predecessor.EndDate) -Days 1 } else { $AsOf.Date }
+                $recoverPriority = if ($Predecessor.StillWorking) { 'Normal' } else { 'High' }
+                $after = if ($tooOld) { "Retire it once it's back: it is $age years old, past its $life-year lifecycle" } else { 'Check it in, wipe it, and mark it In Stock for the next hire' }
+                $tickets.Add((& $new 'Recover equipment' $device $old.AssetTag $old.Model `
+                            "Collect $($Predecessor.Name)'s $device ($($old.AssetTag)) $when." `
+                            @("Contact $($Predecessor.Name)'s manager to arrange the return", 'If it is not returned within 5 business days, lock and wipe it remotely through Intune/Jamf',
+                        $after) $recoverDue $recoverPriority $Predecessor.Name))
+            } elseif ($tooOld) {
+                $tickets.Add((& $new 'Retire device' $device $old.AssetTag $old.Model `
+                            "$($old.AssetTag) ($($old.Model), $age years old) is past its $life-year lifecycle. Retire it instead of re-issuing." `
+                            @("Wipe $($old.AssetTag) and remove it from Intune/Jamf and Apple Business Manager", 'Mark retired in the asset inventory',
+                        'Send to e-waste recycling and keep the certificate of destruction') $AsOf.Date.AddDays(30) 'Low' $Predecessor.Name))
+            } else {
+                $tickets.Add((& $new 'Re-image and re-issue' $device $old.AssetTag $old.Model `
+                            "Re-issue $($Predecessor.Name)'s $device ($($old.AssetTag), $($old.Model), $age years old) to $($Plan.DisplayName)." `
+                            @("Pull $($old.AssetTag) from the returned-equipment shelf at $($old.Site)", (& $mdmStep $device $old.Model),
+                        "Install role apps: $($Plan.Apps -join ', ')", "Update the asset record: assigned to $($Plan.DisplayName) ($($Plan.EmployeeID))",
+                        "Deliver to $($Plan.Site) by $($due.ToString('MMM d'))") $due $priority $Predecessor.Name))
+                $covered = $true
+            }
+        }
+        if ($covered) { continue }
+
+        # 2. A spare in stock: same site first, then any site
+        $spare = $Inventory | Where-Object { $_.Status -eq 'In Stock' -and $_.Type -eq $device -and -not $_.Reserved } |
+            Sort-Object @{ e = { $_.Site -ne $Plan.Site } }, AssetTag | Select-Object -First 1
+        if ($spare) {
+            $spare.Reserved = $true
+            $ship = if ($spare.Site -ne $Plan.Site) { "Ship from $($spare.Site) to $($Plan.Site)" } else { $null }
+            $steps = @("Pull spare $($spare.AssetTag) ($($spare.Model)) at $($spare.Site)", (& $mdmStep $device $spare.Model),
+                "Install role apps: $($Plan.Apps -join ', ')", "Update the asset record: assigned to $($Plan.DisplayName) ($($Plan.EmployeeID))") + @($ship | Where-Object { $_ }) +
+            @("Deliver to $($Plan.Site) by $($due.ToString('MMM d'))")
+            $where = if ($ship) { " (transfer from $($spare.Site))" } else { '' }
+            if ($personal) {
+                $steps = @("Pull new $device $($spare.AssetTag) ($($spare.Model)) at $($spare.Site)", "Update the asset record: assigned to $($Plan.DisplayName) ($($Plan.EmployeeID))") +
+                @($ship | Where-Object { $_ }) + @("Deliver to $($Plan.Site) by $($due.ToString('MMM d'))")
+                $tickets.Add((& $new 'Issue from stock' $device $spare.AssetTag $spare.Model "Issue new $device $($spare.AssetTag)$where to $($Plan.DisplayName)." $steps $due $priority 'Stock'))
+            } else {
+                $tickets.Add((& $new 'Image from stock' $device $spare.AssetTag $spare.Model "Set up spare $device $($spare.AssetTag)$where for $($Plan.DisplayName)." $steps $due $priority 'Stock'))
+            }
+            continue
+        }
+
+        # 3. Nothing available: order one
+        $orderPriority = if ($daysToStart -le 7) { 'Urgent' } else { 'High' }
+        $tickets.Add((& $new 'Order new device' $device $null $null `
+                    "No $device available for $($Plan.DisplayName). Order one now; it's needed by $($start.ToString('MMM d'))." `
+                    @("Request a quote for a standard $device and get manager approval", 'Place the order with expedited shipping',
+                'On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf', "Deliver to $($Plan.Site); if it will be late, arrange a loaner for day one") $due $orderPriority 'Purchase'))
+    }
+    , $tickets.ToArray()
+}
+
+function Get-AccessGap {
+    <# Groups the previous person had that the new hire won't get automatically. The manager decides on these. #>
+    param($Predecessor, [Parameter(Mandatory)]$Plan)
+    # Callers wrap the result in @() because PowerShell turns an empty list into $null on return
+    if (-not $Predecessor) { return }
+    $planned = @($Plan.Groups) + $Plan.License
+    $Predecessor.Groups | Where-Object { $_ -notin $planned -and $_ -notlike 'LIC-*' -and $_ -notlike 'Site-*' }
+}
+
 # ---------------------------------------------------------------- providers
 function New-SimulatedDirectory {
     <# Opens the JSON practice directory, creating it from the seed file the first time. #>
@@ -240,7 +419,9 @@ function Invoke-ProvisionAccount {
         [Parameter(Mandatory)]$Plan,
         [Parameter(Mandatory)]$Directory,
         [Parameter(Mandatory)][ValidateSet('Simulated', 'ActiveDirectory')][string]$Mode,
-        [Parameter(Mandatory)]$Config
+        [Parameter(Mandatory)]$Config,
+        [string[]]$AccessGap = @(),
+        [string]$PredecessorName
     )
     $who = @{ EmployeeID = $Plan.EmployeeID; Name = "$($Plan.FirstName) $($Plan.LastName)" }
     $password = New-TempPassword   # generated for the account, then discarded; never logged
@@ -280,6 +461,9 @@ function Invoke-ProvisionAccount {
         }
     }
     Write-Step 'Add to groups' ok "Added to $($Plan.Groups.Count) groups: $($Plan.Groups -join ', ')" @who
+    if ($AccessGap.Count) {
+        Write-Step 'Add to groups' warn "Not added automatically: $($AccessGap -join ', ') ($PredecessorName had it). Added to the checklist for the manager to approve" @who
+    }
 
     # Licenses are assigned through license groups, the same way Entra ID group-based licensing works
     if ($Mode -eq 'ActiveDirectory') {
@@ -296,44 +480,80 @@ function Invoke-ProvisionAccount {
 }
 
 # ---------------------------------------------------------------- outputs
-function New-ITChecklist {
-    <# Writes a Markdown checklist for IT, the manager and the new hire. #>
-    param([Parameter(Mandatory)]$Plan, [Parameter(Mandatory)][string[]]$RequestIds, [Parameter(Mandatory)][string]$Folder)
-    New-Item -ItemType Directory -Force -Path $Folder -WhatIf:$false | Out-Null
-    $devices = for ($i = 0; $i -lt $Plan.Devices.Count; $i++) { "- [ ] $($Plan.Devices[$i]) prepared and labeled (request $($RequestIds[$i]))" }
-    $mdm = @($Plan.Devices | Where-Object { $_ -in 'Laptop', 'Desktop', 'iPhone', 'iPad' }) | ForEach-Object {
-        if ($_ -in 'iPhone', 'iPad') { "- [ ] $_ enrolled in Jamf through Apple Business Manager" } else { "- [ ] $_ enrolled in Intune, BitLocker encryption confirmed" }
+function Get-ChecklistData {
+    <#
+    .SYNOPSIS
+        The checklist for one new hire as structured data: details at the top, then sections of
+        items marked done (by the script) or still to do. The dashboard and the Markdown file
+        both come from this.
+    #>
+    param([Parameter(Mandatory)]$Plan, [Parameter(Mandatory)][AllowEmptyCollection()]$Tickets, $Predecessor, [string[]]$AccessGap = @())
+    $item = { param($Text, $Done = $false) [pscustomobject][ordered]@{ text = $Text; done = [bool]$Done } }
+    $details = [ordered]@{
+        'Employee ID' = $Plan.EmployeeID; 'Title' = "$($Plan.JobTitle), $($Plan.Department)"; 'Site' = $Plan.Site
+        'Manager' = $Plan.Manager; 'Start date' = $Plan.StartDate; 'Sign-in' = $Plan.Email; 'Windows logon' = $Plan.SamAccountName
     }
-    $lines = @(
-        "# IT onboarding checklist: $($Plan.DisplayName)", '',
-        "| | |", "|---|---|",
-        "| Employee ID | $($Plan.EmployeeID) |", "| Title | $($Plan.JobTitle), $($Plan.Department) |",
-        "| Site | $($Plan.Site) |", "| Manager | $($Plan.Manager) |", "| Start date | $($Plan.StartDate) |",
-        "| Sign-in | $($Plan.Email) |", "| Windows logon | $($Plan.SamAccountName) |",
-        $(if ($Plan.AccountExpires) { "| Account expires | $($Plan.AccountExpires) (contractor) |" }), '',
-        '## Done by the script',
-        "- [x] Account created with a temporary password (must change at first sign-in)",
-        "- [x] Added to groups: $($Plan.Groups -join ', ')",
-        "- [x] License assigned: $($Plan.License)",
-        "- [x] Device requests opened: $($RequestIds -join ', ')", '',
-        '## Before day one (IT)', $devices, $mdm,
-        "- [ ] Give the temporary password to $($Plan.Manager) through the approved password-delivery process",
-        "- [ ] Confirm app access: $($Plan.Apps -join ', ')", '',
-        '## Day one (with the new hire)',
-        '- [ ] Hand off devices and have the new hire sign the equipment form',
-        '- [ ] Sign in and change the temporary password',
-        '- [ ] Enroll in multi-factor authentication (Duo)',
-        '- [ ] Check Outlook, Teams and the nearest printer',
-        '- [ ] Walk through how to open an IT ticket', '',
-        '## First week',
-        '- [ ] Security awareness training assigned and completed',
-        '- [ ] Manager confirms all access is correct'
-    ) | Where-Object { $null -ne $_ }
-    $path = Join-Path $Folder "$($Plan.Username).md"
+    if ($Plan.AccountExpires) { $details['Account expires'] = "$($Plan.AccountExpires) (contractor)" }
+    $details['Position'] = if ($Predecessor) { "Replacing $($Predecessor.Name) ($($Predecessor.Title))" } else { 'New position' }
+
+    $done = @(
+        (& $item 'Account created with a temporary password (must change at first sign-in)' $true)
+        (& $item "Added to groups: $($Plan.Groups -join ', ')" $true)
+        (& $item "License assigned: $($Plan.License)" $true)
+        (& $item "IT tickets opened: $(($Tickets | ForEach-Object { "$($_.id) ($($_.type.ToLower()), $($_.device))" }) -join '; ')" $true)
+    )
+    $before = [System.Collections.Generic.List[object]]::new()
+    foreach ($t in $Tickets | Where-Object { $_.type -in 'Re-image and re-issue', 'Image from stock', 'Issue from stock', 'Order new device' }) {
+        $what = switch ($t.type) {
+            'Re-image and re-issue' { "$($t.device) $($t.asset_tag) re-imaged and ready (previously $($t.replacing)'s)" }
+            'Image from stock' { "$($t.device) $($t.asset_tag) imaged from stock and ready" }
+            'Issue from stock' { "New $($t.device) $($t.asset_tag) ready" }
+            'Order new device' { "New $($t.device) ordered, received and set up (arrange a loaner if it will be late)" }
+        }
+        $before.Add((& $item "$what - $($t.id), due $($t.due)"))
+    }
+    $recover = @($Tickets | Where-Object type -eq 'Recover equipment' | ForEach-Object {
+            & $item "Recover $($t = $_; $t.replacing)'s $($t.device) $($t.asset_tag) by $($t.due) and return it to stock - $($t.id)"
+        })
+    $before.Add((& $item "Give the temporary password to $($Plan.Manager) through the approved password-delivery process"))
+    $before.Add((& $item "Confirm app access: $($Plan.Apps -join ', ')"))
+    if ($AccessGap.Count) {
+        $before.Add((& $item "Ask $($Plan.Manager) whether $($Plan.DisplayName) also needs access $($Predecessor.Name) had: $($AccessGap -join ', ')"))
+    }
+    $sections = @(
+        [pscustomobject]@{ title = 'Done by the script'; items = $done }
+        [pscustomobject]@{ title = 'Before day one (IT)'; items = $before.ToArray() }
+        if ($recover.Count) { [pscustomobject]@{ title = "Equipment to recover from $($Predecessor.Name)"; items = $recover } }
+        [pscustomobject]@{ title = 'Day one (with the new hire)'; items = @(
+                (& $item 'Hand off devices and have the new hire sign the equipment form')
+                (& $item 'Sign in and change the temporary password')
+                (& $item 'Enroll in multi-factor authentication (Duo)')
+                (& $item 'Check Outlook, Teams and the nearest printer')
+                (& $item 'Walk through how to open an IT ticket')) }
+        [pscustomobject]@{ title = 'First week'; items = @(
+                (& $item 'Security awareness training assigned and completed')
+                (& $item 'Manager confirms all access is correct')) }
+    )
+    [pscustomobject]@{ title = "IT onboarding checklist: $($Plan.DisplayName)"; details = [pscustomobject]$details; sections = $sections }
+}
+
+function New-ITChecklist {
+    <# Writes the checklist to a Markdown file and returns its path. #>
+    param([Parameter(Mandatory)]$Checklist, [Parameter(Mandatory)][string]$Username, [Parameter(Mandatory)][string]$Folder)
+    New-Item -ItemType Directory -Force -Path $Folder -WhatIf:$false | Out-Null
+    $lines = [System.Collections.Generic.List[string]]::new()
+    $lines.Add("# $($Checklist.title)"); $lines.Add(''); $lines.Add('| | |'); $lines.Add('|---|---|')
+    foreach ($p in $Checklist.details.PSObject.Properties) { $lines.Add("| $($p.Name) | $($p.Value) |") }
+    foreach ($section in $Checklist.sections) {
+        $lines.Add(''); $lines.Add("## $($section.title)")
+        foreach ($i in $section.items) { $lines.Add("- [$(if ($i.done) { 'x' } else { ' ' })] $($i.text)") }
+    }
+    $path = Join-Path $Folder "$Username.md"
     ($lines -join "`n") + "`n" | Set-Content -Path $path -Encoding utf8 -WhatIf:$false
     $path
 }
 
 Export-ModuleMember -Function Write-Step, Reset-RunLog, Get-RunLog, Set-LogQuiet, Set-PreviewMode, ConvertTo-PlainAscii, ConvertTo-NameCase,
 Import-HRFile, Test-NewHireRecord, New-Username, Get-SamAccountName, New-TempPassword, Get-OnboardingPlan, New-SimulatedDirectory,
-Save-SimulatedDirectory, Invoke-ProvisionAccount, New-ITChecklist
+Save-SimulatedDirectory, Invoke-ProvisionAccount, New-ITChecklist, Get-ChecklistData, Get-ReplacingID, Get-Predecessor,
+Import-EquipmentInventory, Get-BusinessDaysBefore, New-DeviceTickets, Get-AccessGap

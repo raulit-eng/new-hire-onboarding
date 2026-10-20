@@ -3,4 +3,4 @@
 "E10433","Hannah Lee","15","Missing Manager"
 "E10434","Ethan Ramirez","16","Start date 2026-10-12 has already passed"
 "E10435","Jasmine Wright","17","Former employee with a disabled account (jasmine.wright). Confirm this is a rehire, then reactivate that account instead of creating a new one"
-"E10436","Marcus Chen","18","Manager 'd.miller@summitlogistics.example' was not found in the directory"
+"E10436","Marcus Chen","18","Manager 'd.miller@summitlogistics.example' was not found in the directory; Replacing employee 'E10125' was not found in the directory"

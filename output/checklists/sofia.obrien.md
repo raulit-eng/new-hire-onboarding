@@ -9,16 +9,16 @@
 | Start date | 2026-10-27 |
 | Sign-in | sofia.obrien@summitlogistics.example |
 | Windows logon | sofia.obrien |
+| Position | New position |
 
 ## Done by the script
 - [x] Account created with a temporary password (must change at first sign-in)
 - [x] Added to groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS
 - [x] License assigned: LIC-M365-E3
-- [x] Device requests opened: REQ-261020-011
+- [x] IT tickets opened: IT-4114 (image from stock, Laptop)
 
 ## Before day one (IT)
-- [ ] Laptop prepared and labeled (request REQ-261020-011)
-- [ ] Laptop enrolled in Intune, BitLocker encryption confirmed
+- [ ] Laptop AT-002310 imaged from stock and ready - IT-4114, due 2026-10-23
 - [ ] Give the temporary password to chloe.young@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: Adobe Creative Cloud, HubSpot, Microsoft 365
 
