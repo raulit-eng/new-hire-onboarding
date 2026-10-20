@@ -1,0 +1,16 @@
+{
+  "domain": "summitlogistics.example",
+  "users": [
+    { "EmployeeID": "E10001", "Username": "omar.ali",      "DisplayName": "Omar Ali",      "Email": "omar.ali@summitlogistics.example",      "Department": "Executive",        "Enabled": true },
+    { "EmployeeID": "E10014", "Username": "linh.tran",     "DisplayName": "Linh Tran",     "Email": "linh.tran@summitlogistics.example",     "Department": "Finance",          "Enabled": true },
+    { "EmployeeID": "E10027", "Username": "grace.walker",  "DisplayName": "Grace Walker",  "Email": "grace.walker@summitlogistics.example",  "Department": "Customer Service", "Enabled": true },
+    { "EmployeeID": "E10033", "Username": "marcus.hall",   "DisplayName": "Marcus Hall",   "Email": "marcus.hall@summitlogistics.example",   "Department": "Warehouse",        "Enabled": true },
+    { "EmployeeID": "E10041", "Username": "andre.wilson",  "DisplayName": "Andre Wilson",  "Email": "andre.wilson@summitlogistics.example",  "Department": "IT",               "Enabled": true },
+    { "EmployeeID": "E10052", "Username": "elena.reyes",   "DisplayName": "Elena Reyes",   "Email": "elena.reyes@summitlogistics.example",   "Department": "Operations",       "Enabled": true },
+    { "EmployeeID": "E10066", "Username": "chloe.young",   "DisplayName": "Chloe Young",   "Email": "chloe.young@summitlogistics.example",   "Department": "Marketing",        "Enabled": true },
+    { "EmployeeID": "E10071", "Username": "nora.flores",   "DisplayName": "Nora Flores",   "Email": "nora.flores@summitlogistics.example",   "Department": "HR",               "Enabled": true },
+    { "EmployeeID": "E10118", "Username": "ana.smith",     "DisplayName": "Ana Smith",     "Email": "ana.smith@summitlogistics.example",     "Department": "Sales",            "Enabled": true },
+    { "EmployeeID": "E10435", "Username": "jasmine.wright","DisplayName": "Jasmine Wright","Email": "jasmine.wright@summitlogistics.example","Department": "Finance",          "Enabled": false }
+  ],
+  "groups": {}
+}

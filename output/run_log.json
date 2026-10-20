@@ -1,0 +1,1435 @@
+{
+  "company": "Summit Logistics (sample data)",
+  "hr_file": "hr_new_hires.csv",
+  "mode": "Simulated",
+  "what_if": false,
+  "as_of": "2026-10-20",
+  "started": "2026-10-20T16:02:36.0616135-07:00",
+  "finished": "2026-10-20T16:02:36.6954140-07:00",
+  "counts": {
+    "onboarded": 11,
+    "needs_hr": 5,
+    "skipped": 1,
+    "error": 0
+  },
+  "device_requests": 18,
+  "hires": [
+    {
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "department": "Sales",
+      "title": "Account Executive",
+      "site": "Los Angeles HQ",
+      "manager": "omar.ali@summitlogistics.example",
+      "start_date": "2026-10-26",
+      "employment_type": "Full-time",
+      "row": 2,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Maria Gonzalez",
+      "sam": "maria.gonzalez",
+      "username": "maria.gonzalez",
+      "email": "maria.gonzalez@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "Sales-Team",
+        "CRM-Users",
+        "VPN-Users",
+        "Site-LAX"
+      ],
+      "license": "LIC-M365-E3",
+      "devices": [
+        "Laptop",
+        "iPhone"
+      ],
+      "requests": [
+        "REQ-261020-001",
+        "REQ-261020-002"
+      ],
+      "checklist": "checklists/maria.gonzalez.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "department": "Finance",
+      "title": "Staff Accountant",
+      "site": "Long Beach",
+      "manager": "linh.tran@summitlogistics.example",
+      "start_date": "2026-10-26",
+      "employment_type": "Full-time",
+      "row": 3,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Jim Okafor",
+      "sam": "james.okafor",
+      "username": "james.okafor",
+      "email": "james.okafor@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "Finance-Team",
+        "Finance-Share-RW",
+        "VPN-Users",
+        "Site-LGB"
+      ],
+      "license": "LIC-M365-E3",
+      "devices": [
+        "Laptop"
+      ],
+      "requests": [
+        "REQ-261020-003"
+      ],
+      "checklist": "checklists/james.okafor.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "department": "Customer Service",
+      "title": "Customer Service Representative",
+      "site": "Torrance",
+      "manager": "grace.walker@summitlogistics.example",
+      "start_date": "2026-10-26",
+      "employment_type": "Full-time",
+      "row": 4,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Ana Smith",
+      "sam": "ana.smith2",
+      "username": "ana.smith2",
+      "email": "ana.smith2@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "CS-Team",
+        "Ticketing-Agents",
+        "Site-TOR"
+      ],
+      "license": "LIC-M365-E3",
+      "devices": [
+        "Desktop",
+        "Headset"
+      ],
+      "requests": [
+        "REQ-261020-004",
+        "REQ-261020-005"
+      ],
+      "checklist": "checklists/ana.smith2.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10424",
+      "name": "Daniel Nguyen",
+      "department": "Warehouse",
+      "title": "Warehouse Associate",
+      "site": "Ontario",
+      "manager": "marcus.hall@summitlogistics.example",
+      "start_date": "2026-10-26",
+      "employment_type": "Full-time",
+      "row": 5,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Daniel Nguyen",
+      "sam": "daniel.nguyen",
+      "username": "daniel.nguyen",
+      "email": "daniel.nguyen@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "Warehouse-Team",
+        "Scanner-Users",
+        "Site-ONT"
+      ],
+      "license": "LIC-M365-F3",
+      "devices": [
+        "iPad"
+      ],
+      "requests": [
+        "REQ-261020-006"
+      ],
+      "checklist": "checklists/daniel.nguyen.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "department": "IT",
+      "title": "Help Desk Technician",
+      "site": "Los Angeles HQ",
+      "manager": "andre.wilson@summitlogistics.example",
+      "start_date": "2026-10-27",
+      "employment_type": "Full-time",
+      "row": 6,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Priya Patel",
+      "sam": "priya.patel",
+      "username": "priya.patel",
+      "email": "priya.patel@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "IT-Team",
+        "IT-Helpdesk-Tier1",
+        "VPN-Users",
+        "Site-LAX"
+      ],
+      "license": "LIC-M365-E5",
+      "devices": [
+        "Laptop",
+        "iPhone"
+      ],
+      "requests": [
+        "REQ-261020-007",
+        "REQ-261020-008"
+      ],
+      "checklist": "checklists/priya.patel.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "department": "Operations",
+      "title": "Operations Coordinator",
+      "site": "Santa Clarita",
+      "manager": "elena.reyes@summitlogistics.example",
+      "start_date": "2026-10-27",
+      "employment_type": "Full-time",
+      "row": 7,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Luis Hernández",
+      "sam": "luis.hernandez",
+      "username": "luis.hernandez",
+      "email": "luis.hernandez@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "Ops-Team",
+        "VPN-Users",
+        "Site-SCV"
+      ],
+      "license": "LIC-M365-E3",
+      "devices": [
+        "Laptop",
+        "iPhone"
+      ],
+      "requests": [
+        "REQ-261020-009",
+        "REQ-261020-010"
+      ],
+      "checklist": "checklists/luis.hernandez.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10427",
+      "name": "Sofia O'Brien",
+      "department": "Marketing",
+      "title": "Marketing Specialist",
+      "site": "Pasadena",
+      "manager": "chloe.young@summitlogistics.example",
+      "start_date": "2026-10-27",
+      "employment_type": "Full-time",
+      "row": 8,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Sofia O'Brien",
+      "sam": "sofia.obrien",
+      "username": "sofia.obrien",
+      "email": "sofia.obrien@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "Marketing-Team",
+        "Brand-Assets-RW",
+        "Site-PAS"
+      ],
+      "license": "LIC-M365-E3",
+      "devices": [
+        "Laptop"
+      ],
+      "requests": [
+        "REQ-261020-011"
+      ],
+      "checklist": "checklists/sofia.obrien.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "department": "Marketing",
+      "title": "Content Designer",
+      "site": "Pasadena",
+      "manager": "chloe.young@summitlogistics.example",
+      "start_date": "2026-10-28",
+      "employment_type": "Contractor",
+      "row": 9,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Kevin Tran",
+      "sam": "kevin.tran",
+      "username": "kevin.tran",
+      "email": "kevin.tran@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "Marketing-Team",
+        "Brand-Assets-RW",
+        "Site-PAS",
+        "Contractors"
+      ],
+      "license": "LIC-M365-F3",
+      "devices": [
+        "Laptop"
+      ],
+      "requests": [
+        "REQ-261020-012"
+      ],
+      "checklist": "checklists/kevin.tran.md",
+      "account_expires": "2027-01-26"
+    },
+    {
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "department": "Customer Service",
+      "title": "Customer Service Representative",
+      "site": "Irvine",
+      "manager": "grace.walker@summitlogistics.example",
+      "start_date": "2026-10-28",
+      "employment_type": "Full-time",
+      "row": 10,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Grace Kim",
+      "sam": "grace.kim",
+      "username": "grace.kim",
+      "email": "grace.kim@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "CS-Team",
+        "Ticketing-Agents",
+        "Site-IRV"
+      ],
+      "license": "LIC-M365-E3",
+      "devices": [
+        "Desktop",
+        "Headset"
+      ],
+      "requests": [
+        "REQ-261020-013",
+        "REQ-261020-014"
+      ],
+      "checklist": "checklists/grace.kim.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "department": "Executive",
+      "title": "VP of Finance",
+      "site": "Los Angeles HQ",
+      "manager": "omar.ali@summitlogistics.example",
+      "start_date": "2026-11-02",
+      "employment_type": "Full-time",
+      "row": 11,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Omari Bennett",
+      "sam": "omari.bennett",
+      "username": "omari.bennett",
+      "email": "omari.bennett@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "Exec-Team",
+        "VPN-Users",
+        "Board-Docs-R",
+        "Site-LAX"
+      ],
+      "license": "LIC-M365-E5",
+      "devices": [
+        "Laptop",
+        "iPhone",
+        "iPad"
+      ],
+      "requests": [
+        "REQ-261020-015",
+        "REQ-261020-016",
+        "REQ-261020-017"
+      ],
+      "checklist": "checklists/omari.bennett.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "department": "HR",
+      "title": "HR Generalist",
+      "site": "Burbank",
+      "manager": "nora.flores@summitlogistics.example",
+      "start_date": "2026-11-02",
+      "employment_type": "Full-time",
+      "row": 12,
+      "status": "onboarded",
+      "issues": [],
+      "display_name": "Rosa Delgado-Villanueva",
+      "sam": "rosa.delgado-villanu",
+      "username": "rosa.delgado-villanueva",
+      "email": "rosa.delgado-villanueva@summitlogistics.example",
+      "groups": [
+        "All-Staff",
+        "MFA-Required",
+        "HR-Team",
+        "HR-Confidential-RW",
+        "VPN-Users",
+        "Site-BUR"
+      ],
+      "license": "LIC-M365-E3",
+      "devices": [
+        "Laptop"
+      ],
+      "requests": [
+        "REQ-261020-018"
+      ],
+      "checklist": "checklists/rosa.delgado-villanueva.md",
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "department": "Sales",
+      "title": "Account Executive",
+      "site": "Los Angeles HQ",
+      "manager": "omar.ali@summitlogistics.example",
+      "start_date": "2026-10-26",
+      "employment_type": "Full-time",
+      "row": 13,
+      "status": "skipped",
+      "issues": [
+        "Duplicate of row 2 in the HR file"
+      ],
+      "display_name": null,
+      "sam": null,
+      "username": null,
+      "email": null,
+      "groups": [],
+      "license": null,
+      "devices": [],
+      "requests": [],
+      "checklist": null,
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10432",
+      "name": "Tyler Brooks",
+      "department": "Legal",
+      "title": "Contracts Manager",
+      "site": "Los Angeles HQ",
+      "manager": "omar.ali@summitlogistics.example",
+      "start_date": "2026-10-26",
+      "employment_type": "Full-time",
+      "row": 14,
+      "status": "needs_hr",
+      "issues": [
+        "Department 'Legal' has no access profile in config/onboarding.json"
+      ],
+      "display_name": null,
+      "sam": null,
+      "username": null,
+      "email": null,
+      "groups": [],
+      "license": null,
+      "devices": [],
+      "requests": [],
+      "checklist": null,
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10433",
+      "name": "Hannah Lee",
+      "department": "Sales",
+      "title": "Sales Development Rep",
+      "site": "Burbank",
+      "manager": "",
+      "start_date": "2026-10-28",
+      "employment_type": "Full-time",
+      "row": 15,
+      "status": "needs_hr",
+      "issues": [
+        "Missing Manager"
+      ],
+      "display_name": null,
+      "sam": null,
+      "username": null,
+      "email": null,
+      "groups": [],
+      "license": null,
+      "devices": [],
+      "requests": [],
+      "checklist": null,
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10434",
+      "name": "Ethan Ramirez",
+      "department": "Warehouse",
+      "title": "Forklift Operator",
+      "site": "Ontario",
+      "manager": "marcus.hall@summitlogistics.example",
+      "start_date": "2026-10-12",
+      "employment_type": "Full-time",
+      "row": 16,
+      "status": "needs_hr",
+      "issues": [
+        "Start date 2026-10-12 has already passed"
+      ],
+      "display_name": null,
+      "sam": null,
+      "username": null,
+      "email": null,
+      "groups": [],
+      "license": null,
+      "devices": [],
+      "requests": [],
+      "checklist": null,
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10435",
+      "name": "Jasmine Wright",
+      "department": "Finance",
+      "title": "Payroll Specialist",
+      "site": "Long Beach",
+      "manager": "linh.tran@summitlogistics.example",
+      "start_date": "2026-10-27",
+      "employment_type": "Full-time",
+      "row": 17,
+      "status": "needs_hr",
+      "issues": [
+        "Former employee with a disabled account (jasmine.wright). Confirm this is a rehire, then reactivate that account instead of creating a new one"
+      ],
+      "display_name": null,
+      "sam": null,
+      "username": null,
+      "email": null,
+      "groups": [],
+      "license": null,
+      "devices": [],
+      "requests": [],
+      "checklist": null,
+      "account_expires": null
+    },
+    {
+      "employee_id": "E10436",
+      "name": "Marcus Chen",
+      "department": "Sales",
+      "title": "Account Executive",
+      "site": "Irvine",
+      "manager": "d.miller@summitlogistics.example",
+      "start_date": "2026-10-29",
+      "employment_type": "Full-time",
+      "row": 18,
+      "status": "needs_hr",
+      "issues": [
+        "Manager 'd.miller@summitlogistics.example' was not found in the directory"
+      ],
+      "display_name": null,
+      "sam": null,
+      "username": null,
+      "email": null,
+      "groups": [],
+      "license": null,
+      "devices": [],
+      "requests": [],
+      "checklist": null,
+      "account_expires": null
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "time": "2026-10-20T16:02:36.0735882-07:00",
+      "stage": "Read HR file",
+      "status": "info",
+      "employee_id": "",
+      "name": "",
+      "message": "Opening hr_new_hires.csv"
+    },
+    {
+      "seq": 2,
+      "time": "2026-10-20T16:02:36.1672363-07:00",
+      "stage": "Read HR file",
+      "status": "ok",
+      "employee_id": "",
+      "name": "",
+      "message": "Read 17 rows from hr_new_hires.csv"
+    },
+    {
+      "seq": 3,
+      "time": "2026-10-20T16:02:36.1976163-07:00",
+      "stage": "Read HR file",
+      "status": "info",
+      "employee_id": "",
+      "name": "",
+      "message": "Loaded access profiles for 9 departments and 9 sites"
+    },
+    {
+      "seq": 4,
+      "time": "2026-10-20T16:02:36.2406070-07:00",
+      "stage": "Read HR file",
+      "status": "info",
+      "employee_id": "",
+      "name": "",
+      "message": "Opened practice directory: 10 existing accounts"
+    },
+    {
+      "seq": 5,
+      "time": "2026-10-20T16:02:36.2538057-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Checking row 2: Account Executive, Sales"
+    },
+    {
+      "seq": 6,
+      "time": "2026-10-20T16:02:36.3144790-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 7,
+      "time": "2026-10-20T16:02:36.4251837-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Created maria.gonzalez@summitlogistics.example for Maria Gonzalez; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 8,
+      "time": "2026-10-20T16:02:36.4304980-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Added to 6 groups: All-Staff, MFA-Required, Sales-Team, CRM-Users, VPN-Users, Site-LAX"
+    },
+    {
+      "seq": 9,
+      "time": "2026-10-20T16:02:36.4341789-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
+    },
+    {
+      "seq": 10,
+      "time": "2026-10-20T16:02:36.4396686-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Opened 2 device requests: Laptop (REQ-261020-001), iPhone (REQ-261020-002), needed by 2026-10-26"
+    },
+    {
+      "seq": 11,
+      "time": "2026-10-20T16:02:36.4573743-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Wrote IT checklist: checklists/maria.gonzalez.md"
+    },
+    {
+      "seq": 12,
+      "time": "2026-10-20T16:02:36.4669182-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "Checking row 3: Staff Accountant, Finance"
+    },
+    {
+      "seq": 13,
+      "time": "2026-10-20T16:02:36.4690194-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 14,
+      "time": "2026-10-20T16:02:36.4791125-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "Created james.okafor@summitlogistics.example for Jim Okafor; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 15,
+      "time": "2026-10-20T16:02:36.4797025-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "Added to 6 groups: All-Staff, MFA-Required, Finance-Team, Finance-Share-RW, VPN-Users, Site-LGB"
+    },
+    {
+      "seq": 16,
+      "time": "2026-10-20T16:02:36.4802379-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
+    },
+    {
+      "seq": 17,
+      "time": "2026-10-20T16:02:36.4807757-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "Opened 1 device request: Laptop (REQ-261020-003), needed by 2026-10-26"
+    },
+    {
+      "seq": 18,
+      "time": "2026-10-20T16:02:36.4846087-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10422",
+      "name": "James Okafor",
+      "message": "Wrote IT checklist: checklists/james.okafor.md"
+    },
+    {
+      "seq": 19,
+      "time": "2026-10-20T16:02:36.4881361-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "Checking row 4: Customer Service Representative, Customer Service"
+    },
+    {
+      "seq": 20,
+      "time": "2026-10-20T16:02:36.4894969-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 21,
+      "time": "2026-10-20T16:02:36.4916840-07:00",
+      "stage": "Create account",
+      "status": "info",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "Username ana.smith is already taken; using ana.smith2"
+    },
+    {
+      "seq": 22,
+      "time": "2026-10-20T16:02:36.4978763-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "Created ana.smith2@summitlogistics.example for Ana Smith; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 23,
+      "time": "2026-10-20T16:02:36.4983345-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "Added to 5 groups: All-Staff, MFA-Required, CS-Team, Ticketing-Agents, Site-TOR"
+    },
+    {
+      "seq": 24,
+      "time": "2026-10-20T16:02:36.4987406-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
+    },
+    {
+      "seq": 25,
+      "time": "2026-10-20T16:02:36.4993819-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "Opened 2 device requests: Desktop (REQ-261020-004), Headset (REQ-261020-005), needed by 2026-10-26"
+    },
+    {
+      "seq": 26,
+      "time": "2026-10-20T16:02:36.5026128-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10423",
+      "name": "Ana Smith",
+      "message": "Wrote IT checklist: checklists/ana.smith2.md"
+    },
+    {
+      "seq": 27,
+      "time": "2026-10-20T16:02:36.5034982-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10424",
+      "name": "Daniel Nguyen",
+      "message": "Checking row 5: Warehouse Associate, Warehouse"
+    },
+    {
+      "seq": 28,
+      "time": "2026-10-20T16:02:36.5046842-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10424",
+      "name": "Daniel Nguyen",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 29,
+      "time": "2026-10-20T16:02:36.5119897-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10424",
+      "name": "Daniel Nguyen",
+      "message": "Created daniel.nguyen@summitlogistics.example for Daniel Nguyen; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 30,
+      "time": "2026-10-20T16:02:36.5123296-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10424",
+      "name": "Daniel Nguyen",
+      "message": "Added to 5 groups: All-Staff, MFA-Required, Warehouse-Team, Scanner-Users, Site-ONT"
+    },
+    {
+      "seq": 31,
+      "time": "2026-10-20T16:02:36.5125679-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10424",
+      "name": "Daniel Nguyen",
+      "message": "Assigned M365 F3 license (via LIC-M365-F3 group)"
+    },
+    {
+      "seq": 32,
+      "time": "2026-10-20T16:02:36.5129030-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10424",
+      "name": "Daniel Nguyen",
+      "message": "Opened 1 device request: iPad (REQ-261020-006), needed by 2026-10-26"
+    },
+    {
+      "seq": 33,
+      "time": "2026-10-20T16:02:36.5161738-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10424",
+      "name": "Daniel Nguyen",
+      "message": "Wrote IT checklist: checklists/daniel.nguyen.md"
+    },
+    {
+      "seq": 34,
+      "time": "2026-10-20T16:02:36.5168575-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "Checking row 6: Help Desk Technician, IT"
+    },
+    {
+      "seq": 35,
+      "time": "2026-10-20T16:02:36.5181660-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 36,
+      "time": "2026-10-20T16:02:36.5233241-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "Created priya.patel@summitlogistics.example for Priya Patel; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 37,
+      "time": "2026-10-20T16:02:36.5235989-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "Added to 6 groups: All-Staff, MFA-Required, IT-Team, IT-Helpdesk-Tier1, VPN-Users, Site-LAX"
+    },
+    {
+      "seq": 38,
+      "time": "2026-10-20T16:02:36.5238790-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "Assigned M365 E5 license (via LIC-M365-E5 group)"
+    },
+    {
+      "seq": 39,
+      "time": "2026-10-20T16:02:36.5243007-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "Opened 2 device requests: Laptop (REQ-261020-007), iPhone (REQ-261020-008), needed by 2026-10-27"
+    },
+    {
+      "seq": 40,
+      "time": "2026-10-20T16:02:36.5277418-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10425",
+      "name": "Priya Patel",
+      "message": "Wrote IT checklist: checklists/priya.patel.md"
+    },
+    {
+      "seq": 41,
+      "time": "2026-10-20T16:02:36.5283871-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "message": "Checking row 7: Operations Coordinator, Operations"
+    },
+    {
+      "seq": 42,
+      "time": "2026-10-20T16:02:36.5295841-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 43,
+      "time": "2026-10-20T16:02:36.5368275-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "message": "Created luis.hernandez@summitlogistics.example for Luis Hernández; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 44,
+      "time": "2026-10-20T16:02:36.5371154-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "message": "Added to 5 groups: All-Staff, MFA-Required, Ops-Team, VPN-Users, Site-SCV"
+    },
+    {
+      "seq": 45,
+      "time": "2026-10-20T16:02:36.5373616-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
+    },
+    {
+      "seq": 46,
+      "time": "2026-10-20T16:02:36.5376603-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "message": "Opened 2 device requests: Laptop (REQ-261020-009), iPhone (REQ-261020-010), needed by 2026-10-27"
+    },
+    {
+      "seq": 47,
+      "time": "2026-10-20T16:02:36.5406011-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10426",
+      "name": "Luis Hernández",
+      "message": "Wrote IT checklist: checklists/luis.hernandez.md"
+    },
+    {
+      "seq": 48,
+      "time": "2026-10-20T16:02:36.5411781-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10427",
+      "name": "Sofia O'Brien",
+      "message": "Checking row 8: Marketing Specialist, Marketing"
+    },
+    {
+      "seq": 49,
+      "time": "2026-10-20T16:02:36.5424121-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10427",
+      "name": "Sofia O'Brien",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 50,
+      "time": "2026-10-20T16:02:36.5490120-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10427",
+      "name": "Sofia O'Brien",
+      "message": "Created sofia.obrien@summitlogistics.example for Sofia O'Brien; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 51,
+      "time": "2026-10-20T16:02:36.5493150-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10427",
+      "name": "Sofia O'Brien",
+      "message": "Added to 5 groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS"
+    },
+    {
+      "seq": 52,
+      "time": "2026-10-20T16:02:36.5495093-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10427",
+      "name": "Sofia O'Brien",
+      "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
+    },
+    {
+      "seq": 53,
+      "time": "2026-10-20T16:02:36.5498965-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10427",
+      "name": "Sofia O'Brien",
+      "message": "Opened 1 device request: Laptop (REQ-261020-011), needed by 2026-10-27"
+    },
+    {
+      "seq": 54,
+      "time": "2026-10-20T16:02:36.5531472-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10427",
+      "name": "Sofia O'Brien",
+      "message": "Wrote IT checklist: checklists/sofia.obrien.md"
+    },
+    {
+      "seq": 55,
+      "time": "2026-10-20T16:02:36.5536334-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "message": "Checking row 9: Content Designer, Marketing"
+    },
+    {
+      "seq": 56,
+      "time": "2026-10-20T16:02:36.5550364-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 57,
+      "time": "2026-10-20T16:02:36.5697252-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "message": "Created kevin.tran@summitlogistics.example for Kevin Tran; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 58,
+      "time": "2026-10-20T16:02:36.5700198-07:00",
+      "stage": "Create account",
+      "status": "info",
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "message": "Contractor account set to expire 2027-01-26"
+    },
+    {
+      "seq": 59,
+      "time": "2026-10-20T16:02:36.5703684-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "message": "Added to 6 groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS, Contractors"
+    },
+    {
+      "seq": 60,
+      "time": "2026-10-20T16:02:36.5706675-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "message": "Assigned M365 F3 license (via LIC-M365-F3 group)"
+    },
+    {
+      "seq": 61,
+      "time": "2026-10-20T16:02:36.5711622-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "message": "Opened 1 device request: Laptop (REQ-261020-012), needed by 2026-10-28"
+    },
+    {
+      "seq": 62,
+      "time": "2026-10-20T16:02:36.5740967-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10428",
+      "name": "Kevin Tran",
+      "message": "Wrote IT checklist: checklists/kevin.tran.md"
+    },
+    {
+      "seq": 63,
+      "time": "2026-10-20T16:02:36.5753915-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "message": "Checking row 10: Customer Service Representative, Customer Service"
+    },
+    {
+      "seq": 64,
+      "time": "2026-10-20T16:02:36.5771981-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 65,
+      "time": "2026-10-20T16:02:36.5830060-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "message": "Created grace.kim@summitlogistics.example for Grace Kim; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 66,
+      "time": "2026-10-20T16:02:36.5833420-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "message": "Added to 5 groups: All-Staff, MFA-Required, CS-Team, Ticketing-Agents, Site-IRV"
+    },
+    {
+      "seq": 67,
+      "time": "2026-10-20T16:02:36.5835437-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
+    },
+    {
+      "seq": 68,
+      "time": "2026-10-20T16:02:36.5839101-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "message": "Opened 2 device requests: Desktop (REQ-261020-013), Headset (REQ-261020-014), needed by 2026-10-28"
+    },
+    {
+      "seq": 69,
+      "time": "2026-10-20T16:02:36.5868131-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10429",
+      "name": "Grace Kim",
+      "message": "Wrote IT checklist: checklists/grace.kim.md"
+    },
+    {
+      "seq": 70,
+      "time": "2026-10-20T16:02:36.5875044-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "Checking row 11: VP of Finance, Executive"
+    },
+    {
+      "seq": 71,
+      "time": "2026-10-20T16:02:36.5889374-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 72,
+      "time": "2026-10-20T16:02:36.5946837-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "Created omari.bennett@summitlogistics.example for Omari Bennett; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 73,
+      "time": "2026-10-20T16:02:36.5951512-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "Added to 6 groups: All-Staff, MFA-Required, Exec-Team, VPN-Users, Board-Docs-R, Site-LAX"
+    },
+    {
+      "seq": 74,
+      "time": "2026-10-20T16:02:36.5953912-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "Assigned M365 E5 license (via LIC-M365-E5 group)"
+    },
+    {
+      "seq": 75,
+      "time": "2026-10-20T16:02:36.5958291-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "Opened 3 device requests: Laptop (REQ-261020-015), iPhone (REQ-261020-016), iPad (REQ-261020-017), needed by 2026-11-02"
+    },
+    {
+      "seq": 76,
+      "time": "2026-10-20T16:02:36.5992927-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10430",
+      "name": "Omari Bennett",
+      "message": "Wrote IT checklist: checklists/omari.bennett.md"
+    },
+    {
+      "seq": 77,
+      "time": "2026-10-20T16:02:36.5997707-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "message": "Checking row 12: HR Generalist, HR"
+    },
+    {
+      "seq": 78,
+      "time": "2026-10-20T16:02:36.6011723-07:00",
+      "stage": "Validate",
+      "status": "ok",
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "message": "All checks passed"
+    },
+    {
+      "seq": 79,
+      "time": "2026-10-20T16:02:36.6151192-07:00",
+      "stage": "Create account",
+      "status": "ok",
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "message": "Created rosa.delgado-villanueva@summitlogistics.example for Rosa Delgado-Villanueva; temporary password set, must change at first sign-in"
+    },
+    {
+      "seq": 80,
+      "time": "2026-10-20T16:02:36.6153432-07:00",
+      "stage": "Create account",
+      "status": "info",
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "message": "Windows logon name shortened to the 20-character limit: rosa.delgado-villanu"
+    },
+    {
+      "seq": 81,
+      "time": "2026-10-20T16:02:36.6155687-07:00",
+      "stage": "Add to groups",
+      "status": "ok",
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "message": "Added to 6 groups: All-Staff, MFA-Required, HR-Team, HR-Confidential-RW, VPN-Users, Site-BUR"
+    },
+    {
+      "seq": 82,
+      "time": "2026-10-20T16:02:36.6158013-07:00",
+      "stage": "Assign license",
+      "status": "ok",
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "message": "Assigned M365 E3 license (via LIC-M365-E3 group)"
+    },
+    {
+      "seq": 83,
+      "time": "2026-10-20T16:02:36.6161271-07:00",
+      "stage": "Request device",
+      "status": "ok",
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "message": "Opened 1 device request: Laptop (REQ-261020-018), needed by 2026-11-02"
+    },
+    {
+      "seq": 84,
+      "time": "2026-10-20T16:02:36.6191377-07:00",
+      "stage": "Write checklist",
+      "status": "ok",
+      "employee_id": "E10431",
+      "name": "Rosa Delgado-Villanueva",
+      "message": "Wrote IT checklist: checklists/rosa.delgado-villanueva.md"
+    },
+    {
+      "seq": 85,
+      "time": "2026-10-20T16:02:36.6196143-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Checking row 13: Account Executive, Sales"
+    },
+    {
+      "seq": 86,
+      "time": "2026-10-20T16:02:36.6212937-07:00",
+      "stage": "Validate",
+      "status": "skip",
+      "employee_id": "E10421",
+      "name": "Maria Gonzalez",
+      "message": "Skipped: duplicate of row 2"
+    },
+    {
+      "seq": 87,
+      "time": "2026-10-20T16:02:36.6228467-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10432",
+      "name": "Tyler Brooks",
+      "message": "Checking row 14: Contracts Manager, Legal"
+    },
+    {
+      "seq": 88,
+      "time": "2026-10-20T16:02:36.6271949-07:00",
+      "stage": "Validate",
+      "status": "warn",
+      "employee_id": "E10432",
+      "name": "Tyler Brooks",
+      "message": "Held for HR: Department 'Legal' has no access profile in config/onboarding.json"
+    },
+    {
+      "seq": 89,
+      "time": "2026-10-20T16:02:36.6286593-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10433",
+      "name": "Hannah Lee",
+      "message": "Checking row 15: Sales Development Rep, Sales"
+    },
+    {
+      "seq": 90,
+      "time": "2026-10-20T16:02:36.6309010-07:00",
+      "stage": "Validate",
+      "status": "warn",
+      "employee_id": "E10433",
+      "name": "Hannah Lee",
+      "message": "Held for HR: Missing Manager"
+    },
+    {
+      "seq": 91,
+      "time": "2026-10-20T16:02:36.6313986-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10434",
+      "name": "Ethan Ramirez",
+      "message": "Checking row 16: Forklift Operator, Warehouse"
+    },
+    {
+      "seq": 92,
+      "time": "2026-10-20T16:02:36.6338518-07:00",
+      "stage": "Validate",
+      "status": "warn",
+      "employee_id": "E10434",
+      "name": "Ethan Ramirez",
+      "message": "Held for HR: Start date 2026-10-12 has already passed"
+    },
+    {
+      "seq": 93,
+      "time": "2026-10-20T16:02:36.6342632-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10435",
+      "name": "Jasmine Wright",
+      "message": "Checking row 17: Payroll Specialist, Finance"
+    },
+    {
+      "seq": 94,
+      "time": "2026-10-20T16:02:36.6373465-07:00",
+      "stage": "Validate",
+      "status": "warn",
+      "employee_id": "E10435",
+      "name": "Jasmine Wright",
+      "message": "Held for HR: matches disabled account jasmine.wright (possible rehire)"
+    },
+    {
+      "seq": 95,
+      "time": "2026-10-20T16:02:36.6389123-07:00",
+      "stage": "Validate",
+      "status": "info",
+      "employee_id": "E10436",
+      "name": "Marcus Chen",
+      "message": "Checking row 18: Account Executive, Sales"
+    },
+    {
+      "seq": 96,
+      "time": "2026-10-20T16:02:36.6423500-07:00",
+      "stage": "Validate",
+      "status": "warn",
+      "employee_id": "E10436",
+      "name": "Marcus Chen",
+      "message": "Held for HR: Manager 'd.miller@summitlogistics.example' was not found in the directory"
+    },
+    {
+      "seq": 97,
+      "time": "2026-10-20T16:02:36.6922880-07:00",
+      "stage": "Summary",
+      "status": "ok",
+      "employee_id": "",
+      "name": "",
+      "message": "Done: 11 onboarded, 5 held for HR, 1 skipped, 0 errors"
+    },
+    {
+      "seq": 98,
+      "time": "2026-10-20T16:02:36.6925722-07:00",
+      "stage": "Summary",
+      "status": "warn",
+      "employee_id": "",
+      "name": "",
+      "message": "Sent 5 row(s) back to HR: output/hr_issues.csv"
+    }
+  ]
+}

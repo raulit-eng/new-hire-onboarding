@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New-Hire Onboarding</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --ring: rgba(11,11,11,0.10); --wash: rgba(11,11,11,0.04);
+    --accent: #2a78d6; --accent-soft: rgba(42,120,214,.12);
+    --good: #0ca30c; --good-ink: #006300; --warning: #fab219; --warning-ink: #8a5a00; --critical: #d03b3b; --skip: #898781;
+    --console: #101317; --console-ink: #d6dbe2; --console-muted: #7c8592;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --ring: rgba(255,255,255,0.10); --wash: rgba(255,255,255,0.05);
+      --accent: #3987e5; --accent-soft: rgba(57,135,229,.16); --good-ink: #0ca30c; --warning-ink: #fab219;
+      --console: #0b0d10;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --ring: rgba(255,255,255,0.10); --wash: rgba(255,255,255,0.05);
+    --accent: #3987e5; --accent-soft: rgba(57,135,229,.16); --good-ink: #0ca30c; --warning-ink: #fab219;
+    --console: #0b0d10;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  button { font: inherit; color: inherit; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 24px 16px 40px; }
+  header { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; }
+  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+  h1 { margin: 0; font-size: 26px; font-weight: 650; }
+  .sub { margin: 4px 0 0; color: var(--ink-2); }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .btn { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; padding: 6px 12px; cursor: pointer; color: var(--ink-2); }
+  .btn:hover { background: var(--wash); }
+  .btn[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); }
+  .status { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--ring); background: var(--surface); }
+  .status i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .status.running i { animation: blink 1s infinite; }
+  .status.done i { background: var(--good); }
+  @keyframes blink { 50% { opacity: .3; } }
+
+  .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 16px; min-width: 0; }
+  h2 { font-size: 15px; margin: 0 0 2px; font-weight: 600; }
+  .desc { color: var(--muted); font-size: 12.5px; margin: 0 0 12px; }
+
+  /* pipeline */
+  .pipeline { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; margin-bottom: 16px; padding: 16px 12px; }
+  .stage { position: relative; text-align: center; padding: 0 4px; }
+  .stage::before { content: ""; position: absolute; top: 17px; left: -50%; width: 100%; height: 2px; background: var(--grid); z-index: 0; }
+  .stage:first-child::before { display: none; }
+  .stage.reached::before { background: var(--accent); }
+  .node { position: relative; z-index: 1; width: 36px; height: 36px; margin: 0 auto 8px; border-radius: 50%; display: grid; place-items: center;
+          background: var(--surface); border: 2px solid var(--grid); color: var(--muted); font-weight: 650; font-size: 13px; transition: .2s; }
+  .stage.reached .node { border-color: var(--accent); color: var(--accent); }
+  .stage.active .node { background: var(--accent); color: #fff; box-shadow: 0 0 0 6px var(--accent-soft); }
+  .stage .label { font-size: 12.5px; font-weight: 600; }
+  .stage .count { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 16px; }
+  .kpi .label { color: var(--ink-2); font-size: 12.5px; display: flex; gap: 6px; align-items: center; }
+  .kpi .value { font-size: 28px; font-weight: 650; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+  .main { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 16px; margin-bottom: 16px; align-items: start; }
+  .hires { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+  .hire { border: 1px solid var(--ring); border-radius: 10px; padding: 12px; background: var(--page); cursor: pointer; transition: border-color .15s, transform .25s, opacity .25s; }
+  .hire:hover, .hire:focus-visible { border-color: var(--accent); outline: none; }
+  .hire.enter { opacity: 0; transform: translateY(6px); }
+  .hire.current { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .hire .top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+  .hire .name { font-weight: 600; }
+  .hire .meta { color: var(--ink-2); font-size: 12.5px; }
+  .hire .start { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .steps { display: flex; gap: 4px; margin-top: 10px; }
+  .steps span { flex: 1; height: 5px; border-radius: 3px; background: var(--grid); transition: background .2s; }
+  .steps span.on { background: var(--accent); }
+  .hire.done .steps span.on { background: var(--good); }
+  .hire .note { margin-top: 8px; font-size: 12px; color: var(--warning-ink); }
+  .hire.skipped .note { color: var(--muted); }
+  .badge { font-size: 11px; font-weight: 650; border: 1.5px solid; border-radius: 4px; padding: 0 6px; line-height: 17px; white-space: nowrap; }
+  .b-onboarded { color: var(--good-ink); } .b-needs_hr { color: var(--warning-ink); } .b-skipped { color: var(--skip); }
+  .b-working { color: var(--accent); } .b-error { color: var(--critical); }
+
+  .console { background: var(--console); color: var(--console-ink); border-radius: 12px; padding: 0; overflow: hidden; border: 1px solid var(--ring); }
+  .console .bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid #222831; font-size: 12.5px; }
+  .console .bar b { font-weight: 600; }
+  .console .bar span { color: var(--console-muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11.5px; }
+  .log { height: 560px; overflow-y: auto; padding: 10px 14px; font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .log div { display: grid; grid-template-columns: 112px 1fr; gap: 8px; padding: 1px 0; }
+  .log .stg { color: var(--console-muted); }
+  .log .ok { color: #5fd45f; } .log .warn { color: #f5c14d; } .log .error { color: #ff7b7b; } .log .skip { color: #8c95a1; } .log .info { color: var(--console-ink); }
+  .log .who { color: #8fbaf0; }
+  .log .cursor::after { content: "▋"; color: #8fbaf0; animation: blink 1s infinite; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; color: var(--muted); font-size: 12px; font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--grid); }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+  .empty { color: var(--muted); padding: 10px; }
+  .grid2 { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+
+  .scrim { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: none; justify-content: flex-end; z-index: 20; }
+  .scrim.open { display: flex; }
+  .drawer { width: min(460px, 100%); height: 100%; overflow-y: auto; background: var(--surface); padding: 22px; border-left: 1px solid var(--ring); }
+  .drawer h3 { margin: 8px 0 2px; font-size: 20px; }
+  .drawer h4 { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 18px 0 6px; }
+  .facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 13px; }
+  .facts span:nth-child(odd) { color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips span { font-size: 12px; border: 1px solid var(--ring); border-radius: 999px; padding: 2px 9px; background: var(--page); }
+  .x { float: right; background: none; border: 0; font-size: 22px; color: var(--muted); cursor: pointer; }
+  .issue { background: var(--page); border: 1px solid var(--ring); border-left: 3px solid var(--warning); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; font-size: 13px; }
+  footer { color: var(--muted); font-size: 12.5px; margin-top: 20px; }
+
+  @media (max-width: 1050px) { .main, .grid2 { grid-template-columns: 1fr; } .kpis { grid-template-columns: repeat(3, 1fr); } .log { height: 360px; } }
+  @media (max-width: 680px) {
+    .pipeline { grid-template-columns: repeat(4, 1fr); row-gap: 14px; }
+    .stage:nth-child(5)::before { display: none; }
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <p class="eyebrow" id="company"></p>
+      <h1>New-hire onboarding</h1>
+      <p class="sub" id="runInfo"></p>
+    </div>
+    <div class="controls">
+      <span class="status running" id="status"><i></i><span id="statusText">Running</span></span>
+      <button class="btn" id="replay" type="button">↺ Replay</button>
+      <button class="btn" type="button" data-speed="1">1×</button>
+      <button class="btn" type="button" data-speed="3">3×</button>
+      <button class="btn" id="skip" type="button">Skip to end</button>
+      <button class="btn" id="theme" type="button">Dark mode</button>
+    </div>
+  </header>
+
+  <section class="card pipeline" id="pipeline" aria-label="Onboarding steps"></section>
+  <section class="kpis" id="kpis"></section>
+
+  <section class="main">
+    <div class="card">
+      <h2>New hires</h2>
+      <p class="desc">Each card fills in as the script works through that person. Click a card for details.</p>
+      <div class="hires" id="hires"></div>
+    </div>
+    <div class="console" aria-label="Live log">
+      <div class="bar"><b>Live log</b><span id="logFile">Start-Onboarding.ps1</span></div>
+      <div class="log" id="log" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="grid2">
+    <div class="card">
+      <h2>Sent back to HR</h2>
+      <p class="desc">Rows the script would not guess at. Fix them in the HR file and run it again.</p>
+      <div id="hrIssues"></div>
+    </div>
+    <div class="card">
+      <h2>Skipped</h2>
+      <p class="desc">Safe to ignore: duplicates and people who already have an account.</p>
+      <div id="skipped"></div>
+    </div>
+  </section>
+
+  <footer>Replay of a run of <code>Start-Onboarding.ps1</code> against the practice directory. All people are fictional sample data. Passwords are never logged.</footer>
+</div>
+
+<div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-labelledby="dName"><aside class="drawer" id="drawer"></aside></div>
+
+<script>
+const RUN = {"company":"Summit Logistics (sample data)","hr_file":"hr_new_hires.csv","mode":"Simulated","what_if":false,"as_of":"2026-10-20","started":"2026-10-20T16:02:36.0616135-07:00","finished":"2026-10-20T16:02:36.695414-07:00","counts":{"onboarded":11,"needs_hr":5,"skipped":1,"error":0},"device_requests":18,"hires":[{"employee_id":"E10421","name":"Maria Gonzalez","department":"Sales","title":"Account Executive","site":"Los Angeles HQ","manager":"omar.ali@summitlogistics.example","start_date":"2026-10-26","employment_type":"Full-time","row":2,"status":"onboarded","issues":[],"display_name":"Maria Gonzalez","sam":"maria.gonzalez","username":"maria.gonzalez","email":"maria.gonzalez@summitlogistics.example","groups":["All-Staff","MFA-Required","Sales-Team","CRM-Users","VPN-Users","Site-LAX"],"license":"LIC-M365-E3","devices":["Laptop","iPhone"],"requests":["REQ-261020-001","REQ-261020-002"],"checklist":"checklists/maria.gonzalez.md","account_expires":null},{"employee_id":"E10422","name":"James Okafor","department":"Finance","title":"Staff Accountant","site":"Long Beach","manager":"linh.tran@summitlogistics.example","start_date":"2026-10-26","employment_type":"Full-time","row":3,"status":"onboarded","issues":[],"display_name":"Jim Okafor","sam":"james.okafor","username":"james.okafor","email":"james.okafor@summitlogistics.example","groups":["All-Staff","MFA-Required","Finance-Team","Finance-Share-RW","VPN-Users","Site-LGB"],"license":"LIC-M365-E3","devices":["Laptop"],"requests":["REQ-261020-003"],"checklist":"checklists/james.okafor.md","account_expires":null},{"employee_id":"E10423","name":"Ana Smith","department":"Customer Service","title":"Customer Service Representative","site":"Torrance","manager":"grace.walker@summitlogistics.example","start_date":"2026-10-26","employment_type":"Full-time","row":4,"status":"onboarded","issues":[],"display_name":"Ana Smith","sam":"ana.smith2","username":"ana.smith2","email":"ana.smith2@summitlogistics.example","groups":["All-Staff","MFA-Required","CS-Team","Ticketing-Agents","Site-TOR"],"license":"LIC-M365-E3","devices":["Desktop","Headset"],"requests":["REQ-261020-004","REQ-261020-005"],"checklist":"checklists/ana.smith2.md","account_expires":null},{"employee_id":"E10424","name":"Daniel Nguyen","department":"Warehouse","title":"Warehouse Associate","site":"Ontario","manager":"marcus.hall@summitlogistics.example","start_date":"2026-10-26","employment_type":"Full-time","row":5,"status":"onboarded","issues":[],"display_name":"Daniel Nguyen","sam":"daniel.nguyen","username":"daniel.nguyen","email":"daniel.nguyen@summitlogistics.example","groups":["All-Staff","MFA-Required","Warehouse-Team","Scanner-Users","Site-ONT"],"license":"LIC-M365-F3","devices":["iPad"],"requests":["REQ-261020-006"],"checklist":"checklists/daniel.nguyen.md","account_expires":null},{"employee_id":"E10425","name":"Priya Patel","department":"IT","title":"Help Desk Technician","site":"Los Angeles HQ","manager":"andre.wilson@summitlogistics.example","start_date":"2026-10-27","employment_type":"Full-time","row":6,"status":"onboarded","issues":[],"display_name":"Priya Patel","sam":"priya.patel","username":"priya.patel","email":"priya.patel@summitlogistics.example","groups":["All-Staff","MFA-Required","IT-Team","IT-Helpdesk-Tier1","VPN-Users","Site-LAX"],"license":"LIC-M365-E5","devices":["Laptop","iPhone"],"requests":["REQ-261020-007","REQ-261020-008"],"checklist":"checklists/priya.patel.md","account_expires":null},{"employee_id":"E10426","name":"Luis Hernández","department":"Operations","title":"Operations Coordinator","site":"Santa Clarita","manager":"elena.reyes@summitlogistics.example","start_date":"2026-10-27","employment_type":"Full-time","row":7,"status":"onboarded","issues":[],"display_name":"Luis Hernández","sam":"luis.hernandez","username":"luis.hernandez","email":"luis.hernandez@summitlogistics.example","groups":["All-Staff","MFA-Required","Ops-Team","VPN-Users","Site-SCV"],"license":"LIC-M365-E3","devices":["Laptop","iPhone"],"requests":["REQ-261020-009","REQ-261020-010"],"checklist":"checklists/luis.hernandez.md","account_expires":null},{"employee_id":"E10427","name":"Sofia O'Brien","department":"Marketing","title":"Marketing Specialist","site":"Pasadena","manager":"chloe.young@summitlogistics.example","start_date":"2026-10-27","employment_type":"Full-time","row":8,"status":"onboarded","issues":[],"display_name":"Sofia O'Brien","sam":"sofia.obrien","username":"sofia.obrien","email":"sofia.obrien@summitlogistics.example","groups":["All-Staff","MFA-Required","Marketing-Team","Brand-Assets-RW","Site-PAS"],"license":"LIC-M365-E3","devices":["Laptop"],"requests":["REQ-261020-011"],"checklist":"checklists/sofia.obrien.md","account_expires":null},{"employee_id":"E10428","name":"Kevin Tran","department":"Marketing","title":"Content Designer","site":"Pasadena","manager":"chloe.young@summitlogistics.example","start_date":"2026-10-28","employment_type":"Contractor","row":9,"status":"onboarded","issues":[],"display_name":"Kevin Tran","sam":"kevin.tran","username":"kevin.tran","email":"kevin.tran@summitlogistics.example","groups":["All-Staff","MFA-Required","Marketing-Team","Brand-Assets-RW","Site-PAS","Contractors"],"license":"LIC-M365-F3","devices":["Laptop"],"requests":["REQ-261020-012"],"checklist":"checklists/kevin.tran.md","account_expires":"2027-01-26"},{"employee_id":"E10429","name":"Grace Kim","department":"Customer Service","title":"Customer Service Representative","site":"Irvine","manager":"grace.walker@summitlogistics.example","start_date":"2026-10-28","employment_type":"Full-time","row":10,"status":"onboarded","issues":[],"display_name":"Grace Kim","sam":"grace.kim","username":"grace.kim","email":"grace.kim@summitlogistics.example","groups":["All-Staff","MFA-Required","CS-Team","Ticketing-Agents","Site-IRV"],"license":"LIC-M365-E3","devices":["Desktop","Headset"],"requests":["REQ-261020-013","REQ-261020-014"],"checklist":"checklists/grace.kim.md","account_expires":null},{"employee_id":"E10430","name":"Omari Bennett","department":"Executive","title":"VP of Finance","site":"Los Angeles HQ","manager":"omar.ali@summitlogistics.example","start_date":"2026-11-02","employment_type":"Full-time","row":11,"status":"onboarded","issues":[],"display_name":"Omari Bennett","sam":"omari.bennett","username":"omari.bennett","email":"omari.bennett@summitlogistics.example","groups":["All-Staff","MFA-Required","Exec-Team","VPN-Users","Board-Docs-R","Site-LAX"],"license":"LIC-M365-E5","devices":["Laptop","iPhone","iPad"],"requests":["REQ-261020-015","REQ-261020-016","REQ-261020-017"],"checklist":"checklists/omari.bennett.md","account_expires":null},{"employee_id":"E10431","name":"Rosa Delgado-Villanueva","department":"HR","title":"HR Generalist","site":"Burbank","manager":"nora.flores@summitlogistics.example","start_date":"2026-11-02","employment_type":"Full-time","row":12,"status":"onboarded","issues":[],"display_name":"Rosa Delgado-Villanueva","sam":"rosa.delgado-villanu","username":"rosa.delgado-villanueva","email":"rosa.delgado-villanueva@summitlogistics.example","groups":["All-Staff","MFA-Required","HR-Team","HR-Confidential-RW","VPN-Users","Site-BUR"],"license":"LIC-M365-E3","devices":["Laptop"],"requests":["REQ-261020-018"],"checklist":"checklists/rosa.delgado-villanueva.md","account_expires":null},{"employee_id":"E10421","name":"Maria Gonzalez","department":"Sales","title":"Account Executive","site":"Los Angeles HQ","manager":"omar.ali@summitlogistics.example","start_date":"2026-10-26","employment_type":"Full-time","row":13,"status":"skipped","issues":["Duplicate of row 2 in the HR file"],"display_name":null,"sam":null,"username":null,"email":null,"groups":[],"license":null,"devices":[],"requests":[],"checklist":null,"account_expires":null},{"employee_id":"E10432","name":"Tyler Brooks","department":"Legal","title":"Contracts Manager","site":"Los Angeles HQ","manager":"omar.ali@summitlogistics.example","start_date":"2026-10-26","employment_type":"Full-time","row":14,"status":"needs_hr","issues":["Department 'Legal' has no access profile in config/onboarding.json"],"display_name":null,"sam":null,"username":null,"email":null,"groups":[],"license":null,"devices":[],"requests":[],"checklist":null,"account_expires":null},{"employee_id":"E10433","name":"Hannah Lee","department":"Sales","title":"Sales Development Rep","site":"Burbank","manager":"","start_date":"2026-10-28","employment_type":"Full-time","row":15,"status":"needs_hr","issues":["Missing Manager"],"display_name":null,"sam":null,"username":null,"email":null,"groups":[],"license":null,"devices":[],"requests":[],"checklist":null,"account_expires":null},{"employee_id":"E10434","name":"Ethan Ramirez","department":"Warehouse","title":"Forklift Operator","site":"Ontario","manager":"marcus.hall@summitlogistics.example","start_date":"2026-10-12","employment_type":"Full-time","row":16,"status":"needs_hr","issues":["Start date 2026-10-12 has already passed"],"display_name":null,"sam":null,"username":null,"email":null,"groups":[],"license":null,"devices":[],"requests":[],"checklist":null,"account_expires":null},{"employee_id":"E10435","name":"Jasmine Wright","department":"Finance","title":"Payroll Specialist","site":"Long Beach","manager":"linh.tran@summitlogistics.example","start_date":"2026-10-27","employment_type":"Full-time","row":17,"status":"needs_hr","issues":["Former employee with a disabled account (jasmine.wright). Confirm this is a rehire, then reactivate that account instead of creating a new one"],"display_name":null,"sam":null,"username":null,"email":null,"groups":[],"license":null,"devices":[],"requests":[],"checklist":null,"account_expires":null},{"employee_id":"E10436","name":"Marcus Chen","department":"Sales","title":"Account Executive","site":"Irvine","manager":"d.miller@summitlogistics.example","start_date":"2026-10-29","employment_type":"Full-time","row":18,"status":"needs_hr","issues":["Manager 'd.miller@summitlogistics.example' was not found in the directory"],"display_name":null,"sam":null,"username":null,"email":null,"groups":[],"license":null,"devices":[],"requests":[],"checklist":null,"account_expires":null}],"events":[{"seq":1,"time":"2026-10-20T16:02:36.0735882-07:00","stage":"Read HR file","status":"info","employee_id":"","name":"","message":"Opening hr_new_hires.csv"},{"seq":2,"time":"2026-10-20T16:02:36.1672363-07:00","stage":"Read HR file","status":"ok","employee_id":"","name":"","message":"Read 17 rows from hr_new_hires.csv"},{"seq":3,"time":"2026-10-20T16:02:36.1976163-07:00","stage":"Read HR file","status":"info","employee_id":"","name":"","message":"Loaded access profiles for 9 departments and 9 sites"},{"seq":4,"time":"2026-10-20T16:02:36.240607-07:00","stage":"Read HR file","status":"info","employee_id":"","name":"","message":"Opened practice directory: 10 existing accounts"},{"seq":5,"time":"2026-10-20T16:02:36.2538057-07:00","stage":"Validate","status":"info","employee_id":"E10421","name":"Maria Gonzalez","message":"Checking row 2: Account Executive, Sales"},{"seq":6,"time":"2026-10-20T16:02:36.314479-07:00","stage":"Validate","status":"ok","employee_id":"E10421","name":"Maria Gonzalez","message":"All checks passed"},{"seq":7,"time":"2026-10-20T16:02:36.4251837-07:00","stage":"Create account","status":"ok","employee_id":"E10421","name":"Maria Gonzalez","message":"Created maria.gonzalez@summitlogistics.example for Maria Gonzalez; temporary password set, must change at first sign-in"},{"seq":8,"time":"2026-10-20T16:02:36.430498-07:00","stage":"Add to groups","status":"ok","employee_id":"E10421","name":"Maria Gonzalez","message":"Added to 6 groups: All-Staff, MFA-Required, Sales-Team, CRM-Users, VPN-Users, Site-LAX"},{"seq":9,"time":"2026-10-20T16:02:36.4341789-07:00","stage":"Assign license","status":"ok","employee_id":"E10421","name":"Maria Gonzalez","message":"Assigned M365 E3 license (via LIC-M365-E3 group)"},{"seq":10,"time":"2026-10-20T16:02:36.4396686-07:00","stage":"Request device","status":"ok","employee_id":"E10421","name":"Maria Gonzalez","message":"Opened 2 device requests: Laptop (REQ-261020-001), iPhone (REQ-261020-002), needed by 2026-10-26"},{"seq":11,"time":"2026-10-20T16:02:36.4573743-07:00","stage":"Write checklist","status":"ok","employee_id":"E10421","name":"Maria Gonzalez","message":"Wrote IT checklist: checklists/maria.gonzalez.md"},{"seq":12,"time":"2026-10-20T16:02:36.4669182-07:00","stage":"Validate","status":"info","employee_id":"E10422","name":"James Okafor","message":"Checking row 3: Staff Accountant, Finance"},{"seq":13,"time":"2026-10-20T16:02:36.4690194-07:00","stage":"Validate","status":"ok","employee_id":"E10422","name":"James Okafor","message":"All checks passed"},{"seq":14,"time":"2026-10-20T16:02:36.4791125-07:00","stage":"Create account","status":"ok","employee_id":"E10422","name":"James Okafor","message":"Created james.okafor@summitlogistics.example for Jim Okafor; temporary password set, must change at first sign-in"},{"seq":15,"time":"2026-10-20T16:02:36.4797025-07:00","stage":"Add to groups","status":"ok","employee_id":"E10422","name":"James Okafor","message":"Added to 6 groups: All-Staff, MFA-Required, Finance-Team, Finance-Share-RW, VPN-Users, Site-LGB"},{"seq":16,"time":"2026-10-20T16:02:36.4802379-07:00","stage":"Assign license","status":"ok","employee_id":"E10422","name":"James Okafor","message":"Assigned M365 E3 license (via LIC-M365-E3 group)"},{"seq":17,"time":"2026-10-20T16:02:36.4807757-07:00","stage":"Request device","status":"ok","employee_id":"E10422","name":"James Okafor","message":"Opened 1 device request: Laptop (REQ-261020-003), needed by 2026-10-26"},{"seq":18,"time":"2026-10-20T16:02:36.4846087-07:00","stage":"Write checklist","status":"ok","employee_id":"E10422","name":"James Okafor","message":"Wrote IT checklist: checklists/james.okafor.md"},{"seq":19,"time":"2026-10-20T16:02:36.4881361-07:00","stage":"Validate","status":"info","employee_id":"E10423","name":"Ana Smith","message":"Checking row 4: Customer Service Representative, Customer Service"},{"seq":20,"time":"2026-10-20T16:02:36.4894969-07:00","stage":"Validate","status":"ok","employee_id":"E10423","name":"Ana Smith","message":"All checks passed"},{"seq":21,"time":"2026-10-20T16:02:36.491684-07:00","stage":"Create account","status":"info","employee_id":"E10423","name":"Ana Smith","message":"Username ana.smith is already taken; using ana.smith2"},{"seq":22,"time":"2026-10-20T16:02:36.4978763-07:00","stage":"Create account","status":"ok","employee_id":"E10423","name":"Ana Smith","message":"Created ana.smith2@summitlogistics.example for Ana Smith; temporary password set, must change at first sign-in"},{"seq":23,"time":"2026-10-20T16:02:36.4983345-07:00","stage":"Add to groups","status":"ok","employee_id":"E10423","name":"Ana Smith","message":"Added to 5 groups: All-Staff, MFA-Required, CS-Team, Ticketing-Agents, Site-TOR"},{"seq":24,"time":"2026-10-20T16:02:36.4987406-07:00","stage":"Assign license","status":"ok","employee_id":"E10423","name":"Ana Smith","message":"Assigned M365 E3 license (via LIC-M365-E3 group)"},{"seq":25,"time":"2026-10-20T16:02:36.4993819-07:00","stage":"Request device","status":"ok","employee_id":"E10423","name":"Ana Smith","message":"Opened 2 device requests: Desktop (REQ-261020-004), Headset (REQ-261020-005), needed by 2026-10-26"},{"seq":26,"time":"2026-10-20T16:02:36.5026128-07:00","stage":"Write checklist","status":"ok","employee_id":"E10423","name":"Ana Smith","message":"Wrote IT checklist: checklists/ana.smith2.md"},{"seq":27,"time":"2026-10-20T16:02:36.5034982-07:00","stage":"Validate","status":"info","employee_id":"E10424","name":"Daniel Nguyen","message":"Checking row 5: Warehouse Associate, Warehouse"},{"seq":28,"time":"2026-10-20T16:02:36.5046842-07:00","stage":"Validate","status":"ok","employee_id":"E10424","name":"Daniel Nguyen","message":"All checks passed"},{"seq":29,"time":"2026-10-20T16:02:36.5119897-07:00","stage":"Create account","status":"ok","employee_id":"E10424","name":"Daniel Nguyen","message":"Created daniel.nguyen@summitlogistics.example for Daniel Nguyen; temporary password set, must change at first sign-in"},{"seq":30,"time":"2026-10-20T16:02:36.5123296-07:00","stage":"Add to groups","status":"ok","employee_id":"E10424","name":"Daniel Nguyen","message":"Added to 5 groups: All-Staff, MFA-Required, Warehouse-Team, Scanner-Users, Site-ONT"},{"seq":31,"time":"2026-10-20T16:02:36.5125679-07:00","stage":"Assign license","status":"ok","employee_id":"E10424","name":"Daniel Nguyen","message":"Assigned M365 F3 license (via LIC-M365-F3 group)"},{"seq":32,"time":"2026-10-20T16:02:36.512903-07:00","stage":"Request device","status":"ok","employee_id":"E10424","name":"Daniel Nguyen","message":"Opened 1 device request: iPad (REQ-261020-006), needed by 2026-10-26"},{"seq":33,"time":"2026-10-20T16:02:36.5161738-07:00","stage":"Write checklist","status":"ok","employee_id":"E10424","name":"Daniel Nguyen","message":"Wrote IT checklist: checklists/daniel.nguyen.md"},{"seq":34,"time":"2026-10-20T16:02:36.5168575-07:00","stage":"Validate","status":"info","employee_id":"E10425","name":"Priya Patel","message":"Checking row 6: Help Desk Technician, IT"},{"seq":35,"time":"2026-10-20T16:02:36.518166-07:00","stage":"Validate","status":"ok","employee_id":"E10425","name":"Priya Patel","message":"All checks passed"},{"seq":36,"time":"2026-10-20T16:02:36.5233241-07:00","stage":"Create account","status":"ok","employee_id":"E10425","name":"Priya Patel","message":"Created priya.patel@summitlogistics.example for Priya Patel; temporary password set, must change at first sign-in"},{"seq":37,"time":"2026-10-20T16:02:36.5235989-07:00","stage":"Add to groups","status":"ok","employee_id":"E10425","name":"Priya Patel","message":"Added to 6 groups: All-Staff, MFA-Required, IT-Team, IT-Helpdesk-Tier1, VPN-Users, Site-LAX"},{"seq":38,"time":"2026-10-20T16:02:36.523879-07:00","stage":"Assign license","status":"ok","employee_id":"E10425","name":"Priya Patel","message":"Assigned M365 E5 license (via LIC-M365-E5 group)"},{"seq":39,"time":"2026-10-20T16:02:36.5243007-07:00","stage":"Request device","status":"ok","employee_id":"E10425","name":"Priya Patel","message":"Opened 2 device requests: Laptop (REQ-261020-007), iPhone (REQ-261020-008), needed by 2026-10-27"},{"seq":40,"time":"2026-10-20T16:02:36.5277418-07:00","stage":"Write checklist","status":"ok","employee_id":"E10425","name":"Priya Patel","message":"Wrote IT checklist: checklists/priya.patel.md"},{"seq":41,"time":"2026-10-20T16:02:36.5283871-07:00","stage":"Validate","status":"info","employee_id":"E10426","name":"Luis Hernández","message":"Checking row 7: Operations Coordinator, Operations"},{"seq":42,"time":"2026-10-20T16:02:36.5295841-07:00","stage":"Validate","status":"ok","employee_id":"E10426","name":"Luis Hernández","message":"All checks passed"},{"seq":43,"time":"2026-10-20T16:02:36.5368275-07:00","stage":"Create account","status":"ok","employee_id":"E10426","name":"Luis Hernández","message":"Created luis.hernandez@summitlogistics.example for Luis Hernández; temporary password set, must change at first sign-in"},{"seq":44,"time":"2026-10-20T16:02:36.5371154-07:00","stage":"Add to groups","status":"ok","employee_id":"E10426","name":"Luis Hernández","message":"Added to 5 groups: All-Staff, MFA-Required, Ops-Team, VPN-Users, Site-SCV"},{"seq":45,"time":"2026-10-20T16:02:36.5373616-07:00","stage":"Assign license","status":"ok","employee_id":"E10426","name":"Luis Hernández","message":"Assigned M365 E3 license (via LIC-M365-E3 group)"},{"seq":46,"time":"2026-10-20T16:02:36.5376603-07:00","stage":"Request device","status":"ok","employee_id":"E10426","name":"Luis Hernández","message":"Opened 2 device requests: Laptop (REQ-261020-009), iPhone (REQ-261020-010), needed by 2026-10-27"},{"seq":47,"time":"2026-10-20T16:02:36.5406011-07:00","stage":"Write checklist","status":"ok","employee_id":"E10426","name":"Luis Hernández","message":"Wrote IT checklist: checklists/luis.hernandez.md"},{"seq":48,"time":"2026-10-20T16:02:36.5411781-07:00","stage":"Validate","status":"info","employee_id":"E10427","name":"Sofia O'Brien","message":"Checking row 8: Marketing Specialist, Marketing"},{"seq":49,"time":"2026-10-20T16:02:36.5424121-07:00","stage":"Validate","status":"ok","employee_id":"E10427","name":"Sofia O'Brien","message":"All checks passed"},{"seq":50,"time":"2026-10-20T16:02:36.549012-07:00","stage":"Create account","status":"ok","employee_id":"E10427","name":"Sofia O'Brien","message":"Created sofia.obrien@summitlogistics.example for Sofia O'Brien; temporary password set, must change at first sign-in"},{"seq":51,"time":"2026-10-20T16:02:36.549315-07:00","stage":"Add to groups","status":"ok","employee_id":"E10427","name":"Sofia O'Brien","message":"Added to 5 groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS"},{"seq":52,"time":"2026-10-20T16:02:36.5495093-07:00","stage":"Assign license","status":"ok","employee_id":"E10427","name":"Sofia O'Brien","message":"Assigned M365 E3 license (via LIC-M365-E3 group)"},{"seq":53,"time":"2026-10-20T16:02:36.5498965-07:00","stage":"Request device","status":"ok","employee_id":"E10427","name":"Sofia O'Brien","message":"Opened 1 device request: Laptop (REQ-261020-011), needed by 2026-10-27"},{"seq":54,"time":"2026-10-20T16:02:36.5531472-07:00","stage":"Write checklist","status":"ok","employee_id":"E10427","name":"Sofia O'Brien","message":"Wrote IT checklist: checklists/sofia.obrien.md"},{"seq":55,"time":"2026-10-20T16:02:36.5536334-07:00","stage":"Validate","status":"info","employee_id":"E10428","name":"Kevin Tran","message":"Checking row 9: Content Designer, Marketing"},{"seq":56,"time":"2026-10-20T16:02:36.5550364-07:00","stage":"Validate","status":"ok","employee_id":"E10428","name":"Kevin Tran","message":"All checks passed"},{"seq":57,"time":"2026-10-20T16:02:36.5697252-07:00","stage":"Create account","status":"ok","employee_id":"E10428","name":"Kevin Tran","message":"Created kevin.tran@summitlogistics.example for Kevin Tran; temporary password set, must change at first sign-in"},{"seq":58,"time":"2026-10-20T16:02:36.5700198-07:00","stage":"Create account","status":"info","employee_id":"E10428","name":"Kevin Tran","message":"Contractor account set to expire 2027-01-26"},{"seq":59,"time":"2026-10-20T16:02:36.5703684-07:00","stage":"Add to groups","status":"ok","employee_id":"E10428","name":"Kevin Tran","message":"Added to 6 groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS, Contractors"},{"seq":60,"time":"2026-10-20T16:02:36.5706675-07:00","stage":"Assign license","status":"ok","employee_id":"E10428","name":"Kevin Tran","message":"Assigned M365 F3 license (via LIC-M365-F3 group)"},{"seq":61,"time":"2026-10-20T16:02:36.5711622-07:00","stage":"Request device","status":"ok","employee_id":"E10428","name":"Kevin Tran","message":"Opened 1 device request: Laptop (REQ-261020-012), needed by 2026-10-28"},{"seq":62,"time":"2026-10-20T16:02:36.5740967-07:00","stage":"Write checklist","status":"ok","employee_id":"E10428","name":"Kevin Tran","message":"Wrote IT checklist: checklists/kevin.tran.md"},{"seq":63,"time":"2026-10-20T16:02:36.5753915-07:00","stage":"Validate","status":"info","employee_id":"E10429","name":"Grace Kim","message":"Checking row 10: Customer Service Representative, Customer Service"},{"seq":64,"time":"2026-10-20T16:02:36.5771981-07:00","stage":"Validate","status":"ok","employee_id":"E10429","name":"Grace Kim","message":"All checks passed"},{"seq":65,"time":"2026-10-20T16:02:36.583006-07:00","stage":"Create account","status":"ok","employee_id":"E10429","name":"Grace Kim","message":"Created grace.kim@summitlogistics.example for Grace Kim; temporary password set, must change at first sign-in"},{"seq":66,"time":"2026-10-20T16:02:36.583342-07:00","stage":"Add to groups","status":"ok","employee_id":"E10429","name":"Grace Kim","message":"Added to 5 groups: All-Staff, MFA-Required, CS-Team, Ticketing-Agents, Site-IRV"},{"seq":67,"time":"2026-10-20T16:02:36.5835437-07:00","stage":"Assign license","status":"ok","employee_id":"E10429","name":"Grace Kim","message":"Assigned M365 E3 license (via LIC-M365-E3 group)"},{"seq":68,"time":"2026-10-20T16:02:36.5839101-07:00","stage":"Request device","status":"ok","employee_id":"E10429","name":"Grace Kim","message":"Opened 2 device requests: Desktop (REQ-261020-013), Headset (REQ-261020-014), needed by 2026-10-28"},{"seq":69,"time":"2026-10-20T16:02:36.5868131-07:00","stage":"Write checklist","status":"ok","employee_id":"E10429","name":"Grace Kim","message":"Wrote IT checklist: checklists/grace.kim.md"},{"seq":70,"time":"2026-10-20T16:02:36.5875044-07:00","stage":"Validate","status":"info","employee_id":"E10430","name":"Omari Bennett","message":"Checking row 11: VP of Finance, Executive"},{"seq":71,"time":"2026-10-20T16:02:36.5889374-07:00","stage":"Validate","status":"ok","employee_id":"E10430","name":"Omari Bennett","message":"All checks passed"},{"seq":72,"time":"2026-10-20T16:02:36.5946837-07:00","stage":"Create account","status":"ok","employee_id":"E10430","name":"Omari Bennett","message":"Created omari.bennett@summitlogistics.example for Omari Bennett; temporary password set, must change at first sign-in"},{"seq":73,"time":"2026-10-20T16:02:36.5951512-07:00","stage":"Add to groups","status":"ok","employee_id":"E10430","name":"Omari Bennett","message":"Added to 6 groups: All-Staff, MFA-Required, Exec-Team, VPN-Users, Board-Docs-R, Site-LAX"},{"seq":74,"time":"2026-10-20T16:02:36.5953912-07:00","stage":"Assign license","status":"ok","employee_id":"E10430","name":"Omari Bennett","message":"Assigned M365 E5 license (via LIC-M365-E5 group)"},{"seq":75,"time":"2026-10-20T16:02:36.5958291-07:00","stage":"Request device","status":"ok","employee_id":"E10430","name":"Omari Bennett","message":"Opened 3 device requests: Laptop (REQ-261020-015), iPhone (REQ-261020-016), iPad (REQ-261020-017), needed by 2026-11-02"},{"seq":76,"time":"2026-10-20T16:02:36.5992927-07:00","stage":"Write checklist","status":"ok","employee_id":"E10430","name":"Omari Bennett","message":"Wrote IT checklist: checklists/omari.bennett.md"},{"seq":77,"time":"2026-10-20T16:02:36.5997707-07:00","stage":"Validate","status":"info","employee_id":"E10431","name":"Rosa Delgado-Villanueva","message":"Checking row 12: HR Generalist, HR"},{"seq":78,"time":"2026-10-20T16:02:36.6011723-07:00","stage":"Validate","status":"ok","employee_id":"E10431","name":"Rosa Delgado-Villanueva","message":"All checks passed"},{"seq":79,"time":"2026-10-20T16:02:36.6151192-07:00","stage":"Create account","status":"ok","employee_id":"E10431","name":"Rosa Delgado-Villanueva","message":"Created rosa.delgado-villanueva@summitlogistics.example for Rosa Delgado-Villanueva; temporary password set, must change at first sign-in"},{"seq":80,"time":"2026-10-20T16:02:36.6153432-07:00","stage":"Create account","status":"info","employee_id":"E10431","name":"Rosa Delgado-Villanueva","message":"Windows logon name shortened to the 20-character limit: rosa.delgado-villanu"},{"seq":81,"time":"2026-10-20T16:02:36.6155687-07:00","stage":"Add to groups","status":"ok","employee_id":"E10431","name":"Rosa Delgado-Villanueva","message":"Added to 6 groups: All-Staff, MFA-Required, HR-Team, HR-Confidential-RW, VPN-Users, Site-BUR"},{"seq":82,"time":"2026-10-20T16:02:36.6158013-07:00","stage":"Assign license","status":"ok","employee_id":"E10431","name":"Rosa Delgado-Villanueva","message":"Assigned M365 E3 license (via LIC-M365-E3 group)"},{"seq":83,"time":"2026-10-20T16:02:36.6161271-07:00","stage":"Request device","status":"ok","employee_id":"E10431","name":"Rosa Delgado-Villanueva","message":"Opened 1 device request: Laptop (REQ-261020-018), needed by 2026-11-02"},{"seq":84,"time":"2026-10-20T16:02:36.6191377-07:00","stage":"Write checklist","status":"ok","employee_id":"E10431","name":"Rosa Delgado-Villanueva","message":"Wrote IT checklist: checklists/rosa.delgado-villanueva.md"},{"seq":85,"time":"2026-10-20T16:02:36.6196143-07:00","stage":"Validate","status":"info","employee_id":"E10421","name":"Maria Gonzalez","message":"Checking row 13: Account Executive, Sales"},{"seq":86,"time":"2026-10-20T16:02:36.6212937-07:00","stage":"Validate","status":"skip","employee_id":"E10421","name":"Maria Gonzalez","message":"Skipped: duplicate of row 2"},{"seq":87,"time":"2026-10-20T16:02:36.6228467-07:00","stage":"Validate","status":"info","employee_id":"E10432","name":"Tyler Brooks","message":"Checking row 14: Contracts Manager, Legal"},{"seq":88,"time":"2026-10-20T16:02:36.6271949-07:00","stage":"Validate","status":"warn","employee_id":"E10432","name":"Tyler Brooks","message":"Held for HR: Department 'Legal' has no access profile in config/onboarding.json"},{"seq":89,"time":"2026-10-20T16:02:36.6286593-07:00","stage":"Validate","status":"info","employee_id":"E10433","name":"Hannah Lee","message":"Checking row 15: Sales Development Rep, Sales"},{"seq":90,"time":"2026-10-20T16:02:36.630901-07:00","stage":"Validate","status":"warn","employee_id":"E10433","name":"Hannah Lee","message":"Held for HR: Missing Manager"},{"seq":91,"time":"2026-10-20T16:02:36.6313986-07:00","stage":"Validate","status":"info","employee_id":"E10434","name":"Ethan Ramirez","message":"Checking row 16: Forklift Operator, Warehouse"},{"seq":92,"time":"2026-10-20T16:02:36.6338518-07:00","stage":"Validate","status":"warn","employee_id":"E10434","name":"Ethan Ramirez","message":"Held for HR: Start date 2026-10-12 has already passed"},{"seq":93,"time":"2026-10-20T16:02:36.6342632-07:00","stage":"Validate","status":"info","employee_id":"E10435","name":"Jasmine Wright","message":"Checking row 17: Payroll Specialist, Finance"},{"seq":94,"time":"2026-10-20T16:02:36.6373465-07:00","stage":"Validate","status":"warn","employee_id":"E10435","name":"Jasmine Wright","message":"Held for HR: matches disabled account jasmine.wright (possible rehire)"},{"seq":95,"time":"2026-10-20T16:02:36.6389123-07:00","stage":"Validate","status":"info","employee_id":"E10436","name":"Marcus Chen","message":"Checking row 18: Account Executive, Sales"},{"seq":96,"time":"2026-10-20T16:02:36.64235-07:00","stage":"Validate","status":"warn","employee_id":"E10436","name":"Marcus Chen","message":"Held for HR: Manager 'd.miller@summitlogistics.example' was not found in the directory"},{"seq":97,"time":"2026-10-20T16:02:36.692288-07:00","stage":"Summary","status":"ok","employee_id":"","name":"","message":"Done: 11 onboarded, 5 held for HR, 1 skipped, 0 errors"},{"seq":98,"time":"2026-10-20T16:02:36.6925722-07:00","stage":"Summary","status":"warn","employee_id":"","name":"","message":"Sent 5 row(s) back to HR: output/hr_issues.csv"}]};
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const STAGES = ["Read HR file", "Validate", "Create account", "Add to groups", "Assign license", "Request device", "Write checklist"];
+const STEP_STAGES = STAGES.slice(1);            // the per-person steps shown as bars on each card
+const STATUS_LABEL = {onboarded: "Onboarded", needs_hr: "Held for HR", skipped: "Skipped", error: "Error", working: "Working"};
+const fmtDate = d => new Date(d + "T12:00:00").toLocaleDateString("en-US", {month: "short", day: "numeric"});
+
+$("company").textContent = RUN.company;
+$("runInfo").textContent = `${RUN.hr_file} · ${RUN.mode === "Simulated" ? "Practice directory" : "Active Directory"}${RUN.what_if ? " · Preview only" : ""} · ` +
+  new Date(RUN.as_of + "T12:00:00").toLocaleDateString("en-US", {month: "long", day: "numeric", year: "numeric"});
+const HIRES = Object.fromEntries(RUN.hires.map(h => [h.employee_id + "#" + h.row, h]));
+const finalByRow = {};  // the run log names people by employee ID; duplicates share an ID, so track by order seen
+RUN.hires.forEach(h => (finalByRow[h.employee_id] = finalByRow[h.employee_id] || []).push(h));
+
+// ---------- static scaffolding
+$("pipeline").innerHTML = STAGES.map((s, i) =>
+  `<div class="stage" id="st${i}"><div class="node">${i + 1}</div><div class="label">${esc(s)}</div><div class="count" id="stc${i}">–</div></div>`).join("");
+const KPIS = [["rows", "Rows read", null], ["onboarded", "Onboarded", "var(--good)"], ["needs_hr", "Held for HR", "var(--warning)"],
+              ["skipped", "Skipped", "var(--skip)"], ["groups", "Group memberships", null], ["requests", "Device requests", null]];
+$("kpis").innerHTML = KPIS.map(([k, label, c]) =>
+  `<div class="card kpi"><div class="label">${c ? `<span class="dot" style="background:${c}"></span>` : ""}${label}</div><div class="value" id="k_${k}">0</div></div>`).join("");
+
+// ---------- replay state
+let i = 0, speed = 1, timer = null, state;
+function freshState() {
+  return {stageCounts: STAGES.map(() => 0), active: 0, maxStage: 0, cards: [], cardFor: {}, current: null,
+          kpi: {rows: 0, onboarded: 0, needs_hr: 0, skipped: 0, groups: 0, requests: 0}};
+}
+
+function cardFor(evt) {
+  // a new "Checking row" message starts a new card
+  if (evt.stage === "Validate" && /^Checking row/.test(evt.message)) {
+    const list = finalByRow[evt.employee_id] || [];
+    const used = state.cards.filter(c => c.final && c.final.employee_id === evt.employee_id).length;
+    const final = list[used] || {name: evt.name, employee_id: evt.employee_id};
+    const card = {final, steps: new Set(), status: "working", note: ""};
+    state.cards.push(card); state.cardFor[evt.employee_id] = card; return card;
+  }
+  return state.cardFor[evt.employee_id];
+}
+
+function apply(evt) {
+  const s = STAGES.indexOf(evt.stage);
+  if (s >= 0) { state.active = s; state.maxStage = Math.max(state.maxStage, s); if (evt.status === "ok") state.stageCounts[s]++; }
+  if (evt.stage === "Read HR file" && evt.status === "ok") { const m = evt.message.match(/Read (\d+) rows/); if (m) state.kpi.rows = +m[1]; }
+  if (evt.employee_id) {
+    const card = cardFor(evt);
+    if (!card) return;
+    state.current = card;
+    if (evt.status === "ok" && STEP_STAGES.includes(evt.stage)) card.steps.add(evt.stage);
+    if (evt.stage === "Validate" && evt.status === "warn") { card.status = "needs_hr"; card.note = evt.message.replace(/^Held for HR: /, ""); state.kpi.needs_hr += card._counted ? 0 : 1; card._counted = true; }
+    if (evt.stage === "Validate" && evt.status === "skip") { card.status = "skipped"; card.note = evt.message.replace(/^Skipped: /, ""); state.kpi.skipped++; }
+    if (evt.stage === "Add to groups" && evt.status === "ok") { const m = evt.message.match(/to (\d+) groups/); if (m) state.kpi.groups += +m[1]; }
+    if (evt.stage === "Request device" && evt.status === "ok") { const m = evt.message.match(/Opened (\d+)/); if (m) state.kpi.requests += +m[1]; }
+    if (evt.stage === "Write checklist" && evt.status === "ok") { card.status = "onboarded"; state.kpi.onboarded++; }
+    if (evt.status === "error") card.status = "error";
+  }
+}
+
+// ---------- rendering
+function logLine(evt, animate) {
+  const div = document.createElement("div");
+  div.innerHTML = `<span class="stg">${esc(evt.stage)}</span><span class="${evt.status}">${evt.name ? `<span class="who">${esc(evt.name)}</span> ` : ""}${esc(evt.message)}</span>`;
+  const log = $("log");
+  log.querySelector(".cursor")?.classList.remove("cursor");
+  div.lastChild.classList.add("cursor");
+  log.appendChild(div);
+  if (animate) log.scrollTop = log.scrollHeight;
+}
+
+function renderCards() {
+  const box = $("hires");
+  state.cards.forEach((c, n) => {
+    let el = box.children[n];
+    if (!el) {
+      el = document.createElement("div"); el.className = "hire enter"; el.tabIndex = 0;
+      el.addEventListener("click", () => openDrawer(c.final));
+      el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDrawer(c.final); } });
+      box.appendChild(el); requestAnimationFrame(() => el.classList.remove("enter"));
+    }
+    const f = c.final, label = STATUS_LABEL[c.status];
+    el.className = "hire" + (c.status === "onboarded" ? " done" : "") + (c.status === "skipped" ? " skipped" : "") +
+                   (state.current === c && timer ? " current" : "");
+    el.setAttribute("aria-label", `${f.name}: ${label}`);
+    el.innerHTML = `<div class="top"><div><div class="name">${esc(f.display_name || f.name)}</div><div class="meta">${esc(f.title)} · ${esc(f.department)}</div></div>
+      <span class="badge b-${c.status}">${label}</span></div>
+      <div class="start">${esc(f.site)} · starts ${f.start_date ? fmtDate(f.start_date) : "?"}</div>
+      <div class="steps" aria-hidden="true">${STEP_STAGES.map(s => `<span class="${c.steps.has(s) ? "on" : ""}" title="${esc(s)}"></span>`).join("")}</div>
+      ${c.note ? `<div class="note">${esc(c.note)}</div>` : ""}`;
+  });
+}
+
+function render() {
+  STAGES.forEach((_, n) => {
+    const el = $("st" + n);
+    el.classList.toggle("reached", n <= state.maxStage);
+    el.classList.toggle("active", !!timer && n === state.active);
+    $("stc" + n).textContent = n === 0 ? (state.kpi.rows ? `${state.kpi.rows} rows` : "–")
+                             : state.stageCounts[n] ? `${state.stageCounts[n]} done` : "–";
+  });
+  for (const k in state.kpi) $("k_" + k).textContent = state.kpi[k];
+  renderCards();
+  renderTables();
+}
+
+function renderTables() {
+  // only show rows the replay has reached, so the tables fill in as the run goes
+  const reached = state.cards.filter(c => c.status === c.final.status);
+  const held = reached.filter(c => c.status === "needs_hr").map(c => c.final);
+  $("hrIssues").innerHTML = held.length ? `<table><thead><tr><th>Row</th><th>Name</th><th>What HR needs to fix</th></tr></thead><tbody>` +
+    held.map(h => `<tr><td>${h.row}</td><td>${esc(h.name)}</td><td>${h.issues.map(esc).join("<br>")}</td></tr>`).join("") + "</tbody></table>"
+    : `<div class="empty">${timer ? "Nothing held so far." : "Nothing held. Every row was ready."}</div>`;
+  const skipped = reached.filter(c => c.status === "skipped").map(c => c.final);
+  $("skipped").innerHTML = skipped.length ? `<table><thead><tr><th>Name</th><th>Why</th></tr></thead><tbody>` +
+    skipped.map(h => `<tr><td>${esc(h.name)}</td><td>${h.issues.map(esc).join("<br>")}</td></tr>`).join("") + "</tbody></table>"
+    : `<div class="empty">${timer ? "Nothing skipped so far." : "Nothing skipped."}</div>`;
+}
+
+function openDrawer(h) {
+  const label = STATUS_LABEL[h.status] || "";
+  const facts = [["Employee ID", h.employee_id], ["Title", `${h.title}, ${h.department}`], ["Site", h.site], ["Manager", h.manager || "Missing"],
+                 ["Start date", h.start_date], ["Type", h.employment_type]];
+  if (h.email) facts.push(["Sign-in", h.email], ["Windows logon", h.sam || h.username]);
+  if (h.account_expires) facts.push(["Account expires", h.account_expires]);
+  $("drawer").innerHTML = `<button class="x" type="button" id="closeD" aria-label="Close">×</button>
+    <span class="badge b-${h.status}">${label}</span><h3 id="dName">${esc(h.display_name || h.name)}</h3>
+    <h4>Details</h4><div class="facts">${facts.map(([k, v]) => `<span>${esc(k)}</span><span>${esc(v)}</span>`).join("")}</div>
+    ${h.issues && h.issues.length ? `<h4>${h.status === "skipped" ? "Why it was skipped" : "Needs attention"}</h4>${h.issues.map(x => `<div class="issue">${esc(x)}</div>`).join("")}` : ""}
+    ${h.groups && h.groups.length ? `<h4>Groups</h4><div class="chips">${h.groups.map(g => `<span>${esc(g)}</span>`).join("")}</div>` : ""}
+    ${h.license ? `<h4>License</h4><div class="chips"><span>${esc(h.license)}</span></div>` : ""}
+    ${h.devices && h.devices.length ? `<h4>Device requests</h4><div class="facts">${h.devices.map((d, n) => `<span>${esc(h.requests[n])}</span><span>${esc(d)}</span>`).join("")}</div>` : ""}
+    ${h.checklist ? `<h4>IT checklist</h4><div>Saved to <code>output/${esc(h.checklist)}</code></div>` : ""}`;
+  $("scrim").classList.add("open"); $("closeD").focus(); $("closeD").onclick = closeDrawer;
+}
+function closeDrawer() { $("scrim").classList.remove("open"); }
+$("scrim").addEventListener("click", e => { if (e.target.id === "scrim") closeDrawer(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+// ---------- playback
+function delayFor(evt) {
+  const base = evt.status === "warn" || evt.status === "skip" ? 520 : evt.stage === "Validate" && /^Checking/.test(evt.message) ? 380 : 300;
+  return base / speed;
+}
+function step() {
+  if (i >= RUN.events.length) { finish(); return; }
+  const evt = RUN.events[i++];
+  apply(evt); logLine(evt, true); render();
+  timer = setTimeout(step, delayFor(evt));
+}
+function finish() {
+  clearTimeout(timer); timer = null;
+  $("status").className = "status done"; $("statusText").textContent = "Complete";
+  $("log").querySelector(".cursor")?.classList.remove("cursor");
+  render();
+}
+function start() {
+  clearTimeout(timer); timer = null; i = 0; state = freshState();
+  $("log").innerHTML = ""; $("hires").innerHTML = "";
+  $("status").className = "status running"; $("statusText").textContent = RUN.what_if ? "Previewing" : "Running";
+  timer = setTimeout(step, 250);
+}
+function skipToEnd() {
+  clearTimeout(timer); timer = null;
+  if (i === 0) { state = freshState(); $("log").innerHTML = ""; $("hires").innerHTML = ""; }
+  while (i < RUN.events.length) { const e = RUN.events[i++]; apply(e); logLine(e, false); }
+  $("log").scrollTop = $("log").scrollHeight;
+  finish();
+}
+$("replay").addEventListener("click", start);
+$("skip").addEventListener("click", skipToEnd);
+document.querySelectorAll("[data-speed]").forEach(b => b.addEventListener("click", () => {
+  speed = +b.dataset.speed;
+  document.querySelectorAll("[data-speed]").forEach(x => x.setAttribute("aria-pressed", x === b));
+}));
+document.querySelector('[data-speed="1"]').setAttribute("aria-pressed", "true");
+$("theme").addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+});
+
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) { state = freshState(); skipToEnd(); } else { start(); }
+</script>
+</body>
+</html>
+

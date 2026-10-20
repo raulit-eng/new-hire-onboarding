@@ -1,0 +1,18 @@
+"employee_id","name","status","username","email","department","title","site","start_date","license","groups","requests","account_expires"
+"E10421","Maria Gonzalez","onboarded","maria.gonzalez","maria.gonzalez@summitlogistics.example","Sales","Account Executive","Los Angeles HQ","2026-10-26","LIC-M365-E3","All-Staff; MFA-Required; Sales-Team; CRM-Users; VPN-Users; Site-LAX","REQ-261020-001; REQ-261020-002",
+"E10422","James Okafor","onboarded","james.okafor","james.okafor@summitlogistics.example","Finance","Staff Accountant","Long Beach","2026-10-26","LIC-M365-E3","All-Staff; MFA-Required; Finance-Team; Finance-Share-RW; VPN-Users; Site-LGB","REQ-261020-003",
+"E10423","Ana Smith","onboarded","ana.smith2","ana.smith2@summitlogistics.example","Customer Service","Customer Service Representative","Torrance","2026-10-26","LIC-M365-E3","All-Staff; MFA-Required; CS-Team; Ticketing-Agents; Site-TOR","REQ-261020-004; REQ-261020-005",
+"E10424","Daniel Nguyen","onboarded","daniel.nguyen","daniel.nguyen@summitlogistics.example","Warehouse","Warehouse Associate","Ontario","2026-10-26","LIC-M365-F3","All-Staff; MFA-Required; Warehouse-Team; Scanner-Users; Site-ONT","REQ-261020-006",
+"E10425","Priya Patel","onboarded","priya.patel","priya.patel@summitlogistics.example","IT","Help Desk Technician","Los Angeles HQ","2026-10-27","LIC-M365-E5","All-Staff; MFA-Required; IT-Team; IT-Helpdesk-Tier1; VPN-Users; Site-LAX","REQ-261020-007; REQ-261020-008",
+"E10426","Luis Hernández","onboarded","luis.hernandez","luis.hernandez@summitlogistics.example","Operations","Operations Coordinator","Santa Clarita","2026-10-27","LIC-M365-E3","All-Staff; MFA-Required; Ops-Team; VPN-Users; Site-SCV","REQ-261020-009; REQ-261020-010",
+"E10427","Sofia O'Brien","onboarded","sofia.obrien","sofia.obrien@summitlogistics.example","Marketing","Marketing Specialist","Pasadena","2026-10-27","LIC-M365-E3","All-Staff; MFA-Required; Marketing-Team; Brand-Assets-RW; Site-PAS","REQ-261020-011",
+"E10428","Kevin Tran","onboarded","kevin.tran","kevin.tran@summitlogistics.example","Marketing","Content Designer","Pasadena","2026-10-28","LIC-M365-F3","All-Staff; MFA-Required; Marketing-Team; Brand-Assets-RW; Site-PAS; Contractors","REQ-261020-012","2027-01-26"
+"E10429","Grace Kim","onboarded","grace.kim","grace.kim@summitlogistics.example","Customer Service","Customer Service Representative","Irvine","2026-10-28","LIC-M365-E3","All-Staff; MFA-Required; CS-Team; Ticketing-Agents; Site-IRV","REQ-261020-013; REQ-261020-014",
+"E10430","Omari Bennett","onboarded","omari.bennett","omari.bennett@summitlogistics.example","Executive","VP of Finance","Los Angeles HQ","2026-11-02","LIC-M365-E5","All-Staff; MFA-Required; Exec-Team; VPN-Users; Board-Docs-R; Site-LAX","REQ-261020-015; REQ-261020-016; REQ-261020-017",
+"E10431","Rosa Delgado-Villanueva","onboarded","rosa.delgado-villanueva","rosa.delgado-villanueva@summitlogistics.example","HR","HR Generalist","Burbank","2026-11-02","LIC-M365-E3","All-Staff; MFA-Required; HR-Team; HR-Confidential-RW; VPN-Users; Site-BUR","REQ-261020-018",
+"E10421","Maria Gonzalez","skipped",,,"Sales","Account Executive","Los Angeles HQ","2026-10-26",,"","",
+"E10432","Tyler Brooks","needs_hr",,,"Legal","Contracts Manager","Los Angeles HQ","2026-10-26",,"","",
+"E10433","Hannah Lee","needs_hr",,,"Sales","Sales Development Rep","Burbank","2026-10-28",,"","",
+"E10434","Ethan Ramirez","needs_hr",,,"Warehouse","Forklift Operator","Ontario","2026-10-12",,"","",
+"E10435","Jasmine Wright","needs_hr",,,"Finance","Payroll Specialist","Long Beach","2026-10-27",,"","",
+"E10436","Marcus Chen","needs_hr",,,"Sales","Account Executive","Irvine","2026-10-29",,"","",

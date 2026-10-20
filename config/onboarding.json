@@ -1,0 +1,31 @@
+{
+  "domain": "summitlogistics.example",
+  "usernameFormat": "first.last",
+  "ouPath": "OU=Users,OU=Summit,DC=summitlogistics,DC=example",
+  "contractorAccountDays": 90,
+  "maxDaysAhead": 60,
+  "everyoneGroups": ["All-Staff", "MFA-Required"],
+  "sites": {
+    "Los Angeles HQ": { "code": "LAX", "group": "Site-LAX" },
+    "Long Beach":     { "code": "LGB", "group": "Site-LGB" },
+    "Santa Clarita":  { "code": "SCV", "group": "Site-SCV" },
+    "Palmdale":       { "code": "PMD", "group": "Site-PMD" },
+    "Burbank":        { "code": "BUR", "group": "Site-BUR" },
+    "Pasadena":       { "code": "PAS", "group": "Site-PAS" },
+    "Torrance":       { "code": "TOR", "group": "Site-TOR" },
+    "Ontario":        { "code": "ONT", "group": "Site-ONT" },
+    "Irvine":         { "code": "IRV", "group": "Site-IRV" }
+  },
+  "departments": {
+    "Sales":            { "groups": ["Sales-Team", "CRM-Users", "VPN-Users"],          "license": "LIC-M365-E3", "devices": ["Laptop", "iPhone"], "apps": ["Salesforce", "Microsoft 365", "Zoom"] },
+    "Finance":          { "groups": ["Finance-Team", "Finance-Share-RW", "VPN-Users"], "license": "LIC-M365-E3", "devices": ["Laptop"],           "apps": ["NetSuite", "Microsoft 365", "Expensify"] },
+    "Customer Service": { "groups": ["CS-Team", "Ticketing-Agents"],                   "license": "LIC-M365-E3", "devices": ["Desktop", "Headset"], "apps": ["Zendesk", "Microsoft 365"] },
+    "Warehouse":        { "groups": ["Warehouse-Team", "Scanner-Users"],               "license": "LIC-M365-F3", "devices": ["iPad"],             "apps": ["WMS Mobile", "Microsoft Teams"] },
+    "IT":               { "groups": ["IT-Team", "IT-Helpdesk-Tier1", "VPN-Users"],     "license": "LIC-M365-E5", "devices": ["Laptop", "iPhone"], "apps": ["Intune", "Jamf", "Zendesk", "Microsoft 365"] },
+    "Operations":       { "groups": ["Ops-Team", "VPN-Users"],                         "license": "LIC-M365-E3", "devices": ["Laptop", "iPhone"], "apps": ["WMS", "Microsoft 365"] },
+    "Marketing":        { "groups": ["Marketing-Team", "Brand-Assets-RW"],             "license": "LIC-M365-E3", "devices": ["Laptop"],           "apps": ["Adobe Creative Cloud", "HubSpot", "Microsoft 365"] },
+    "HR":               { "groups": ["HR-Team", "HR-Confidential-RW", "VPN-Users"],    "license": "LIC-M365-E3", "devices": ["Laptop"],           "apps": ["Workday", "Microsoft 365"] },
+    "Executive":        { "groups": ["Exec-Team", "VPN-Users", "Board-Docs-R"],        "license": "LIC-M365-E5", "devices": ["Laptop", "iPhone", "iPad"], "apps": ["Microsoft 365", "Zoom", "DocuSign"] }
+  },
+  "contractor": { "addGroups": ["Contractors"], "removeGroups": ["VPN-Users"], "license": "LIC-M365-F3" }
+}
