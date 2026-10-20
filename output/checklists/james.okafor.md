@@ -18,7 +18,7 @@
 - [x] IT tickets opened: IT-4103 (retire device, Laptop); IT-4104 (image from stock, Laptop)
 
 ## Before day one (IT)
-- [ ] Laptop AT-002301 imaged from stock and ready - IT-4104, due 2026-10-22
+- [ ] Laptop AT-002361 imaged from stock and ready - IT-4104, due 2026-10-22
 - [ ] Give the temporary password to linh.tran@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: NetSuite, Microsoft 365, Expensify
 - [ ] Ask linh.tran@summitlogistics.example whether Jim Okafor also needs access Dana Brooks had: AP-Approvers, NetSuite-Admins

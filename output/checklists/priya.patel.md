@@ -18,7 +18,7 @@
 - [x] IT tickets opened: IT-4109 (recover equipment, Laptop); IT-4110 (image from stock, Laptop); IT-4111 (re-image and re-issue, iPhone)
 
 ## Before day one (IT)
-- [ ] Laptop AT-002302 imaged from stock and ready - IT-4110, due 2026-10-23
+- [ ] Laptop AT-002360 imaged from stock and ready - IT-4110, due 2026-10-23
 - [ ] iPhone AT-002211 re-imaged and ready (previously Sam Rivera's) - IT-4111, due 2026-10-23
 - [ ] Give the temporary password to andre.wilson@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: Intune, Jamf, Zendesk, Microsoft 365

@@ -4,8 +4,8 @@
   "mode": "Simulated",
   "what_if": false,
   "as_of": "2026-10-20",
-  "started": "2026-10-20T16:35:18.9250529-07:00",
-  "finished": "2026-10-20T16:35:19.8823253-07:00",
+  "started": "2026-10-20T16:45:54.8636703-07:00",
+  "finished": "2026-10-20T16:45:55.7124654-07:00",
   "counts": {
     "onboarded": 11,
     "needs_hr": 5,
@@ -252,7 +252,7 @@
             "title": "Before day one (IT)",
             "items": [
               {
-                "text": "Laptop AT-002301 imaged from stock and ready - IT-4104, due 2026-10-22",
+                "text": "Laptop AT-002361 imaged from stock and ready - IT-4104, due 2026-10-22",
                 "done": false
               },
               {
@@ -710,7 +710,7 @@
             "title": "Before day one (IT)",
             "items": [
               {
-                "text": "Laptop AT-002302 imaged from stock and ready - IT-4110, due 2026-10-23",
+                "text": "Laptop AT-002360 imaged from stock and ready - IT-4110, due 2026-10-23",
                 "done": false
               },
               {
@@ -883,7 +883,7 @@
                 "done": false
               },
               {
-                "text": "iPhone AT-002305 imaged from stock and ready - IT-4113, due 2026-10-23",
+                "text": "iPhone AT-002370 imaged from stock and ready - IT-4113, due 2026-10-23",
                 "done": false
               },
               {
@@ -1128,7 +1128,7 @@
                 "done": true
               },
               {
-                "text": "IT tickets opened: IT-4115 (order new device, Laptop)",
+                "text": "IT tickets opened: IT-4115 (image from stock, Laptop)",
                 "done": true
               }
             ]
@@ -1137,7 +1137,7 @@
             "title": "Before day one (IT)",
             "items": [
               {
-                "text": "New Laptop ordered, received and set up (arrange a loaner if it will be late) - IT-4115, due 2026-10-26",
+                "text": "Laptop AT-002362 imaged from stock and ready - IT-4115, due 2026-10-26",
                 "done": false
               },
               {
@@ -1405,7 +1405,7 @@
                 "done": false
               },
               {
-                "text": "New iPhone ordered, received and set up (arrange a loaner if it will be late) - IT-4120, due 2026-10-29",
+                "text": "Loaner iPhone AT-001995 ready for day one; new iPhone ordered - IT-4120, due 2026-10-29",
                 "done": false
               },
               {
@@ -1460,6 +1460,10 @@
               },
               {
                 "text": "Manager confirms all access is correct",
+                "done": false
+              },
+              {
+                "text": "When the new iPhone arrives, swap it for loaner AT-001995 and return the loaner - IT-4120",
                 "done": false
               }
             ]
@@ -1580,7 +1584,7 @@
             "title": "Before day one (IT)",
             "items": [
               {
-                "text": "New Laptop ordered, received and set up (arrange a loaner if it will be late) - IT-4122, due 2026-10-29",
+                "text": "Loaner Laptop AT-001991 ready for day one; new Laptop ordered - IT-4122, due 2026-10-29",
                 "done": false
               },
               {
@@ -1627,6 +1631,10 @@
               },
               {
                 "text": "Manager confirms all access is correct",
+                "done": false
+              },
+              {
+                "text": "When the new Laptop arrives, swap it for loaner AT-001991 and return the loaner - IT-4122",
                 "done": false
               }
             ]
@@ -1883,24 +1891,24 @@
       "employee_id": "E10422",
       "for": "Jim Okafor",
       "device": "Laptop",
-      "asset_tag": "AT-002301",
-      "model": "Dell Latitude 5450",
+      "asset_tag": "AT-002361",
+      "model": "Lenovo ThinkPad T14",
       "source": "Stock",
       "site": "Long Beach",
       "team": "Desktop Support - LGB",
       "due": "2026-10-22",
       "priority": "High",
       "status": "Open",
-      "summary": "Set up spare Laptop AT-002301 (transfer from Los Angeles HQ) for Jim Okafor.",
+      "summary": "Set up Laptop AT-002361 (re-imaged, ready to go) for Jim Okafor.",
       "steps": [
-        "Pull spare AT-002301 (Dell Latitude 5450) at Los Angeles HQ",
+        "Pull spare AT-002361 (Lenovo ThinkPad T14) at Long Beach",
         "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
         "Install role apps: NetSuite, Microsoft 365, Expensify",
         "Update the asset record: assigned to Jim Okafor (E10422)",
-        "Ship from Los Angeles HQ to Long Beach",
         "Deliver to Long Beach by Oct 22"
       ],
-      "replacing": "Dana Brooks"
+      "replacing": "Dana Brooks",
+      "pool": "Ready"
     },
     {
       "id": "IT-4105",
@@ -1938,7 +1946,7 @@
       "due": "2026-10-22",
       "priority": "High",
       "status": "Open",
-      "summary": "Set up spare Desktop AT-002320 for Ana Smith.",
+      "summary": "Set up Desktop AT-002320 (new in box) for Ana Smith.",
       "steps": [
         "Pull spare AT-002320 (Dell OptiPlex 7020) at Torrance",
         "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
@@ -1946,7 +1954,8 @@
         "Update the asset record: assigned to Ana Smith (E10423)",
         "Deliver to Torrance by Oct 22"
       ],
-      "replacing": "Nina Petrov"
+      "replacing": "Nina Petrov",
+      "pool": "New"
     },
     {
       "id": "IT-4107",
@@ -1968,7 +1977,8 @@
         "Update the asset record: assigned to Ana Smith (E10423)",
         "Deliver to Torrance by Oct 22"
       ],
-      "replacing": "Nina Petrov"
+      "replacing": "Nina Petrov",
+      "pool": "New"
     },
     {
       "id": "IT-4108",
@@ -1984,7 +1994,7 @@
       "due": "2026-10-22",
       "priority": "High",
       "status": "Open",
-      "summary": "Set up spare iPad AT-002340 for Daniel Nguyen.",
+      "summary": "Set up iPad AT-002340 (new in box) for Daniel Nguyen.",
       "steps": [
         "Pull spare AT-002340 (iPad 10th Gen) at Ontario",
         "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
@@ -1992,7 +2002,8 @@
         "Update the asset record: assigned to Daniel Nguyen (E10424)",
         "Deliver to Ontario by Oct 22"
       ],
-      "replacing": null
+      "replacing": null,
+      "pool": "New"
     },
     {
       "id": "IT-4109",
@@ -2022,23 +2033,24 @@
       "employee_id": "E10425",
       "for": "Priya Patel",
       "device": "Laptop",
-      "asset_tag": "AT-002302",
-      "model": "Dell Latitude 5450",
+      "asset_tag": "AT-002360",
+      "model": "Dell Latitude 7440",
       "source": "Stock",
       "site": "Los Angeles HQ",
       "team": "Desktop Support - LAX",
       "due": "2026-10-23",
       "priority": "High",
       "status": "Open",
-      "summary": "Set up spare Laptop AT-002302 for Priya Patel.",
+      "summary": "Set up Laptop AT-002360 (re-imaged, ready to go) for Priya Patel.",
       "steps": [
-        "Pull spare AT-002302 (Dell Latitude 5450) at Los Angeles HQ",
+        "Pull spare AT-002360 (Dell Latitude 7440) at Los Angeles HQ",
         "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
         "Install role apps: Intune, Jamf, Zendesk, Microsoft 365",
         "Update the asset record: assigned to Priya Patel (E10425)",
         "Deliver to Los Angeles HQ by Oct 23"
       ],
-      "replacing": "Sam Rivera"
+      "replacing": "Sam Rivera",
+      "pool": "Ready"
     },
     {
       "id": "IT-4111",
@@ -2078,7 +2090,7 @@
       "due": "2026-10-23",
       "priority": "High",
       "status": "Open",
-      "summary": "Set up spare Laptop AT-002350 for Luis Hernández.",
+      "summary": "Set up Laptop AT-002350 (new in box) for Luis Hernández.",
       "steps": [
         "Pull spare AT-002350 (Dell Latitude 5450) at Santa Clarita",
         "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
@@ -2086,7 +2098,8 @@
         "Update the asset record: assigned to Luis Hernández (E10426)",
         "Deliver to Santa Clarita by Oct 23"
       ],
-      "replacing": null
+      "replacing": null,
+      "pool": "New"
     },
     {
       "id": "IT-4113",
@@ -2094,24 +2107,25 @@
       "employee_id": "E10426",
       "for": "Luis Hernández",
       "device": "iPhone",
-      "asset_tag": "AT-002305",
-      "model": "iPhone 16",
+      "asset_tag": "AT-002370",
+      "model": "iPhone 15",
       "source": "Stock",
       "site": "Santa Clarita",
       "team": "Desktop Support - SCV",
       "due": "2026-10-23",
       "priority": "High",
       "status": "Open",
-      "summary": "Set up spare iPhone AT-002305 (transfer from Los Angeles HQ) for Luis Hernández.",
+      "summary": "Set up iPhone AT-002370 (re-imaged, ready to go) (transfer from Los Angeles HQ) for Luis Hernández.",
       "steps": [
-        "Pull spare AT-002305 (iPhone 16) at Los Angeles HQ",
+        "Pull spare AT-002370 (iPhone 15) at Los Angeles HQ",
         "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
         "Install role apps: WMS, Microsoft 365",
         "Update the asset record: assigned to Luis Hernández (E10426)",
         "Ship from Los Angeles HQ to Santa Clarita",
         "Deliver to Santa Clarita by Oct 23"
       ],
-      "replacing": null
+      "replacing": null,
+      "pool": "Ready"
     },
     {
       "id": "IT-4114",
@@ -2127,7 +2141,7 @@
       "due": "2026-10-23",
       "priority": "High",
       "status": "Open",
-      "summary": "Set up spare Laptop AT-002310 for Sofia O'Brien.",
+      "summary": "Set up Laptop AT-002310 (new in box) for Sofia O'Brien.",
       "steps": [
         "Pull spare AT-002310 (Lenovo ThinkPad T14) at Pasadena",
         "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
@@ -2135,30 +2149,34 @@
         "Update the asset record: assigned to Sofia O'Brien (E10427)",
         "Deliver to Pasadena by Oct 23"
       ],
-      "replacing": null
+      "replacing": null,
+      "pool": "New"
     },
     {
       "id": "IT-4115",
-      "type": "Order new device",
+      "type": "Image from stock",
       "employee_id": "E10428",
       "for": "Kevin Tran",
       "device": "Laptop",
-      "asset_tag": null,
-      "model": null,
-      "source": "Purchase",
+      "asset_tag": "AT-002362",
+      "model": "MacBook Air 13",
+      "source": "Stock",
       "site": "Pasadena",
       "team": "Desktop Support - PAS",
       "due": "2026-10-26",
-      "priority": "High",
+      "priority": "Normal",
       "status": "Open",
-      "summary": "No Laptop available for Kevin Tran. Order one now; it's needed by Oct 28.",
+      "summary": "Set up Laptop AT-002362 (re-imaged, ready to go) (transfer from Los Angeles HQ) for Kevin Tran.",
       "steps": [
-        "Request a quote for a standard Laptop and get manager approval",
-        "Place the order with expedited shipping",
-        "On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf",
-        "Deliver to Pasadena; if it will be late, arrange a loaner for day one"
+        "Pull spare AT-002362 (MacBook Air 13) at Los Angeles HQ",
+        "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
+        "Install role apps: Adobe Creative Cloud, HubSpot, Microsoft 365",
+        "Update the asset record: assigned to Kevin Tran (E10428)",
+        "Ship from Los Angeles HQ to Pasadena",
+        "Deliver to Pasadena by Oct 26"
       ],
-      "replacing": null
+      "replacing": null,
+      "pool": "Ready"
     },
     {
       "id": "IT-4116",
@@ -2174,7 +2192,7 @@
       "due": "2026-10-26",
       "priority": "Normal",
       "status": "Open",
-      "summary": "Set up spare Desktop AT-002330 for Grace Kim.",
+      "summary": "Set up Desktop AT-002330 (new in box) for Grace Kim.",
       "steps": [
         "Pull spare AT-002330 (HP EliteDesk 800) at Irvine",
         "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
@@ -2182,7 +2200,8 @@
         "Update the asset record: assigned to Grace Kim (E10429)",
         "Deliver to Irvine by Oct 26"
       ],
-      "replacing": null
+      "replacing": null,
+      "pool": "New"
     },
     {
       "id": "IT-4117",
@@ -2204,7 +2223,8 @@
         "Update the asset record: assigned to Grace Kim (E10429)",
         "Deliver to Irvine by Oct 26"
       ],
-      "replacing": null
+      "replacing": null,
+      "pool": "New"
     },
     {
       "id": "IT-4118",
@@ -2266,14 +2286,17 @@
       "due": "2026-10-29",
       "priority": "High",
       "status": "Open",
-      "summary": "No iPhone available for Omari Bennett. Order one now; it's needed by Nov 2.",
+      "summary": "No iPhone in stock for Omari Bennett. Order one now, and lend loaner AT-001995 until it arrives.",
       "steps": [
+        "Issue loaner AT-001995 (iPhone 14, from Los Angeles HQ) for day one",
         "Request a quote for a standard iPhone and get manager approval",
         "Place the order with expedited shipping",
         "On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf",
-        "Deliver to Los Angeles HQ; if it will be late, arrange a loaner for day one"
+        "Swap the new iPhone for loaner AT-001995, then re-image the loaner and return it to the loaner pool"
       ],
-      "replacing": "Victor Hale"
+      "replacing": "Victor Hale",
+      "loaner_tag": "AT-001995",
+      "loaner_model": "iPhone 14"
     },
     {
       "id": "IT-4121",
@@ -2313,20 +2336,356 @@
       "due": "2026-10-29",
       "priority": "High",
       "status": "Open",
-      "summary": "No Laptop available for Rosa Delgado-Villanueva. Order one now; it's needed by Nov 2.",
+      "summary": "No Laptop in stock for Rosa Delgado-Villanueva. Order one now, and lend loaner AT-001991 until it arrives.",
       "steps": [
+        "Issue loaner AT-001991 (Dell Latitude 5440, from Burbank) for day one",
         "Request a quote for a standard Laptop and get manager approval",
         "Place the order with expedited shipping",
         "On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf",
-        "Deliver to Burbank; if it will be late, arrange a loaner for day one"
+        "Swap the new Laptop for loaner AT-001991, then re-image the loaner and return it to the loaner pool"
       ],
-      "replacing": null
+      "replacing": null,
+      "loaner_tag": "AT-001991",
+      "loaner_model": "Dell Latitude 5440"
     }
   ],
+  "inventory": [
+    {
+      "AssetTag": "AT-002101",
+      "Type": "Laptop",
+      "Model": "Dell Latitude 5450",
+      "PurchaseDate": "2025-03-14",
+      "Status": "Returned",
+      "Pool": "",
+      "AssignedTo": "E10090",
+      "Site": "Los Angeles HQ",
+      "Notes": "Returned 2026-10-09 in good condition"
+    },
+    {
+      "AssetTag": "AT-002102",
+      "Type": "iPhone",
+      "Model": "iPhone 15",
+      "PurchaseDate": "2024-08-02",
+      "Status": "Returned",
+      "Pool": "",
+      "AssignedTo": "E10090",
+      "Site": "Los Angeles HQ",
+      "Notes": "Returned 2026-10-09"
+    },
+    {
+      "AssetTag": "AT-001877",
+      "Type": "Laptop",
+      "Model": "Lenovo ThinkPad T14",
+      "PurchaseDate": "2021-06-21",
+      "Status": "Returned",
+      "Pool": "",
+      "AssignedTo": "E10095",
+      "Site": "Long Beach",
+      "Notes": "Returned 2026-10-02; battery worn"
+    },
+    {
+      "AssetTag": "AT-002233",
+      "Type": "Desktop",
+      "Model": "Dell OptiPlex 7020",
+      "PurchaseDate": "2024-02-12",
+      "Status": "Assigned",
+      "Pool": "",
+      "AssignedTo": "E10102",
+      "Site": "Torrance",
+      "Notes": "In use until last day 2026-10-30"
+    },
+    {
+      "AssetTag": "AT-002234",
+      "Type": "Headset",
+      "Model": "Jabra Evolve2 50",
+      "PurchaseDate": "2024-02-12",
+      "Status": "Assigned",
+      "Pool": "",
+      "AssignedTo": "E10102",
+      "Site": "Torrance",
+      "Notes": "In use until last day 2026-10-30"
+    },
+    {
+      "AssetTag": "AT-002210",
+      "Type": "Laptop",
+      "Model": "Dell Latitude 5450",
+      "PurchaseDate": "2025-01-08",
+      "Status": "Assigned",
+      "Pool": "",
+      "AssignedTo": "E10110",
+      "Site": "Los Angeles HQ",
+      "Notes": "Not returned after last day 2026-09-25"
+    },
+    {
+      "AssetTag": "AT-002211",
+      "Type": "iPhone",
+      "Model": "iPhone 15",
+      "PurchaseDate": "2024-11-20",
+      "Status": "Returned",
+      "Pool": "",
+      "AssignedTo": "E10110",
+      "Site": "Los Angeles HQ",
+      "Notes": "Returned 2026-09-25"
+    },
+    {
+      "AssetTag": "AT-002050",
+      "Type": "Laptop",
+      "Model": "MacBook Pro 14",
+      "PurchaseDate": "2024-04-03",
+      "Status": "Returned",
+      "Pool": "",
+      "AssignedTo": "E10012",
+      "Site": "Los Angeles HQ",
+      "Notes": "Returned 2026-10-16"
+    },
+    {
+      "AssetTag": "AT-001720",
+      "Type": "iPhone",
+      "Model": "iPhone 13",
+      "PurchaseDate": "2022-09-30",
+      "Status": "Returned",
+      "Pool": "",
+      "AssignedTo": "E10012",
+      "Site": "Los Angeles HQ",
+      "Notes": "Returned 2026-10-16"
+    },
+    {
+      "AssetTag": "AT-002051",
+      "Type": "iPad",
+      "Model": "iPad Air",
+      "PurchaseDate": "2024-04-03",
+      "Status": "Returned",
+      "Pool": "",
+      "AssignedTo": "E10012",
+      "Site": "Los Angeles HQ",
+      "Notes": "Returned 2026-10-16"
+    },
+    {
+      "AssetTag": "AT-002360",
+      "Type": "Laptop",
+      "Model": "Dell Latitude 7440",
+      "PurchaseDate": "2024-05-20",
+      "Status": "In Stock",
+      "Pool": "Ready",
+      "AssignedTo": "",
+      "Site": "Los Angeles HQ",
+      "Notes": "Wiped and re-imaged 2026-09-30; battery 91%"
+    },
+    {
+      "AssetTag": "AT-002361",
+      "Type": "Laptop",
+      "Model": "Lenovo ThinkPad T14",
+      "PurchaseDate": "2024-09-11",
+      "Status": "In Stock",
+      "Pool": "Ready",
+      "AssignedTo": "",
+      "Site": "Long Beach",
+      "Notes": "Wiped and re-imaged 2026-10-05; battery 94%"
+    },
+    {
+      "AssetTag": "AT-002362",
+      "Type": "Laptop",
+      "Model": "MacBook Air 13",
+      "PurchaseDate": "2025-02-03",
+      "Status": "In Stock",
+      "Pool": "Ready",
+      "AssignedTo": "",
+      "Site": "Los Angeles HQ",
+      "Notes": "Erased and re-enrolled in Jamf 2026-10-01"
+    },
+    {
+      "AssetTag": "AT-002370",
+      "Type": "iPhone",
+      "Model": "iPhone 15",
+      "PurchaseDate": "2025-01-15",
+      "Status": "In Stock",
+      "Pool": "Ready",
+      "AssignedTo": "",
+      "Site": "Los Angeles HQ",
+      "Notes": "Erased, new screen protector 2026-10-03"
+    },
+    {
+      "AssetTag": "AT-002371",
+      "Type": "iPhone",
+      "Model": "iPhone 15",
+      "PurchaseDate": "2024-12-02",
+      "Status": "In Stock",
+      "Pool": "Ready",
+      "AssignedTo": "",
+      "Site": "Irvine",
+      "Notes": "Erased 2026-09-28"
+    },
+    {
+      "AssetTag": "AT-002310",
+      "Type": "Laptop",
+      "Model": "Lenovo ThinkPad T14",
+      "PurchaseDate": "2026-07-22",
+      "Status": "In Stock",
+      "Pool": "New",
+      "AssignedTo": "",
+      "Site": "Pasadena",
+      "Notes": "New in box"
+    },
+    {
+      "AssetTag": "AT-002350",
+      "Type": "Laptop",
+      "Model": "Dell Latitude 5450",
+      "PurchaseDate": "2026-09-02",
+      "Status": "In Stock",
+      "Pool": "New",
+      "AssignedTo": "",
+      "Site": "Santa Clarita",
+      "Notes": "New in box"
+    },
+    {
+      "AssetTag": "AT-002380",
+      "Type": "iPhone",
+      "Model": "iPhone 16",
+      "PurchaseDate": "2026-09-20",
+      "Status": "In Stock",
+      "Pool": "New",
+      "AssignedTo": "",
+      "Site": "Irvine",
+      "Notes": "New in box"
+    },
+    {
+      "AssetTag": "AT-002390",
+      "Type": "Laptop",
+      "Model": "Dell Latitude 5450",
+      "PurchaseDate": "2026-09-02",
+      "Status": "In Stock",
+      "Pool": "New",
+      "AssignedTo": "",
+      "Site": "Palmdale",
+      "Notes": "New in box"
+    },
+    {
+      "AssetTag": "AT-002363",
+      "Type": "Laptop",
+      "Model": "Dell Latitude 7440",
+      "PurchaseDate": "2024-05-20",
+      "Status": "In Stock",
+      "Pool": "Ready",
+      "AssignedTo": "",
+      "Site": "Ontario",
+      "Notes": "Wiped and re-imaged 2026-10-08"
+    },
+    {
+      "AssetTag": "AT-002320",
+      "Type": "Desktop",
+      "Model": "Dell OptiPlex 7020",
+      "PurchaseDate": "2026-06-30",
+      "Status": "In Stock",
+      "Pool": "New",
+      "AssignedTo": "",
+      "Site": "Torrance",
+      "Notes": "New in box"
+    },
+    {
+      "AssetTag": "AT-002321",
+      "Type": "Headset",
+      "Model": "Jabra Evolve2 50",
+      "PurchaseDate": "2026-06-30",
+      "Status": "In Stock",
+      "Pool": "New",
+      "AssignedTo": "",
+      "Site": "Torrance",
+      "Notes": "New in box"
+    },
+    {
+      "AssetTag": "AT-002330",
+      "Type": "Desktop",
+      "Model": "HP EliteDesk 800",
+      "PurchaseDate": "2026-06-30",
+      "Status": "In Stock",
+      "Pool": "New",
+      "AssignedTo": "",
+      "Site": "Irvine",
+      "Notes": "New in box"
+    },
+    {
+      "AssetTag": "AT-002331",
+      "Type": "Headset",
+      "Model": "Jabra Evolve2 50",
+      "PurchaseDate": "2026-06-30",
+      "Status": "In Stock",
+      "Pool": "New",
+      "AssignedTo": "",
+      "Site": "Irvine",
+      "Notes": "New in box"
+    },
+    {
+      "AssetTag": "AT-002340",
+      "Type": "iPad",
+      "Model": "iPad 10th Gen",
+      "PurchaseDate": "2026-05-18",
+      "Status": "In Stock",
+      "Pool": "New",
+      "AssignedTo": "",
+      "Site": "Ontario",
+      "Notes": "New in box"
+    },
+    {
+      "AssetTag": "AT-001990",
+      "Type": "Laptop",
+      "Model": "Dell Latitude 5440",
+      "PurchaseDate": "2023-04-10",
+      "Status": "In Stock",
+      "Pool": "Loaner",
+      "AssignedTo": "",
+      "Site": "Los Angeles HQ",
+      "Notes": "Loaner pool; re-imaged after each use"
+    },
+    {
+      "AssetTag": "AT-001991",
+      "Type": "Laptop",
+      "Model": "Dell Latitude 5440",
+      "PurchaseDate": "2023-04-10",
+      "Status": "In Stock",
+      "Pool": "Loaner",
+      "AssignedTo": "",
+      "Site": "Burbank",
+      "Notes": "Loaner pool; re-imaged after each use"
+    },
+    {
+      "AssetTag": "AT-001992",
+      "Type": "Laptop",
+      "Model": "MacBook Air 13",
+      "PurchaseDate": "2023-06-01",
+      "Status": "In Stock",
+      "Pool": "Loaner",
+      "AssignedTo": "",
+      "Site": "Los Angeles HQ",
+      "Notes": "Loaner pool"
+    },
+    {
+      "AssetTag": "AT-001995",
+      "Type": "iPhone",
+      "Model": "iPhone 14",
+      "PurchaseDate": "2023-03-14",
+      "Status": "In Stock",
+      "Pool": "Loaner",
+      "AssignedTo": "",
+      "Site": "Los Angeles HQ",
+      "Notes": "Loaner pool"
+    },
+    {
+      "AssetTag": "AT-001996",
+      "Type": "iPhone",
+      "Model": "iPhone 14",
+      "PurchaseDate": "2023-03-14",
+      "Status": "In Stock",
+      "Pool": "Loaner",
+      "AssignedTo": "",
+      "Site": "Irvine",
+      "Notes": "Loaner pool"
+    }
+  ],
+  "depot": "Los Angeles HQ",
   "events": [
     {
       "seq": 1,
-      "time": "2026-10-20T16:35:18.9395381-07:00",
+      "time": "2026-10-20T16:45:54.8740259-07:00",
       "stage": "Read HR file",
       "status": "info",
       "employee_id": "",
@@ -2335,7 +2694,7 @@
     },
     {
       "seq": 2,
-      "time": "2026-10-20T16:35:19.0329109-07:00",
+      "time": "2026-10-20T16:45:54.9569728-07:00",
       "stage": "Read HR file",
       "status": "ok",
       "employee_id": "",
@@ -2344,7 +2703,7 @@
     },
     {
       "seq": 3,
-      "time": "2026-10-20T16:35:19.0461685-07:00",
+      "time": "2026-10-20T16:45:54.9751415-07:00",
       "stage": "Read HR file",
       "status": "info",
       "employee_id": "",
@@ -2353,7 +2712,7 @@
     },
     {
       "seq": 4,
-      "time": "2026-10-20T16:35:19.0778827-07:00",
+      "time": "2026-10-20T16:45:54.9995310-07:00",
       "stage": "Read HR file",
       "status": "info",
       "employee_id": "",
@@ -2362,16 +2721,16 @@
     },
     {
       "seq": 5,
-      "time": "2026-10-20T16:35:19.0978985-07:00",
+      "time": "2026-10-20T16:45:55.0410207-07:00",
       "stage": "Read HR file",
       "status": "info",
       "employee_id": "",
       "name": "",
-      "message": "Loaded equipment list: 20 devices, 10 spares in stock"
+      "message": "Loaded equipment list: 30 devices; in stock: 6 ready, 9 new, 5 loaner"
     },
     {
       "seq": 6,
-      "time": "2026-10-20T16:35:19.1129834-07:00",
+      "time": "2026-10-20T16:45:55.0519567-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10421",
@@ -2380,7 +2739,7 @@
     },
     {
       "seq": 7,
-      "time": "2026-10-20T16:35:19.1965704-07:00",
+      "time": "2026-10-20T16:45:55.0865205-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10421",
@@ -2389,7 +2748,7 @@
     },
     {
       "seq": 8,
-      "time": "2026-10-20T16:35:19.2201748-07:00",
+      "time": "2026-10-20T16:45:55.1051605-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10421",
@@ -2398,7 +2757,7 @@
     },
     {
       "seq": 9,
-      "time": "2026-10-20T16:35:19.3104251-07:00",
+      "time": "2026-10-20T16:45:55.1815719-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10421",
@@ -2407,7 +2766,7 @@
     },
     {
       "seq": 10,
-      "time": "2026-10-20T16:35:19.3157593-07:00",
+      "time": "2026-10-20T16:45:55.1861189-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10421",
@@ -2416,7 +2775,7 @@
     },
     {
       "seq": 11,
-      "time": "2026-10-20T16:35:19.3173088-07:00",
+      "time": "2026-10-20T16:45:55.1873964-07:00",
       "stage": "Add to groups",
       "status": "warn",
       "employee_id": "E10421",
@@ -2425,7 +2784,7 @@
     },
     {
       "seq": 12,
-      "time": "2026-10-20T16:35:19.3205257-07:00",
+      "time": "2026-10-20T16:45:55.1901172-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10421",
@@ -2434,7 +2793,7 @@
     },
     {
       "seq": 13,
-      "time": "2026-10-20T16:35:19.3979121-07:00",
+      "time": "2026-10-20T16:45:55.2539477-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10421",
@@ -2443,7 +2802,7 @@
     },
     {
       "seq": 14,
-      "time": "2026-10-20T16:35:19.3995664-07:00",
+      "time": "2026-10-20T16:45:55.2554613-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10421",
@@ -2452,7 +2811,7 @@
     },
     {
       "seq": 15,
-      "time": "2026-10-20T16:35:19.4424275-07:00",
+      "time": "2026-10-20T16:45:55.2915261-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10421",
@@ -2461,7 +2820,7 @@
     },
     {
       "seq": 16,
-      "time": "2026-10-20T16:35:19.4557770-07:00",
+      "time": "2026-10-20T16:45:55.3021086-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10422",
@@ -2470,7 +2829,7 @@
     },
     {
       "seq": 17,
-      "time": "2026-10-20T16:35:19.4580363-07:00",
+      "time": "2026-10-20T16:45:55.3040125-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10422",
@@ -2479,7 +2838,7 @@
     },
     {
       "seq": 18,
-      "time": "2026-10-20T16:35:19.4604666-07:00",
+      "time": "2026-10-20T16:45:55.3061558-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10422",
@@ -2488,7 +2847,7 @@
     },
     {
       "seq": 19,
-      "time": "2026-10-20T16:35:19.4680973-07:00",
+      "time": "2026-10-20T16:45:55.3128919-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10422",
@@ -2497,7 +2856,7 @@
     },
     {
       "seq": 20,
-      "time": "2026-10-20T16:35:19.4684651-07:00",
+      "time": "2026-10-20T16:45:55.3131926-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10422",
@@ -2506,7 +2865,7 @@
     },
     {
       "seq": 21,
-      "time": "2026-10-20T16:35:19.4687675-07:00",
+      "time": "2026-10-20T16:45:55.3133396-07:00",
       "stage": "Add to groups",
       "status": "warn",
       "employee_id": "E10422",
@@ -2515,7 +2874,7 @@
     },
     {
       "seq": 22,
-      "time": "2026-10-20T16:35:19.4690868-07:00",
+      "time": "2026-10-20T16:45:55.3135272-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10422",
@@ -2524,7 +2883,7 @@
     },
     {
       "seq": 23,
-      "time": "2026-10-20T16:35:19.4812578-07:00",
+      "time": "2026-10-20T16:45:55.3305555-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10422",
@@ -2533,16 +2892,16 @@
     },
     {
       "seq": 24,
-      "time": "2026-10-20T16:35:19.4818178-07:00",
+      "time": "2026-10-20T16:45:55.3317642-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10422",
       "name": "James Okafor",
-      "message": "IT-4104 Image from stock: Laptop AT-002301, due Oct 22, High priority"
+      "message": "IT-4104 Image from stock: Laptop AT-002361 (ready), due Oct 22, High priority"
     },
     {
       "seq": 25,
-      "time": "2026-10-20T16:35:19.4885936-07:00",
+      "time": "2026-10-20T16:45:55.3371267-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10422",
@@ -2551,7 +2910,7 @@
     },
     {
       "seq": 26,
-      "time": "2026-10-20T16:35:19.4904040-07:00",
+      "time": "2026-10-20T16:45:55.3385186-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10423",
@@ -2560,7 +2919,7 @@
     },
     {
       "seq": 27,
-      "time": "2026-10-20T16:35:19.4927946-07:00",
+      "time": "2026-10-20T16:45:55.3404211-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10423",
@@ -2569,7 +2928,7 @@
     },
     {
       "seq": 28,
-      "time": "2026-10-20T16:35:19.4953485-07:00",
+      "time": "2026-10-20T16:45:55.3424369-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10423",
@@ -2578,7 +2937,7 @@
     },
     {
       "seq": 29,
-      "time": "2026-10-20T16:35:19.4983392-07:00",
+      "time": "2026-10-20T16:45:55.3442989-07:00",
       "stage": "Create account",
       "status": "info",
       "employee_id": "E10423",
@@ -2587,7 +2946,7 @@
     },
     {
       "seq": 30,
-      "time": "2026-10-20T16:35:19.5044672-07:00",
+      "time": "2026-10-20T16:45:55.3495297-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10423",
@@ -2596,7 +2955,7 @@
     },
     {
       "seq": 31,
-      "time": "2026-10-20T16:35:19.5048236-07:00",
+      "time": "2026-10-20T16:45:55.3499145-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10423",
@@ -2605,7 +2964,7 @@
     },
     {
       "seq": 32,
-      "time": "2026-10-20T16:35:19.5051043-07:00",
+      "time": "2026-10-20T16:45:55.3501040-07:00",
       "stage": "Add to groups",
       "status": "warn",
       "employee_id": "E10423",
@@ -2614,7 +2973,7 @@
     },
     {
       "seq": 33,
-      "time": "2026-10-20T16:35:19.5053632-07:00",
+      "time": "2026-10-20T16:45:55.3502971-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10423",
@@ -2623,7 +2982,7 @@
     },
     {
       "seq": 34,
-      "time": "2026-10-20T16:35:19.5345459-07:00",
+      "time": "2026-10-20T16:45:55.3651869-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10423",
@@ -2632,25 +2991,25 @@
     },
     {
       "seq": 35,
-      "time": "2026-10-20T16:35:19.5350513-07:00",
+      "time": "2026-10-20T16:45:55.3655122-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10423",
       "name": "Ana Smith",
-      "message": "IT-4106 Image from stock: Desktop AT-002320, due Oct 22, High priority"
+      "message": "IT-4106 Image from stock: Desktop AT-002320 (new), due Oct 22, High priority"
     },
     {
       "seq": 36,
-      "time": "2026-10-20T16:35:19.5352964-07:00",
+      "time": "2026-10-20T16:45:55.3658672-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10423",
       "name": "Ana Smith",
-      "message": "IT-4107 Issue from stock: Headset AT-002321, due Oct 22, High priority"
+      "message": "IT-4107 Issue from stock: Headset AT-002321 (new), due Oct 22, High priority"
     },
     {
       "seq": 37,
-      "time": "2026-10-20T16:35:19.5421520-07:00",
+      "time": "2026-10-20T16:45:55.3714534-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10423",
@@ -2659,7 +3018,7 @@
     },
     {
       "seq": 38,
-      "time": "2026-10-20T16:35:19.5439363-07:00",
+      "time": "2026-10-20T16:45:55.3729898-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10424",
@@ -2668,7 +3027,7 @@
     },
     {
       "seq": 39,
-      "time": "2026-10-20T16:35:19.5454767-07:00",
+      "time": "2026-10-20T16:45:55.3744751-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10424",
@@ -2677,7 +3036,7 @@
     },
     {
       "seq": 40,
-      "time": "2026-10-20T16:35:19.5468971-07:00",
+      "time": "2026-10-20T16:45:55.3758709-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10424",
@@ -2686,7 +3045,7 @@
     },
     {
       "seq": 41,
-      "time": "2026-10-20T16:35:19.5541876-07:00",
+      "time": "2026-10-20T16:45:55.3819909-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10424",
@@ -2695,7 +3054,7 @@
     },
     {
       "seq": 42,
-      "time": "2026-10-20T16:35:19.5544518-07:00",
+      "time": "2026-10-20T16:45:55.3822136-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10424",
@@ -2704,7 +3063,7 @@
     },
     {
       "seq": 43,
-      "time": "2026-10-20T16:35:19.5547871-07:00",
+      "time": "2026-10-20T16:45:55.3824473-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10424",
@@ -2713,16 +3072,16 @@
     },
     {
       "seq": 44,
-      "time": "2026-10-20T16:35:19.5585600-07:00",
+      "time": "2026-10-20T16:45:55.3865472-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10424",
       "name": "Daniel Nguyen",
-      "message": "IT-4108 Image from stock: iPad AT-002340, due Oct 22, High priority"
+      "message": "IT-4108 Image from stock: iPad AT-002340 (new), due Oct 22, High priority"
     },
     {
       "seq": 45,
-      "time": "2026-10-20T16:35:19.5636337-07:00",
+      "time": "2026-10-20T16:45:55.3920666-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10424",
@@ -2731,7 +3090,7 @@
     },
     {
       "seq": 46,
-      "time": "2026-10-20T16:35:19.5644861-07:00",
+      "time": "2026-10-20T16:45:55.3930494-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10425",
@@ -2740,7 +3099,7 @@
     },
     {
       "seq": 47,
-      "time": "2026-10-20T16:35:19.5665537-07:00",
+      "time": "2026-10-20T16:45:55.3948865-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10425",
@@ -2749,7 +3108,7 @@
     },
     {
       "seq": 48,
-      "time": "2026-10-20T16:35:19.5686051-07:00",
+      "time": "2026-10-20T16:45:55.3967766-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10425",
@@ -2758,7 +3117,7 @@
     },
     {
       "seq": 49,
-      "time": "2026-10-20T16:35:19.5744480-07:00",
+      "time": "2026-10-20T16:45:55.4017189-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10425",
@@ -2767,7 +3126,7 @@
     },
     {
       "seq": 50,
-      "time": "2026-10-20T16:35:19.5747955-07:00",
+      "time": "2026-10-20T16:45:55.4019827-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10425",
@@ -2776,7 +3135,7 @@
     },
     {
       "seq": 51,
-      "time": "2026-10-20T16:35:19.5750723-07:00",
+      "time": "2026-10-20T16:45:55.4021776-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10425",
@@ -2785,7 +3144,7 @@
     },
     {
       "seq": 52,
-      "time": "2026-10-20T16:35:19.5785752-07:00",
+      "time": "2026-10-20T16:45:55.4057045-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10425",
@@ -2794,16 +3153,16 @@
     },
     {
       "seq": 53,
-      "time": "2026-10-20T16:35:19.5789736-07:00",
+      "time": "2026-10-20T16:45:55.4060239-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10425",
       "name": "Priya Patel",
-      "message": "IT-4110 Image from stock: Laptop AT-002302, due Oct 23, High priority"
+      "message": "IT-4110 Image from stock: Laptop AT-002360 (ready), due Oct 23, High priority"
     },
     {
       "seq": 54,
-      "time": "2026-10-20T16:35:19.5791844-07:00",
+      "time": "2026-10-20T16:45:55.4062352-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10425",
@@ -2812,7 +3171,7 @@
     },
     {
       "seq": 55,
-      "time": "2026-10-20T16:35:19.5842016-07:00",
+      "time": "2026-10-20T16:45:55.4110320-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10425",
@@ -2821,7 +3180,7 @@
     },
     {
       "seq": 56,
-      "time": "2026-10-20T16:35:19.5857896-07:00",
+      "time": "2026-10-20T16:45:55.4123955-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10426",
@@ -2830,7 +3189,7 @@
     },
     {
       "seq": 57,
-      "time": "2026-10-20T16:35:19.5872932-07:00",
+      "time": "2026-10-20T16:45:55.4141247-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10426",
@@ -2839,7 +3198,7 @@
     },
     {
       "seq": 58,
-      "time": "2026-10-20T16:35:19.5876210-07:00",
+      "time": "2026-10-20T16:45:55.4144356-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10426",
@@ -2848,7 +3207,7 @@
     },
     {
       "seq": 59,
-      "time": "2026-10-20T16:35:19.5945382-07:00",
+      "time": "2026-10-20T16:45:55.4202315-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10426",
@@ -2857,7 +3216,7 @@
     },
     {
       "seq": 60,
-      "time": "2026-10-20T16:35:19.5950591-07:00",
+      "time": "2026-10-20T16:45:55.4205520-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10426",
@@ -2866,7 +3225,7 @@
     },
     {
       "seq": 61,
-      "time": "2026-10-20T16:35:19.5953214-07:00",
+      "time": "2026-10-20T16:45:55.4208069-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10426",
@@ -2875,25 +3234,25 @@
     },
     {
       "seq": 62,
-      "time": "2026-10-20T16:35:19.5987301-07:00",
+      "time": "2026-10-20T16:45:55.4245355-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10426",
       "name": "Luis Hernández",
-      "message": "IT-4112 Image from stock: Laptop AT-002350, due Oct 23, High priority"
+      "message": "IT-4112 Image from stock: Laptop AT-002350 (new), due Oct 23, High priority"
     },
     {
       "seq": 63,
-      "time": "2026-10-20T16:35:19.5991348-07:00",
+      "time": "2026-10-20T16:45:55.4248980-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10426",
       "name": "Luis Hernández",
-      "message": "IT-4113 Image from stock: iPhone AT-002305, due Oct 23, High priority"
+      "message": "IT-4113 Image from stock: iPhone AT-002370 (ready), due Oct 23, High priority"
     },
     {
       "seq": 64,
-      "time": "2026-10-20T16:35:19.6041962-07:00",
+      "time": "2026-10-20T16:45:55.4291403-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10426",
@@ -2902,7 +3261,7 @@
     },
     {
       "seq": 65,
-      "time": "2026-10-20T16:35:19.6050630-07:00",
+      "time": "2026-10-20T16:45:55.4297833-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10427",
@@ -2911,7 +3270,7 @@
     },
     {
       "seq": 66,
-      "time": "2026-10-20T16:35:19.6067445-07:00",
+      "time": "2026-10-20T16:45:55.4311281-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10427",
@@ -2920,7 +3279,7 @@
     },
     {
       "seq": 67,
-      "time": "2026-10-20T16:35:19.6071709-07:00",
+      "time": "2026-10-20T16:45:55.4314159-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10427",
@@ -2929,7 +3288,7 @@
     },
     {
       "seq": 68,
-      "time": "2026-10-20T16:35:19.6141293-07:00",
+      "time": "2026-10-20T16:45:55.4370147-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10427",
@@ -2938,7 +3297,7 @@
     },
     {
       "seq": 69,
-      "time": "2026-10-20T16:35:19.6143785-07:00",
+      "time": "2026-10-20T16:45:55.4372020-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10427",
@@ -2947,7 +3306,7 @@
     },
     {
       "seq": 70,
-      "time": "2026-10-20T16:35:19.6145914-07:00",
+      "time": "2026-10-20T16:45:55.4374165-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10427",
@@ -2956,16 +3315,16 @@
     },
     {
       "seq": 71,
-      "time": "2026-10-20T16:35:19.6166556-07:00",
+      "time": "2026-10-20T16:45:55.4397791-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10427",
       "name": "Sofia O'Brien",
-      "message": "IT-4114 Image from stock: Laptop AT-002310, due Oct 23, High priority"
+      "message": "IT-4114 Image from stock: Laptop AT-002310 (new), due Oct 23, High priority"
     },
     {
       "seq": 72,
-      "time": "2026-10-20T16:35:19.6221185-07:00",
+      "time": "2026-10-20T16:45:55.4437509-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10427",
@@ -2974,7 +3333,7 @@
     },
     {
       "seq": 73,
-      "time": "2026-10-20T16:35:19.6230698-07:00",
+      "time": "2026-10-20T16:45:55.4443442-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10428",
@@ -2983,7 +3342,7 @@
     },
     {
       "seq": 74,
-      "time": "2026-10-20T16:35:19.6250909-07:00",
+      "time": "2026-10-20T16:45:55.4457373-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10428",
@@ -2992,7 +3351,7 @@
     },
     {
       "seq": 75,
-      "time": "2026-10-20T16:35:19.6254268-07:00",
+      "time": "2026-10-20T16:45:55.4460962-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10428",
@@ -3001,7 +3360,7 @@
     },
     {
       "seq": 76,
-      "time": "2026-10-20T16:35:19.6403656-07:00",
+      "time": "2026-10-20T16:45:55.4592355-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10428",
@@ -3010,7 +3369,7 @@
     },
     {
       "seq": 77,
-      "time": "2026-10-20T16:35:19.6406046-07:00",
+      "time": "2026-10-20T16:45:55.4593894-07:00",
       "stage": "Create account",
       "status": "info",
       "employee_id": "E10428",
@@ -3019,7 +3378,7 @@
     },
     {
       "seq": 78,
-      "time": "2026-10-20T16:35:19.6410354-07:00",
+      "time": "2026-10-20T16:45:55.4595638-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10428",
@@ -3028,7 +3387,7 @@
     },
     {
       "seq": 79,
-      "time": "2026-10-20T16:35:19.6412701-07:00",
+      "time": "2026-10-20T16:45:55.4598129-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10428",
@@ -3037,16 +3396,16 @@
     },
     {
       "seq": 80,
-      "time": "2026-10-20T16:35:19.6458081-07:00",
+      "time": "2026-10-20T16:45:55.4619385-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10428",
       "name": "Kevin Tran",
-      "message": "IT-4115 Order new device: Laptop, due Oct 26, High priority"
+      "message": "IT-4115 Image from stock: Laptop AT-002362 (ready), due Oct 26, Normal priority"
     },
     {
       "seq": 81,
-      "time": "2026-10-20T16:35:19.6521830-07:00",
+      "time": "2026-10-20T16:45:55.4675233-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10428",
@@ -3055,7 +3414,7 @@
     },
     {
       "seq": 82,
-      "time": "2026-10-20T16:35:19.6536483-07:00",
+      "time": "2026-10-20T16:45:55.4691158-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10429",
@@ -3064,7 +3423,7 @@
     },
     {
       "seq": 83,
-      "time": "2026-10-20T16:35:19.6554359-07:00",
+      "time": "2026-10-20T16:45:55.4705958-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10429",
@@ -3073,7 +3432,7 @@
     },
     {
       "seq": 84,
-      "time": "2026-10-20T16:35:19.6559508-07:00",
+      "time": "2026-10-20T16:45:55.4710870-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10429",
@@ -3082,7 +3441,7 @@
     },
     {
       "seq": 85,
-      "time": "2026-10-20T16:35:19.6613276-07:00",
+      "time": "2026-10-20T16:45:55.4754584-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10429",
@@ -3091,7 +3450,7 @@
     },
     {
       "seq": 86,
-      "time": "2026-10-20T16:35:19.6615560-07:00",
+      "time": "2026-10-20T16:45:55.4757439-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10429",
@@ -3100,7 +3459,7 @@
     },
     {
       "seq": 87,
-      "time": "2026-10-20T16:35:19.6618447-07:00",
+      "time": "2026-10-20T16:45:55.4760037-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10429",
@@ -3109,25 +3468,25 @@
     },
     {
       "seq": 88,
-      "time": "2026-10-20T16:35:19.6654666-07:00",
+      "time": "2026-10-20T16:45:55.4802986-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10429",
       "name": "Grace Kim",
-      "message": "IT-4116 Image from stock: Desktop AT-002330, due Oct 26, Normal priority"
+      "message": "IT-4116 Image from stock: Desktop AT-002330 (new), due Oct 26, Normal priority"
     },
     {
       "seq": 89,
-      "time": "2026-10-20T16:35:19.6656439-07:00",
+      "time": "2026-10-20T16:45:55.4813782-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10429",
       "name": "Grace Kim",
-      "message": "IT-4117 Issue from stock: Headset AT-002331, due Oct 26, Normal priority"
+      "message": "IT-4117 Issue from stock: Headset AT-002331 (new), due Oct 26, Normal priority"
     },
     {
       "seq": 90,
-      "time": "2026-10-20T16:35:19.6710881-07:00",
+      "time": "2026-10-20T16:45:55.4861478-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10429",
@@ -3136,7 +3495,7 @@
     },
     {
       "seq": 91,
-      "time": "2026-10-20T16:35:19.6719128-07:00",
+      "time": "2026-10-20T16:45:55.4869405-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10430",
@@ -3145,7 +3504,7 @@
     },
     {
       "seq": 92,
-      "time": "2026-10-20T16:35:19.6741781-07:00",
+      "time": "2026-10-20T16:45:55.4903173-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10430",
@@ -3154,7 +3513,7 @@
     },
     {
       "seq": 93,
-      "time": "2026-10-20T16:35:19.6762666-07:00",
+      "time": "2026-10-20T16:45:55.4925677-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10430",
@@ -3163,7 +3522,7 @@
     },
     {
       "seq": 94,
-      "time": "2026-10-20T16:35:19.6822980-07:00",
+      "time": "2026-10-20T16:45:55.4989760-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10430",
@@ -3172,7 +3531,7 @@
     },
     {
       "seq": 95,
-      "time": "2026-10-20T16:35:19.6825191-07:00",
+      "time": "2026-10-20T16:45:55.4991770-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10430",
@@ -3181,7 +3540,7 @@
     },
     {
       "seq": 96,
-      "time": "2026-10-20T16:35:19.6828323-07:00",
+      "time": "2026-10-20T16:45:55.4993197-07:00",
       "stage": "Add to groups",
       "status": "warn",
       "employee_id": "E10430",
@@ -3190,7 +3549,7 @@
     },
     {
       "seq": 97,
-      "time": "2026-10-20T16:35:19.6830917-07:00",
+      "time": "2026-10-20T16:45:55.4995109-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10430",
@@ -3199,7 +3558,7 @@
     },
     {
       "seq": 98,
-      "time": "2026-10-20T16:35:19.6867667-07:00",
+      "time": "2026-10-20T16:45:55.5086851-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10430",
@@ -3208,7 +3567,7 @@
     },
     {
       "seq": 99,
-      "time": "2026-10-20T16:35:19.6870364-07:00",
+      "time": "2026-10-20T16:45:55.5090738-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10430",
@@ -3217,16 +3576,16 @@
     },
     {
       "seq": 100,
-      "time": "2026-10-20T16:35:19.6872016-07:00",
+      "time": "2026-10-20T16:45:55.5101413-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10430",
       "name": "Omari Bennett",
-      "message": "IT-4120 Order new device: iPhone, due Oct 29, High priority"
+      "message": "IT-4120 Order new device: iPhone, loaner AT-001995 for day one, due Oct 29, High priority"
     },
     {
       "seq": 101,
-      "time": "2026-10-20T16:35:19.6873570-07:00",
+      "time": "2026-10-20T16:45:55.5105643-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10430",
@@ -3235,16 +3594,16 @@
     },
     {
       "seq": 102,
-      "time": "2026-10-20T16:35:19.6924236-07:00",
+      "time": "2026-10-20T16:45:55.5162965-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10430",
       "name": "Omari Bennett",
-      "message": "Wrote IT checklist: checklists/omari.bennett.md (13 items to do)"
+      "message": "Wrote IT checklist: checklists/omari.bennett.md (14 items to do)"
     },
     {
       "seq": 103,
-      "time": "2026-10-20T16:35:19.6955244-07:00",
+      "time": "2026-10-20T16:45:55.5185569-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10431",
@@ -3253,7 +3612,7 @@
     },
     {
       "seq": 104,
-      "time": "2026-10-20T16:35:19.6973629-07:00",
+      "time": "2026-10-20T16:45:55.5200097-07:00",
       "stage": "Validate",
       "status": "ok",
       "employee_id": "E10431",
@@ -3262,7 +3621,7 @@
     },
     {
       "seq": 105,
-      "time": "2026-10-20T16:35:19.6979541-07:00",
+      "time": "2026-10-20T16:45:55.5202940-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10431",
@@ -3271,7 +3630,7 @@
     },
     {
       "seq": 106,
-      "time": "2026-10-20T16:35:19.7140392-07:00",
+      "time": "2026-10-20T16:45:55.5509598-07:00",
       "stage": "Create account",
       "status": "ok",
       "employee_id": "E10431",
@@ -3280,7 +3639,7 @@
     },
     {
       "seq": 107,
-      "time": "2026-10-20T16:35:19.7142419-07:00",
+      "time": "2026-10-20T16:45:55.5511910-07:00",
       "stage": "Create account",
       "status": "info",
       "employee_id": "E10431",
@@ -3289,7 +3648,7 @@
     },
     {
       "seq": 108,
-      "time": "2026-10-20T16:35:19.7144795-07:00",
+      "time": "2026-10-20T16:45:55.5514077-07:00",
       "stage": "Add to groups",
       "status": "ok",
       "employee_id": "E10431",
@@ -3298,7 +3657,7 @@
     },
     {
       "seq": 109,
-      "time": "2026-10-20T16:35:19.7148935-07:00",
+      "time": "2026-10-20T16:45:55.5515882-07:00",
       "stage": "Assign license",
       "status": "ok",
       "employee_id": "E10431",
@@ -3307,25 +3666,25 @@
     },
     {
       "seq": 110,
-      "time": "2026-10-20T16:35:19.7164470-07:00",
+      "time": "2026-10-20T16:45:55.5589492-07:00",
       "stage": "Create tickets",
       "status": "ok",
       "employee_id": "E10431",
       "name": "Rosa Delgado-Villanueva",
-      "message": "IT-4122 Order new device: Laptop, due Oct 29, High priority"
+      "message": "IT-4122 Order new device: Laptop, loaner AT-001991 for day one, due Oct 29, High priority"
     },
     {
       "seq": 111,
-      "time": "2026-10-20T16:35:19.7214601-07:00",
+      "time": "2026-10-20T16:45:55.5679800-07:00",
       "stage": "Write checklist",
       "status": "ok",
       "employee_id": "E10431",
       "name": "Rosa Delgado-Villanueva",
-      "message": "Wrote IT checklist: checklists/rosa.delgado-villanueva.md (10 items to do)"
+      "message": "Wrote IT checklist: checklists/rosa.delgado-villanueva.md (11 items to do)"
     },
     {
       "seq": 112,
-      "time": "2026-10-20T16:35:19.7222671-07:00",
+      "time": "2026-10-20T16:45:55.5685334-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10421",
@@ -3334,7 +3693,7 @@
     },
     {
       "seq": 113,
-      "time": "2026-10-20T16:35:19.7242764-07:00",
+      "time": "2026-10-20T16:45:55.5701762-07:00",
       "stage": "Validate",
       "status": "skip",
       "employee_id": "E10421",
@@ -3343,7 +3702,7 @@
     },
     {
       "seq": 114,
-      "time": "2026-10-20T16:35:19.7260317-07:00",
+      "time": "2026-10-20T16:45:55.5758149-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10432",
@@ -3352,7 +3711,7 @@
     },
     {
       "seq": 115,
-      "time": "2026-10-20T16:35:19.7301531-07:00",
+      "time": "2026-10-20T16:45:55.5830068-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10432",
@@ -3361,7 +3720,7 @@
     },
     {
       "seq": 116,
-      "time": "2026-10-20T16:35:19.7319259-07:00",
+      "time": "2026-10-20T16:45:55.5857300-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10433",
@@ -3370,7 +3729,7 @@
     },
     {
       "seq": 117,
-      "time": "2026-10-20T16:35:19.7343014-07:00",
+      "time": "2026-10-20T16:45:55.5880651-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10433",
@@ -3379,7 +3738,7 @@
     },
     {
       "seq": 118,
-      "time": "2026-10-20T16:35:19.7345972-07:00",
+      "time": "2026-10-20T16:45:55.5883872-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10434",
@@ -3388,7 +3747,7 @@
     },
     {
       "seq": 119,
-      "time": "2026-10-20T16:35:19.7418557-07:00",
+      "time": "2026-10-20T16:45:55.5956034-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10434",
@@ -3397,7 +3756,7 @@
     },
     {
       "seq": 120,
-      "time": "2026-10-20T16:35:19.7422206-07:00",
+      "time": "2026-10-20T16:45:55.5961696-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10435",
@@ -3406,7 +3765,7 @@
     },
     {
       "seq": 121,
-      "time": "2026-10-20T16:35:19.7472059-07:00",
+      "time": "2026-10-20T16:45:55.5971098-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10435",
@@ -3415,7 +3774,7 @@
     },
     {
       "seq": 122,
-      "time": "2026-10-20T16:35:19.7490166-07:00",
+      "time": "2026-10-20T16:45:55.6031206-07:00",
       "stage": "Validate",
       "status": "info",
       "employee_id": "E10436",
@@ -3424,7 +3783,7 @@
     },
     {
       "seq": 123,
-      "time": "2026-10-20T16:35:19.7628567-07:00",
+      "time": "2026-10-20T16:45:55.6189917-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10436",
@@ -3433,7 +3792,7 @@
     },
     {
       "seq": 124,
-      "time": "2026-10-20T16:35:19.7631766-07:00",
+      "time": "2026-10-20T16:45:55.6192173-07:00",
       "stage": "Validate",
       "status": "warn",
       "employee_id": "E10436",
@@ -3442,7 +3801,7 @@
     },
     {
       "seq": 125,
-      "time": "2026-10-20T16:35:19.8719138-07:00",
+      "time": "2026-10-20T16:45:55.7084110-07:00",
       "stage": "Summary",
       "status": "ok",
       "employee_id": "",
@@ -3451,16 +3810,16 @@
     },
     {
       "seq": 126,
-      "time": "2026-10-20T16:35:19.8793065-07:00",
+      "time": "2026-10-20T16:45:55.7097301-07:00",
       "stage": "Summary",
       "status": "info",
       "employee_id": "",
       "name": "",
-      "message": "Opened 22 IT tickets: 8 image from stock, 2 issue from stock, 3 order new device, 5 re-image and re-issue, 2 recover equipment, 2 retire device"
+      "message": "Opened 22 IT tickets: 9 image from stock, 2 issue from stock, 2 order new device, 5 re-image and re-issue, 2 recover equipment, 2 retire device"
     },
     {
       "seq": 127,
-      "time": "2026-10-20T16:35:19.8795368-07:00",
+      "time": "2026-10-20T16:45:55.7099620-07:00",
       "stage": "Summary",
       "status": "warn",
       "employee_id": "",

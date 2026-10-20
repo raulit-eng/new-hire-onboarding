@@ -19,7 +19,7 @@
 
 ## Before day one (IT)
 - [ ] Laptop AT-002350 imaged from stock and ready - IT-4112, due 2026-10-23
-- [ ] iPhone AT-002305 imaged from stock and ready - IT-4113, due 2026-10-23
+- [ ] iPhone AT-002370 imaged from stock and ready - IT-4113, due 2026-10-23
 - [ ] Give the temporary password to elena.reyes@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: WMS, Microsoft 365
 

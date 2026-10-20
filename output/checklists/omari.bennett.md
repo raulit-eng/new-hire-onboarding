@@ -19,7 +19,7 @@
 
 ## Before day one (IT)
 - [ ] Laptop AT-002050 re-imaged and ready (previously Victor Hale's) - IT-4118, due 2026-10-29
-- [ ] New iPhone ordered, received and set up (arrange a loaner if it will be late) - IT-4120, due 2026-10-29
+- [ ] Loaner iPhone AT-001995 ready for day one; new iPhone ordered - IT-4120, due 2026-10-29
 - [ ] iPad AT-002051 re-imaged and ready (previously Victor Hale's) - IT-4121, due 2026-10-29
 - [ ] Give the temporary password to omar.ali@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: Microsoft 365, Zoom, DocuSign
@@ -35,4 +35,5 @@
 ## First week
 - [ ] Security awareness training assigned and completed
 - [ ] Manager confirms all access is correct
+- [ ] When the new iPhone arrives, swap it for loaner AT-001995 and return the loaner - IT-4120
 

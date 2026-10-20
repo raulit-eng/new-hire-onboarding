@@ -35,11 +35,21 @@ For each device the role needs, the script works out the best way to cover it an
 | **Re-image and re-issue** | The previous person returned the device and it's still within its lifecycle | Wipe it, reset it with Autopilot or Jamf, install role apps, re-assign it |
 | **Recover equipment** | The previous person hasn't returned it, or still works there | Arrange the return after their last day; lock and wipe remotely if it doesn't come back |
 | **Retire device** | The returned device is past its lifecycle (e.g. a 4-year-old laptop) | Wipe, remove from management, recycle |
-| **Image from stock** | No re-usable device, but a spare is in stock (same site first, then another site) | Set up the spare, ship it if needed |
+| **Image from stock** | No re-usable device, but a spare is in stock | Set up the spare, ship it from HQ if needed |
 | **Issue from stock** | Personal items like headsets, which are never re-issued | Hand out a new one |
-| **Order new device** | Nothing available | Order one; arrange a loaner if it will be late |
+| **Order new device** | Nothing available | Order one, and issue a loaner for day one; swap it out when the new device arrives |
 
-Spares are reserved as they're assigned, so two people never get the same device, and the next run knows they're taken. Device lifecycles and personal items are set in the config.
+### Equipment stock
+
+Spare equipment is kept in three pools in [`data/equipment_inventory.csv`](data/equipment_inventory.csv):
+
+| Pool | What it is | How it's used |
+|---|---|---|
+| **Ready** | Cleaned and re-imaged, ready to re-assign | Used first: it saves buying new |
+| **New** | New in box | Used when no Ready device fits |
+| **Loaner** | Shared devices for temporary use | Only lent out while a new device is on order; never assigned permanently |
+
+Each site uses its own stock first, then the central depot at Los Angeles HQ, which ships to every site. Branch sites don't ship to each other. Devices are reserved as they're assigned, so two people never get the same one, and the next run knows they're taken. Device lifecycles, pool order, the depot and personal items are set in the config.
 
 Contractors automatically get a "Contractors" group, no VPN access, a lighter license, and an account that expires after 90 days.
 
@@ -48,7 +58,7 @@ Contractors automatically get a "Contractors" group, no VPN access, a lighter li
 | Result | Count | Examples |
 |---|---:|---|
 | Onboarded | 11 | `ana.smith2` because `ana.smith` already exists; a contractor with an expiring account; a 23-character name with a shortened Windows logon |
-| IT tickets | 22 | 5 re-issued from the previous person, 10 from stock, 3 new orders, 2 recoveries, 2 retirements |
+| IT tickets | 22 | 5 re-issued from the previous person, 11 from stock (4 Ready, 7 New), 2 new orders with loaners, 2 recoveries, 2 retirements |
 | Replacements | 5 | Including one where the previous person is still working, so their desktop is recovered after their last day |
 | Held for HR | 5 | Unknown department (Legal), missing manager, manager not in the directory, start date already passed, possible rehire |
 | Skipped | 1 | Duplicate row |
@@ -59,17 +69,22 @@ See [`output/hr_issues.csv`](output/hr_issues.csv) and the [sample checklists](o
 
 Each run builds a dashboard that replays what the script did, step by step:
 
-- **Pipeline** of the 7 steps, from reading the HR file to writing checklists, showing which step is running and how many people have finished each one
+- **Pipeline** of the 7 steps, from reading the HR file to writing checklists, showing which step is running and how many people have finished each one. **Click any step** to see everything it did: what it checks, how many items finished or need attention, and every message it logged
 - **A card for each new hire,** filling in as the script works on that person
 - **A live log console** showing each message as the script logs it
 - **Tabs** that fill in as rows are reached:
   - **IT tickets:** every ticket, filterable by type; click one to see its steps
+  - **Equipment stock:** Ready, New and Loaner laptops and phones, with each device changing from available to reserved or on loan as the script assigns it
   - **Replacements:** who each hire replaces, what happens to that person's equipment, and access the manager needs to approve
   - **Checklists:** pick a person to see their whole checklist, with done and to-do items
   - **Sent back to HR** and **Skipped**
 - **Click any person** for their groups, license, replacement, tickets and checklist
 
+![Clicking a step shows what it did](docs/screenshot-step.png)
+
 ![IT tickets tab](docs/screenshot-tickets.png)
+
+![Equipment stock tab](docs/screenshot-stock.png)
 
 ![Replacements tab](docs/screenshot-replacements.png)
 
@@ -116,7 +131,7 @@ Everything about who gets what lives in [`config/onboarding.json`](config/onboar
 - **Sites:** a site code and site group for each office
 - **Company-wide groups** everyone gets, such as All-Staff and MFA-Required
 - **Contractor rules:** extra groups, removed groups, license, and how long the account lasts
-- **Equipment:** device lifecycles, personal items that are never re-issued, ticket numbering, and how many business days before the start date equipment should be ready
+- **Equipment:** device lifecycles, which stock pool to use first, the central depot, personal items that are never re-issued, ticket numbering, and how many business days before the start date equipment should be ready
 
 Adding a department, like Legal from the sample file, is a config change, not a code change.
 
@@ -133,7 +148,7 @@ Adding a department, like Legal from the sample file, is a config change, not a 
 
 ## Tests
 
-39 [Pester](https://pester.dev) tests cover username rules, HR row checks, access plans, password strength, ticket decisions (re-issue, recover, retire, stock, order), replacements and access gaps, a full run on the sample file, rerun safety, preview mode, the guarantee that no password is ever written to a file, and Active Directory calls with the AD cmdlets mocked.
+43 [Pester](https://pester.dev) tests cover username rules, HR row checks, access plans, password strength, ticket decisions (re-issue, recover, retire, stock, order), stock pools, loaners and the depot rule, replacements and access gaps, a full run on the sample file, rerun safety, preview mode, the guarantee that no password is ever written to a file, and Active Directory calls with the AD cmdlets mocked.
 
 ```powershell
 Install-Module Pester -MinimumVersion 5.5 -Scope CurrentUser
@@ -149,7 +164,7 @@ src/Onboarding.psm1         # the building blocks: checks, usernames, plans, pro
 config/onboarding.json      # departments, sites, groups, licenses, devices
 data/hr_new_hires.csv       # sample HR export
 data/directory_seed.json    # sample existing accounts, including people who left
-data/equipment_inventory.csv # sample equipment: returned, still assigned, and spares
+data/equipment_inventory.csv # sample equipment: Ready, New and Loaner stock, plus returned devices
 templates/                  # dashboard page template
 tests/                      # Pester tests
 ```

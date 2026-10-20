@@ -243,6 +243,8 @@ function Import-EquipmentInventory {
     param([Parameter(Mandatory)][string]$Path)
     if (-not (Test-Path $Path)) { return [System.Collections.Generic.List[object]]::new() }
     [System.Collections.Generic.List[object]]@(Import-Csv $Path -Encoding utf8 | ForEach-Object {
+            # Pool: Ready (cleaned and re-imaged), New (in box), or Loaner. Older files have no Pool column.
+            if (-not $_.PSObject.Properties['Pool']) { $_ | Add-Member -NotePropertyName Pool -NotePropertyValue $(if ($_.Status -eq 'In Stock') { 'New' } else { '' }) }
             $_ | Add-Member -NotePropertyName Reserved -NotePropertyValue $false -PassThru
         })
 }
@@ -275,9 +277,10 @@ function New-DeviceTickets {
         For a replacement hire, the previous person's equipment is reused when it has been
         returned and is still within its lifecycle (re-image and re-issue). Equipment past its
         lifecycle gets a retire ticket. Equipment that hasn't come back gets a recover ticket.
-        Anything not covered that way comes from a spare in stock (same site first, then
-        another site), or a new device is ordered. Spares are reserved so two hires never
-        get the same one.
+        Anything not covered that way comes from a spare: the site's own stock first, then the
+        central depot (HQ), and Ready (cleaned and re-imaged) devices before New ones. If there
+        is no spare, a new device is ordered and a loaner is issued for day one. Devices are
+        reserved as they're assigned, so two hires never get the same one.
     #>
     param(
         [Parameter(Mandatory)]$Plan,
@@ -349,9 +352,12 @@ function New-DeviceTickets {
         }
         if ($covered) { continue }
 
-        # 2. A spare in stock: same site first, then any site
-        $spare = $Inventory | Where-Object { $_.Status -eq 'In Stock' -and $_.Type -eq $device -and -not $_.Reserved } |
-            Sort-Object @{ e = { $_.Site -ne $Plan.Site } }, AssetTag | Select-Object -First 1
+        # 2. A spare: this site's stock, then the central depot; Ready (re-imaged) before New
+        $pools = @($eq.stockPreference)
+        $spare = $Inventory | Where-Object {
+            $_.Status -eq 'In Stock' -and $_.Type -eq $device -and -not $_.Reserved -and $_.Pool -in $pools -and
+            ($_.Site -eq $Plan.Site -or $_.Site -eq $eq.depotSite)
+        } | Sort-Object @{ e = { $_.Site -ne $Plan.Site } }, @{ e = { [array]::IndexOf($pools, $_.Pool) } }, AssetTag | Select-Object -First 1
         if ($spare) {
             $spare.Reserved = $true
             $ship = if ($spare.Site -ne $Plan.Site) { "Ship from $($spare.Site) to $($Plan.Site)" } else { $null }
@@ -363,18 +369,35 @@ function New-DeviceTickets {
                 $steps = @("Pull new $device $($spare.AssetTag) ($($spare.Model)) at $($spare.Site)", "Update the asset record: assigned to $($Plan.DisplayName) ($($Plan.EmployeeID))") +
                 @($ship | Where-Object { $_ }) + @("Deliver to $($Plan.Site) by $($due.ToString('MMM d'))")
                 $tickets.Add((& $new 'Issue from stock' $device $spare.AssetTag $spare.Model "Issue new $device $($spare.AssetTag)$where to $($Plan.DisplayName)." $steps $due $priority 'Stock'))
+                $tickets[-1] | Add-Member -NotePropertyName pool -NotePropertyValue $spare.Pool
             } else {
-                $tickets.Add((& $new 'Image from stock' $device $spare.AssetTag $spare.Model "Set up spare $device $($spare.AssetTag)$where for $($Plan.DisplayName)." $steps $due $priority 'Stock'))
+                $condition = if ($spare.Pool -eq 'Ready') { 're-imaged, ready to go' } else { 'new in box' }
+            $tickets.Add((& $new 'Image from stock' $device $spare.AssetTag $spare.Model "Set up $device $($spare.AssetTag) ($condition)$where for $($Plan.DisplayName)." $steps $due $priority 'Stock'))
+            $tickets[-1] | Add-Member -NotePropertyName pool -NotePropertyValue $spare.Pool
             }
             continue
         }
 
-        # 3. Nothing available: order one
+        # 3. Nothing available: order one, and lend a loaner so the new hire isn't empty-handed on day one
         $orderPriority = if ($daysToStart -le 7) { 'Urgent' } else { 'High' }
-        $tickets.Add((& $new 'Order new device' $device $null $null `
-                    "No $device available for $($Plan.DisplayName). Order one now; it's needed by $($start.ToString('MMM d'))." `
-                    @("Request a quote for a standard $device and get manager approval", 'Place the order with expedited shipping',
-                'On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf', "Deliver to $($Plan.Site); if it will be late, arrange a loaner for day one") $due $orderPriority 'Purchase'))
+        $loaner = $Inventory | Where-Object {
+            $_.Status -eq 'In Stock' -and $_.Pool -eq 'Loaner' -and $_.Type -eq $device -and -not $_.Reserved -and
+            ($_.Site -eq $Plan.Site -or $_.Site -eq $eq.depotSite)
+        } | Sort-Object @{ e = { $_.Site -ne $Plan.Site } }, AssetTag | Select-Object -First 1
+        $steps = @("Request a quote for a standard $device and get manager approval", 'Place the order with expedited shipping',
+            'On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf')
+        if ($loaner) {
+            $loaner.Reserved = $true
+            $steps = @("Issue loaner $($loaner.AssetTag) ($($loaner.Model), from $($loaner.Site)) for day one") + $steps +
+            @("Swap the new $device for loaner $($loaner.AssetTag), then re-image the loaner and return it to the loaner pool")
+            $summary = "No $device in stock for $($Plan.DisplayName). Order one now, and lend loaner $($loaner.AssetTag) until it arrives."
+        } else {
+            $steps += "Deliver to $($Plan.Site) by $($start.ToString('MMM d')); no loaner is free, so escalate if it will be late"
+            $summary = "No $device in stock and no loaner free for $($Plan.DisplayName). Order one now; it's needed by $($start.ToString('MMM d'))."
+        }
+        $tickets.Add((& $new 'Order new device' $device $null $null $summary $steps $due $orderPriority 'Purchase'))
+        $tickets[-1] | Add-Member -NotePropertyName loaner_tag -NotePropertyValue $(if ($loaner) { $loaner.AssetTag } else { $null })
+        $tickets[-1] | Add-Member -NotePropertyName loaner_model -NotePropertyValue $(if ($loaner) { $loaner.Model } else { $null })
     }
     , $tickets.ToArray()
 }
@@ -508,7 +531,10 @@ function Get-ChecklistData {
             'Re-image and re-issue' { "$($t.device) $($t.asset_tag) re-imaged and ready (previously $($t.replacing)'s)" }
             'Image from stock' { "$($t.device) $($t.asset_tag) imaged from stock and ready" }
             'Issue from stock' { "New $($t.device) $($t.asset_tag) ready" }
-            'Order new device' { "New $($t.device) ordered, received and set up (arrange a loaner if it will be late)" }
+            'Order new device' {
+                if ($t.PSObject.Properties['loaner_tag'] -and $t.loaner_tag) { "Loaner $($t.device) $($t.loaner_tag) ready for day one; new $($t.device) ordered" }
+                else { "New $($t.device) ordered, received and set up (no loaner free: escalate if it will be late)" }
+            }
         }
         $before.Add((& $item "$what - $($t.id), due $($t.due)"))
     }
@@ -532,7 +558,10 @@ function Get-ChecklistData {
                 (& $item 'Walk through how to open an IT ticket')) }
         [pscustomobject]@{ title = 'First week'; items = @(
                 (& $item 'Security awareness training assigned and completed')
-                (& $item 'Manager confirms all access is correct')) }
+                (& $item 'Manager confirms all access is correct')
+                @($Tickets | Where-Object { $_.PSObject.Properties['loaner_tag'] -and $_.loaner_tag } | ForEach-Object {
+                        & $item "When the new $($_.device) arrives, swap it for loaner $($_.loaner_tag) and return the loaner - $($_.id)"
+                    })) }
     )
     [pscustomobject]@{ title = "IT onboarding checklist: $($Plan.DisplayName)"; details = [pscustomobject]$details; sections = $sections }
 }

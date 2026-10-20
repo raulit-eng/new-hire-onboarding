@@ -199,8 +199,8 @@ Describe 'Replacements and IT tickets' {
         $t = TicketsFor 'E10422'
         ($t | Where-Object type -eq 'Retire device').asset_tag | Should -Be 'AT-001877'
         $spare = $t | Where-Object type -eq 'Image from stock'
-        $spare.asset_tag | Should -Be 'AT-002301'
-        $spare.steps -join ' ' | Should -BeLike '*Ship from Los Angeles HQ to Long Beach*'
+        $spare.asset_tag | Should -Be 'AT-002361'   # the Ready laptop already at Long Beach
+        $spare.pool | Should -Be 'Ready'
     }
     It 'recovers equipment from someone still working, after their last day' {
         $recover = TicketsFor 'E10423' | Where-Object type -eq 'Recover equipment'
@@ -213,11 +213,32 @@ Describe 'Replacements and IT tickets' {
         $recover.priority | Should -Be 'High'
         $recover.due | Should -Be '2026-10-20'
     }
+    It 'records the stock as it was before the run, for the dashboard' {
+        @($log.inventory).Count | Should -Be 30
+        ($log.inventory | Where-Object AssetTag -eq 'AT-001991').Status | Should -Be 'In Stock'
+    }
     It 'never re-issues personal items like headsets' {
         ($tickets | Where-Object { $_.device -eq 'Headset' }).type | Sort-Object -Unique | Should -Be 'Issue from stock'
     }
-    It 'orders a new device when nothing is available' {
-        (TicketsFor 'E10428').type | Should -Be 'Order new device'
+    It 'orders a new device and lends a loaner when nothing is in stock' {
+        $order = TicketsFor 'E10431' | Where-Object type -eq 'Order new device'
+        $order.device | Should -Be 'Laptop'
+        $order.loaner_tag | Should -Be 'AT-001991'   # the Burbank loaner, same site as the new hire
+        $order.steps[0] | Should -BeLike 'Issue loaner AT-001991*'
+        $order.steps[-1] | Should -BeLike '*return it to the loaner pool'
+    }
+    It 'uses Ready (re-imaged) stock before New stock' {
+        (TicketsFor 'E10425' | Where-Object type -eq 'Image from stock').asset_tag | Should -Be 'AT-002360'
+        (TicketsFor 'E10425' | Where-Object type -eq 'Image from stock').pool | Should -Be 'Ready'
+    }
+    It 'ships from the HQ depot but never between branch sites' {
+        $shipped = $tickets | Where-Object { $_.steps -match '^Ship from' }
+        foreach ($t in $shipped) { ($t.steps -match '^Ship from')[0] | Should -BeLike 'Ship from Los Angeles HQ*' }
+        # Irvine's spare iPhones stay put even though Omari (HQ) needs one
+        ($tickets | Where-Object asset_tag -in 'AT-002371', 'AT-002380') | Should -BeNullOrEmpty
+    }
+    It 'never lends loaners as permanent devices' {
+        ($tickets | Where-Object { $_.type -in 'Image from stock', 'Issue from stock' -and $_.pool -eq 'Loaner' }) | Should -BeNullOrEmpty
     }
     It 'never gives the same device to two people' {
         $given = $tickets | Where-Object { $_.type -in 'Re-image and re-issue', 'Image from stock', 'Issue from stock' } | ForEach-Object asset_tag
@@ -236,8 +257,9 @@ Describe 'Replacements and IT tickets' {
     }
     It 'reserves devices so the next run cannot hand them out again' {
         $inv = Import-Csv (Join-Path $out 'practice_inventory.csv')
-        ($inv | Where-Object AssetTag -eq 'AT-002301').Status | Should -Be 'Reserved'
+        ($inv | Where-Object AssetTag -eq 'AT-002361').Status | Should -Be 'Reserved'
         ($inv | Where-Object AssetTag -eq 'AT-001877').Status | Should -Be 'Pending retirement'
+        ($inv | Where-Object AssetTag -eq 'AT-001991').Status | Should -Be 'On loan'
     }
     It 'counts business days, skipping weekends' {
         Get-BusinessDaysBefore -Date '2026-10-26' -Days 2 -NotBefore '2026-10-01' | Should -Be ([datetime]'2026-10-22')

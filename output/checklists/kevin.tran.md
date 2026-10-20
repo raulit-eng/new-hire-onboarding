@@ -16,10 +16,10 @@
 - [x] Account created with a temporary password (must change at first sign-in)
 - [x] Added to groups: All-Staff, MFA-Required, Marketing-Team, Brand-Assets-RW, Site-PAS, Contractors
 - [x] License assigned: LIC-M365-F3
-- [x] IT tickets opened: IT-4115 (order new device, Laptop)
+- [x] IT tickets opened: IT-4115 (image from stock, Laptop)
 
 ## Before day one (IT)
-- [ ] New Laptop ordered, received and set up (arrange a loaner if it will be late) - IT-4115, due 2026-10-26
+- [ ] Laptop AT-002362 imaged from stock and ready - IT-4115, due 2026-10-26
 - [ ] Give the temporary password to chloe.young@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: Adobe Creative Cloud, HubSpot, Microsoft 365
 

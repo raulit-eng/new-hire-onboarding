@@ -73,8 +73,10 @@ if (-not $InventoryFile) {
     }
 }
 $inventory = Import-EquipmentInventory -Path $InventoryFile
-$spares = @($inventory | Where-Object Status -eq 'In Stock').Count
-Write-Step 'Read HR file' info "Loaded equipment list: $($inventory.Count) devices, $spares spares in stock"
+$inventoryBefore = @($inventory | Select-Object AssetTag, Type, Model, PurchaseDate, Status, Pool, AssignedTo, Site, Notes)
+$stock = @($inventory | Where-Object Status -eq 'In Stock')
+$byPool = ($stock | Group-Object Pool | Sort-Object Name -Descending | ForEach-Object { "$($_.Count) $($_.Name.ToLower())" }) -join ', '
+Write-Step 'Read HR file' info "Loaded equipment list: $($inventory.Count) devices; in stock: $byPool"
 
 $counterFile = Join-Path $OutputPath 'ticket_counter.txt'
 $nextTicket = if (-not $Reset -and (Test-Path $counterFile)) { [int](Get-Content $counterFile -Raw) } else { [int]$config.equipment.firstTicketNumber }
@@ -148,7 +150,8 @@ foreach ($r in $records) {
         foreach ($t in $tickets) {
             $asset = if ($t.asset_tag) { " $($t.asset_tag)" } else { '' }
             $status = if ($t.priority -in 'Urgent') { 'warn' } else { 'ok' }
-            Write-Step 'Create tickets' $status "$($t.id) $($t.type): $($t.device)$asset, due $([datetime]::Parse($t.due).ToString('MMM d')), $($t.priority) priority" @who
+            $extra = if ($t.PSObject.Properties['loaner_tag'] -and $t.loaner_tag) { ", loaner $($t.loaner_tag) for day one" } elseif ($t.PSObject.Properties['pool']) { " ($($t.pool.ToLower()))" } else { '' }
+            Write-Step 'Create tickets' $status "$($t.id) $($t.type): $($t.device)$asset$extra, due $([datetime]::Parse($t.due).ToString('MMM d')), $($t.priority) priority" @who
             $allTickets.Add($t)
         }
         $checklistData = Get-ChecklistData -Plan $plan -Tickets $tickets -Predecessor $predecessor -AccessGap $gap
@@ -192,11 +195,15 @@ if (-not $WhatIfPreference) {
         $d = $inventory | Where-Object AssetTag -eq $t.asset_tag
         $d.Status = 'Reserved'; $d.AssignedTo = $t.employee_id; $d.Notes = "Reserved for $($t.for) ($($t.id))"
     }
+    foreach ($t in $allTickets | Where-Object { $_.PSObject.Properties['loaner_tag'] -and $_.loaner_tag }) {
+        $d = $inventory | Where-Object AssetTag -eq $t.loaner_tag
+        $d.Status = 'On loan'; $d.AssignedTo = $t.employee_id; $d.Notes = "On loan to $($t.for) until the new $($t.device) arrives ($($t.id))"
+    }
     foreach ($t in $allTickets | Where-Object type -eq 'Retire device') {
         $d = $inventory | Where-Object AssetTag -eq $t.asset_tag
         $d.Status = 'Pending retirement'; $d.Notes = "Retire ($($t.id))"
     }
-    $inventory | Select-Object AssetTag, Type, Model, PurchaseDate, Status, AssignedTo, Site, Notes |
+    $inventory | Select-Object AssetTag, Type, Model, PurchaseDate, Status, Pool, AssignedTo, Site, Notes |
         Export-Csv $InventoryFile -NoTypeInformation -Encoding utf8
     Set-Content $counterFile $nextTicket
 }
@@ -221,7 +228,8 @@ $run = [ordered]@{
     company = 'Summit Logistics (sample data)'; hr_file = (Split-Path $HRFile -Leaf); mode = $Mode
     what_if = [bool]$WhatIfPreference; as_of = $AsOf.ToString('yyyy-MM-dd'); started = $runStarted.ToString('o')
     finished = (Get-Date).ToString('o'); counts = $counts
-    hires = $hires; tickets = @($allTickets); events = (Get-RunLog)
+    hires = $hires; tickets = @($allTickets); inventory = $inventoryBefore; depot = $config.equipment.depotSite
+    events = (Get-RunLog)
 }
 $runLogPath = Join-Path $OutputPath 'run_log.json'
 $run | ConvertTo-Json -Depth 10 | Set-Content $runLogPath -Encoding utf8

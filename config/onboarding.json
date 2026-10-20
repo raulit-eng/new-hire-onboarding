@@ -214,6 +214,11 @@
     "supportTeam": "Desktop Support",
     "personalItems": [
       "Headset"
+    ],
+    "depotSite": "Los Angeles HQ",
+    "stockPreference": [
+      "Ready",
+      "New"
     ]
   }
 }

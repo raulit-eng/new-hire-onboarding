@@ -1,21 +1,31 @@
-AssetTag,Type,Model,PurchaseDate,Status,AssignedTo,Site,Notes
-AT-002101,Laptop,Dell Latitude 5450,2025-03-14,Returned,E10090,Los Angeles HQ,Returned 2026-10-09 in good condition
-AT-002102,iPhone,iPhone 15,2024-08-02,Returned,E10090,Los Angeles HQ,Returned 2026-10-09
-AT-001877,Laptop,Lenovo ThinkPad T14,2021-06-21,Returned,E10095,Long Beach,Returned 2026-10-02; battery worn
-AT-002233,Desktop,Dell OptiPlex 7020,2024-02-12,Assigned,E10102,Torrance,In use until last day 2026-10-30
-AT-002234,Headset,Jabra Evolve2 50,2024-02-12,Assigned,E10102,Torrance,In use until last day 2026-10-30
-AT-002210,Laptop,Dell Latitude 5450,2025-01-08,Assigned,E10110,Los Angeles HQ,Not returned after last day 2026-09-25
-AT-002211,iPhone,iPhone 15,2024-11-20,Returned,E10110,Los Angeles HQ,Returned 2026-09-25
-AT-002050,Laptop,MacBook Pro 14,2024-04-03,Returned,E10012,Los Angeles HQ,Returned 2026-10-16
-AT-001720,iPhone,iPhone 13,2022-09-30,Returned,E10012,Los Angeles HQ,Returned 2026-10-16
-AT-002051,iPad,iPad Air,2024-04-03,Returned,E10012,Los Angeles HQ,Returned 2026-10-16
-AT-002301,Laptop,Dell Latitude 5450,2026-08-15,In Stock,,Los Angeles HQ,Spare
-AT-002302,Laptop,Dell Latitude 5450,2026-08-15,In Stock,,Los Angeles HQ,Spare
-AT-002305,iPhone,iPhone 16,2026-08-15,In Stock,,Los Angeles HQ,Spare
-AT-002310,Laptop,Lenovo ThinkPad T14,2026-07-22,In Stock,,Pasadena,Spare
-AT-002320,Desktop,Dell OptiPlex 7020,2026-06-30,In Stock,,Torrance,Spare
-AT-002321,Headset,Jabra Evolve2 50,2026-06-30,In Stock,,Torrance,Spare
-AT-002330,Desktop,HP EliteDesk 800,2026-06-30,In Stock,,Irvine,Spare
-AT-002331,Headset,Jabra Evolve2 50,2026-06-30,In Stock,,Irvine,Spare
-AT-002340,iPad,iPad 10th Gen,2026-05-18,In Stock,,Ontario,Spare
-AT-002350,Laptop,Dell Latitude 5450,2026-09-02,In Stock,,Santa Clarita,Spare
+AssetTag,Type,Model,PurchaseDate,Status,Pool,AssignedTo,Site,Notes
+AT-002101,Laptop,Dell Latitude 5450,2025-03-14,Returned,,E10090,Los Angeles HQ,Returned 2026-10-09 in good condition
+AT-002102,iPhone,iPhone 15,2024-08-02,Returned,,E10090,Los Angeles HQ,Returned 2026-10-09
+AT-001877,Laptop,Lenovo ThinkPad T14,2021-06-21,Returned,,E10095,Long Beach,Returned 2026-10-02; battery worn
+AT-002233,Desktop,Dell OptiPlex 7020,2024-02-12,Assigned,,E10102,Torrance,In use until last day 2026-10-30
+AT-002234,Headset,Jabra Evolve2 50,2024-02-12,Assigned,,E10102,Torrance,In use until last day 2026-10-30
+AT-002210,Laptop,Dell Latitude 5450,2025-01-08,Assigned,,E10110,Los Angeles HQ,Not returned after last day 2026-09-25
+AT-002211,iPhone,iPhone 15,2024-11-20,Returned,,E10110,Los Angeles HQ,Returned 2026-09-25
+AT-002050,Laptop,MacBook Pro 14,2024-04-03,Returned,,E10012,Los Angeles HQ,Returned 2026-10-16
+AT-001720,iPhone,iPhone 13,2022-09-30,Returned,,E10012,Los Angeles HQ,Returned 2026-10-16
+AT-002051,iPad,iPad Air,2024-04-03,Returned,,E10012,Los Angeles HQ,Returned 2026-10-16
+AT-002360,Laptop,Dell Latitude 7440,2024-05-20,In Stock,Ready,,Los Angeles HQ,Wiped and re-imaged 2026-09-30; battery 91%
+AT-002361,Laptop,Lenovo ThinkPad T14,2024-09-11,In Stock,Ready,,Long Beach,Wiped and re-imaged 2026-10-05; battery 94%
+AT-002362,Laptop,MacBook Air 13,2025-02-03,In Stock,Ready,,Los Angeles HQ,Erased and re-enrolled in Jamf 2026-10-01
+AT-002370,iPhone,iPhone 15,2025-01-15,In Stock,Ready,,Los Angeles HQ,"Erased, new screen protector 2026-10-03"
+AT-002371,iPhone,iPhone 15,2024-12-02,In Stock,Ready,,Irvine,Erased 2026-09-28
+AT-002310,Laptop,Lenovo ThinkPad T14,2026-07-22,In Stock,New,,Pasadena,New in box
+AT-002350,Laptop,Dell Latitude 5450,2026-09-02,In Stock,New,,Santa Clarita,New in box
+AT-002380,iPhone,iPhone 16,2026-09-20,In Stock,New,,Irvine,New in box
+AT-002390,Laptop,Dell Latitude 5450,2026-09-02,In Stock,New,,Palmdale,New in box
+AT-002363,Laptop,Dell Latitude 7440,2024-05-20,In Stock,Ready,,Ontario,Wiped and re-imaged 2026-10-08
+AT-002320,Desktop,Dell OptiPlex 7020,2026-06-30,In Stock,New,,Torrance,New in box
+AT-002321,Headset,Jabra Evolve2 50,2026-06-30,In Stock,New,,Torrance,New in box
+AT-002330,Desktop,HP EliteDesk 800,2026-06-30,In Stock,New,,Irvine,New in box
+AT-002331,Headset,Jabra Evolve2 50,2026-06-30,In Stock,New,,Irvine,New in box
+AT-002340,iPad,iPad 10th Gen,2026-05-18,In Stock,New,,Ontario,New in box
+AT-001990,Laptop,Dell Latitude 5440,2023-04-10,In Stock,Loaner,,Los Angeles HQ,Loaner pool; re-imaged after each use
+AT-001991,Laptop,Dell Latitude 5440,2023-04-10,In Stock,Loaner,,Burbank,Loaner pool; re-imaged after each use
+AT-001992,Laptop,MacBook Air 13,2023-06-01,In Stock,Loaner,,Los Angeles HQ,Loaner pool
+AT-001995,iPhone,iPhone 14,2023-03-14,In Stock,Loaner,,Los Angeles HQ,Loaner pool
+AT-001996,iPhone,iPhone 14,2023-03-14,In Stock,Loaner,,Irvine,Loaner pool

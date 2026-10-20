@@ -18,7 +18,7 @@
 - [x] IT tickets opened: IT-4122 (order new device, Laptop)
 
 ## Before day one (IT)
-- [ ] New Laptop ordered, received and set up (arrange a loaner if it will be late) - IT-4122, due 2026-10-29
+- [ ] Loaner Laptop AT-001991 ready for day one; new Laptop ordered - IT-4122, due 2026-10-29
 - [ ] Give the temporary password to nora.flores@summitlogistics.example through the approved password-delivery process
 - [ ] Confirm app access: Workday, Microsoft 365
 
@@ -32,4 +32,5 @@
 ## First week
 - [ ] Security awareness training assigned and completed
 - [ ] Manager confirms all access is correct
+- [ ] When the new Laptop arrives, swap it for loaner AT-001991 and return the loaner - IT-4122
 

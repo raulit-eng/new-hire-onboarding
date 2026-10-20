@@ -75,24 +75,24 @@
     "employee_id": "E10422",
     "for": "Jim Okafor",
     "device": "Laptop",
-    "asset_tag": "AT-002301",
-    "model": "Dell Latitude 5450",
+    "asset_tag": "AT-002361",
+    "model": "Lenovo ThinkPad T14",
     "source": "Stock",
     "site": "Long Beach",
     "team": "Desktop Support - LGB",
     "due": "2026-10-22",
     "priority": "High",
     "status": "Open",
-    "summary": "Set up spare Laptop AT-002301 (transfer from Los Angeles HQ) for Jim Okafor.",
+    "summary": "Set up Laptop AT-002361 (re-imaged, ready to go) for Jim Okafor.",
     "steps": [
-      "Pull spare AT-002301 (Dell Latitude 5450) at Los Angeles HQ",
+      "Pull spare AT-002361 (Lenovo ThinkPad T14) at Long Beach",
       "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
       "Install role apps: NetSuite, Microsoft 365, Expensify",
       "Update the asset record: assigned to Jim Okafor (E10422)",
-      "Ship from Los Angeles HQ to Long Beach",
       "Deliver to Long Beach by Oct 22"
     ],
-    "replacing": "Dana Brooks"
+    "replacing": "Dana Brooks",
+    "pool": "Ready"
   },
   {
     "id": "IT-4105",
@@ -130,7 +130,7 @@
     "due": "2026-10-22",
     "priority": "High",
     "status": "Open",
-    "summary": "Set up spare Desktop AT-002320 for Ana Smith.",
+    "summary": "Set up Desktop AT-002320 (new in box) for Ana Smith.",
     "steps": [
       "Pull spare AT-002320 (Dell OptiPlex 7020) at Torrance",
       "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
@@ -138,7 +138,8 @@
       "Update the asset record: assigned to Ana Smith (E10423)",
       "Deliver to Torrance by Oct 22"
     ],
-    "replacing": "Nina Petrov"
+    "replacing": "Nina Petrov",
+    "pool": "New"
   },
   {
     "id": "IT-4107",
@@ -160,7 +161,8 @@
       "Update the asset record: assigned to Ana Smith (E10423)",
       "Deliver to Torrance by Oct 22"
     ],
-    "replacing": "Nina Petrov"
+    "replacing": "Nina Petrov",
+    "pool": "New"
   },
   {
     "id": "IT-4108",
@@ -176,7 +178,7 @@
     "due": "2026-10-22",
     "priority": "High",
     "status": "Open",
-    "summary": "Set up spare iPad AT-002340 for Daniel Nguyen.",
+    "summary": "Set up iPad AT-002340 (new in box) for Daniel Nguyen.",
     "steps": [
       "Pull spare AT-002340 (iPad 10th Gen) at Ontario",
       "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
@@ -184,7 +186,8 @@
       "Update the asset record: assigned to Daniel Nguyen (E10424)",
       "Deliver to Ontario by Oct 22"
     ],
-    "replacing": null
+    "replacing": null,
+    "pool": "New"
   },
   {
     "id": "IT-4109",
@@ -214,23 +217,24 @@
     "employee_id": "E10425",
     "for": "Priya Patel",
     "device": "Laptop",
-    "asset_tag": "AT-002302",
-    "model": "Dell Latitude 5450",
+    "asset_tag": "AT-002360",
+    "model": "Dell Latitude 7440",
     "source": "Stock",
     "site": "Los Angeles HQ",
     "team": "Desktop Support - LAX",
     "due": "2026-10-23",
     "priority": "High",
     "status": "Open",
-    "summary": "Set up spare Laptop AT-002302 for Priya Patel.",
+    "summary": "Set up Laptop AT-002360 (re-imaged, ready to go) for Priya Patel.",
     "steps": [
-      "Pull spare AT-002302 (Dell Latitude 5450) at Los Angeles HQ",
+      "Pull spare AT-002360 (Dell Latitude 7440) at Los Angeles HQ",
       "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
       "Install role apps: Intune, Jamf, Zendesk, Microsoft 365",
       "Update the asset record: assigned to Priya Patel (E10425)",
       "Deliver to Los Angeles HQ by Oct 23"
     ],
-    "replacing": "Sam Rivera"
+    "replacing": "Sam Rivera",
+    "pool": "Ready"
   },
   {
     "id": "IT-4111",
@@ -270,7 +274,7 @@
     "due": "2026-10-23",
     "priority": "High",
     "status": "Open",
-    "summary": "Set up spare Laptop AT-002350 for Luis Hernández.",
+    "summary": "Set up Laptop AT-002350 (new in box) for Luis Hernández.",
     "steps": [
       "Pull spare AT-002350 (Dell Latitude 5450) at Santa Clarita",
       "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
@@ -278,7 +282,8 @@
       "Update the asset record: assigned to Luis Hernández (E10426)",
       "Deliver to Santa Clarita by Oct 23"
     ],
-    "replacing": null
+    "replacing": null,
+    "pool": "New"
   },
   {
     "id": "IT-4113",
@@ -286,24 +291,25 @@
     "employee_id": "E10426",
     "for": "Luis Hernández",
     "device": "iPhone",
-    "asset_tag": "AT-002305",
-    "model": "iPhone 16",
+    "asset_tag": "AT-002370",
+    "model": "iPhone 15",
     "source": "Stock",
     "site": "Santa Clarita",
     "team": "Desktop Support - SCV",
     "due": "2026-10-23",
     "priority": "High",
     "status": "Open",
-    "summary": "Set up spare iPhone AT-002305 (transfer from Los Angeles HQ) for Luis Hernández.",
+    "summary": "Set up iPhone AT-002370 (re-imaged, ready to go) (transfer from Los Angeles HQ) for Luis Hernández.",
     "steps": [
-      "Pull spare AT-002305 (iPhone 16) at Los Angeles HQ",
+      "Pull spare AT-002370 (iPhone 15) at Los Angeles HQ",
       "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
       "Install role apps: WMS, Microsoft 365",
       "Update the asset record: assigned to Luis Hernández (E10426)",
       "Ship from Los Angeles HQ to Santa Clarita",
       "Deliver to Santa Clarita by Oct 23"
     ],
-    "replacing": null
+    "replacing": null,
+    "pool": "Ready"
   },
   {
     "id": "IT-4114",
@@ -319,7 +325,7 @@
     "due": "2026-10-23",
     "priority": "High",
     "status": "Open",
-    "summary": "Set up spare Laptop AT-002310 for Sofia O'Brien.",
+    "summary": "Set up Laptop AT-002310 (new in box) for Sofia O'Brien.",
     "steps": [
       "Pull spare AT-002310 (Lenovo ThinkPad T14) at Pasadena",
       "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
@@ -327,30 +333,34 @@
       "Update the asset record: assigned to Sofia O'Brien (E10427)",
       "Deliver to Pasadena by Oct 23"
     ],
-    "replacing": null
+    "replacing": null,
+    "pool": "New"
   },
   {
     "id": "IT-4115",
-    "type": "Order new device",
+    "type": "Image from stock",
     "employee_id": "E10428",
     "for": "Kevin Tran",
     "device": "Laptop",
-    "asset_tag": null,
-    "model": null,
-    "source": "Purchase",
+    "asset_tag": "AT-002362",
+    "model": "MacBook Air 13",
+    "source": "Stock",
     "site": "Pasadena",
     "team": "Desktop Support - PAS",
     "due": "2026-10-26",
-    "priority": "High",
+    "priority": "Normal",
     "status": "Open",
-    "summary": "No Laptop available for Kevin Tran. Order one now; it's needed by Oct 28.",
+    "summary": "Set up Laptop AT-002362 (re-imaged, ready to go) (transfer from Los Angeles HQ) for Kevin Tran.",
     "steps": [
-      "Request a quote for a standard Laptop and get manager approval",
-      "Place the order with expedited shipping",
-      "On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf",
-      "Deliver to Pasadena; if it will be late, arrange a loaner for day one"
+      "Pull spare AT-002362 (MacBook Air 13) at Los Angeles HQ",
+      "Erase and re-enroll in Jamf through Apple Business Manager; assign VPP apps",
+      "Install role apps: Adobe Creative Cloud, HubSpot, Microsoft 365",
+      "Update the asset record: assigned to Kevin Tran (E10428)",
+      "Ship from Los Angeles HQ to Pasadena",
+      "Deliver to Pasadena by Oct 26"
     ],
-    "replacing": null
+    "replacing": null,
+    "pool": "Ready"
   },
   {
     "id": "IT-4116",
@@ -366,7 +376,7 @@
     "due": "2026-10-26",
     "priority": "Normal",
     "status": "Open",
-    "summary": "Set up spare Desktop AT-002330 for Grace Kim.",
+    "summary": "Set up Desktop AT-002330 (new in box) for Grace Kim.",
     "steps": [
       "Pull spare AT-002330 (HP EliteDesk 800) at Irvine",
       "Reset with Windows Autopilot and confirm Intune enrollment and BitLocker",
@@ -374,7 +384,8 @@
       "Update the asset record: assigned to Grace Kim (E10429)",
       "Deliver to Irvine by Oct 26"
     ],
-    "replacing": null
+    "replacing": null,
+    "pool": "New"
   },
   {
     "id": "IT-4117",
@@ -396,7 +407,8 @@
       "Update the asset record: assigned to Grace Kim (E10429)",
       "Deliver to Irvine by Oct 26"
     ],
-    "replacing": null
+    "replacing": null,
+    "pool": "New"
   },
   {
     "id": "IT-4118",
@@ -458,14 +470,17 @@
     "due": "2026-10-29",
     "priority": "High",
     "status": "Open",
-    "summary": "No iPhone available for Omari Bennett. Order one now; it's needed by Nov 2.",
+    "summary": "No iPhone in stock for Omari Bennett. Order one now, and lend loaner AT-001995 until it arrives.",
     "steps": [
+      "Issue loaner AT-001995 (iPhone 14, from Los Angeles HQ) for day one",
       "Request a quote for a standard iPhone and get manager approval",
       "Place the order with expedited shipping",
       "On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf",
-      "Deliver to Los Angeles HQ; if it will be late, arrange a loaner for day one"
+      "Swap the new iPhone for loaner AT-001995, then re-image the loaner and return it to the loaner pool"
     ],
-    "replacing": "Victor Hale"
+    "replacing": "Victor Hale",
+    "loaner_tag": "AT-001995",
+    "loaner_model": "iPhone 14"
   },
   {
     "id": "IT-4121",
@@ -505,13 +520,16 @@
     "due": "2026-10-29",
     "priority": "High",
     "status": "Open",
-    "summary": "No Laptop available for Rosa Delgado-Villanueva. Order one now; it's needed by Nov 2.",
+    "summary": "No Laptop in stock for Rosa Delgado-Villanueva. Order one now, and lend loaner AT-001991 until it arrives.",
     "steps": [
+      "Issue loaner AT-001991 (Dell Latitude 5440, from Burbank) for day one",
       "Request a quote for a standard Laptop and get manager approval",
       "Place the order with expedited shipping",
       "On arrival: tag it, add it to the asset inventory, and enroll it in Intune/Jamf",
-      "Deliver to Burbank; if it will be late, arrange a loaner for day one"
+      "Swap the new Laptop for loaner AT-001991, then re-image the loaner and return it to the loaner pool"
     ],
-    "replacing": null
+    "replacing": null,
+    "loaner_tag": "AT-001991",
+    "loaner_model": "Dell Latitude 5440"
   }
 ]
