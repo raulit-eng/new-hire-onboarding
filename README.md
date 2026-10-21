@@ -79,8 +79,11 @@ Each run builds a dashboard that replays what the script did, step by step:
   - **Checklists:** pick a person to see their whole checklist, with done and to-do items
   - **Sent back to HR** and **Skipped**
 - **Click any person** for their groups, license, replacement, tickets and checklist
+- **Light and dark themes:** it follows your computer's setting, and the toggle in the top corner switches it and remembers your choice
 
 ![Clicking a step shows what it did](docs/screenshot-step.png)
+
+![Dark theme](docs/screenshot-dark.png)
 
 ![IT tickets tab](docs/screenshot-tickets.png)
 
